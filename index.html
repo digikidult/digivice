@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SS Digital Monster Ver. S 攻略大整合 - DigiKidult</title>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #111;
+            --text-color: #4ade80; /* Retro Green */
+            --border-color: #4ade80;
+            --highlight-bg: #166534;
+            --tab-bg: #222;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'DotGothic16', monospace, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 4px solid var(--border-color);
+            padding: 20px;
+            box-shadow: 8px 8px 0px #000;
+            background-color: #0a0a0a;
+        }
+        h1, h2, h3 {
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 2px 2px #000;
+        }
+        h1 {
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 15px;
+            font-size: 2em;
+        }
+        .header-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .social-links a {
+            color: var(--bg-color);
+            background-color: var(--text-color);
+            padding: 5px 12px;
+            text-decoration: none;
+            margin: 0 5px;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+        .social-links a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+        
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        .tab-btn {
+            background-color: var(--tab-bg);
+            color: var(--text-color);
+            border: 2px solid var(--border-color);
+            padding: 10px 15px;
+            cursor: pointer;
+            font-family: 'DotGothic16', monospace;
+            font-size: 1.1em;
+            transition: 0.2s;
+        }
+        .tab-btn:hover, .tab-btn.active {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+        
+        /* Content Sections */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Tables Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+        th, td {
+            border: 2px solid var(--border-color);
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: rgba(74, 222, 128, 0.05);
+        }
+        tr:hover {
+            background-color: var(--highlight-bg);
+        }
+        .center {
+            text-align: center;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8em;
+            border-top: 2px dashed var(--border-color);
+            padding-top: 20px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+        .note {
+            background-color: rgba(74, 222, 128, 0.1);
+            border-left: 4px solid var(--border-color);
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SS Digital Monster Ver. S 攻略大整合</h1>
+    
+    <div class="header-info">
+        <p>歡迎來到被選中嘅大細路專屬資料庫！</p>
+        <div class="social-links">
+            <a href="https://instagram.com/digikidult" target="_blank">IG @digikidult</a>
+            <a href="https://facebook.com/digikidult" target="_blank">Facebook 專頁</a>
+        </div>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'basics')">育成基礎</button>
+        <button class="tab-btn" onclick="openTab(event, 'passwords')">搜尋密碼</button>
+        <button class="tab-btn" onclick="openTab(event, 'hackers')">黑客與競技場</button>
+        <button class="tab-btn" onclick="openTab(event, 'evolution')">Ver 1-4 進化表</button>
+        <button class="tab-btn" onclick="openTab(event, 'ss-fusion')">SS融合 & 道具</button>
+    </div>
+
+    <!-- 育成基礎 -->
+    <div id="basics" class="tab-content active">
+        <h2>🎮 育成基礎與機制 (Mechanics)</h2>
+        <div class="note">
+            <p><strong>Folder 系統：</strong>本作採用 Folder 形式育成，最多可同時照顧 4 隻數碼獸。隨住時間推移，Folder 會出現老化及損壞，需要定期修復。</p>
+        </div>
+        
+        <h3>失誤計算 (Care Mistakes)</h3>
+        <p>影響數碼獸進化路線的最重要因素。以下情況會被系統記錄為 1 次「失誤」：</p>
+        <ul>
+            <li><strong>飢餓狀態：</strong> 肚餓提示燈亮起後，超過 20 分鐘未餵食。</li>
+            <li><strong>睡眠燈光：</strong> 數碼獸入睡後，超過 60 分鐘未關燈。</li>
+        </ul>
+        <p><em>⚠️ 特別注意：在 Ver. S 中，不清理大便、防礙睡眠（叫醒牠）或過飽（Overfeeding），均 <strong>不視為</strong> 育成失誤！</em></p>
+
+        <h3>完全體進化條件</h3>
+        <ul>
+            <li>戰鬥次數：在成長期/成熟期期間，必須戰鬥最少 15 場。</li>
+            <li>勝率要求：勝率必須達到 40% 或以上（勝率達 80% 可達至最高進化機率）。</li>
+        </ul>
+    </div>
+
+    <!-- 搜尋密碼 -->
+    <div id="passwords" class="tab-content">
+        <h2>🔑 搜尋密碼大全 (Search Passwords)</h2>
+        <p>在遊戲中輸入密碼並支付 $D，即可搜索隱藏道具。</p>
+        <table>
+            <tr>
+                <th class="center">地點</th>
+                <th class="center">密碼 (Password)</th>
+                <th class="center">檢索所需 ($D)</th>
+                <th>可獲道具 (隨機掉落)</th>
+            </tr>
+            <tr>
+                <td class="center">１－Ａ</td>
+                <td class="center">ＱＵＥＥＮ</td>
+                <td class="center">155</td>
+                <td>メタルパーツ (Metal Parts) / フレームブラック / 演算処理ソフト / クッキー</td>
+            </tr>
+            <tr>
+                <td class="center">１－Ｂ</td>
+                <td class="center">ＷＩＮＤ</td>
+                <td class="center">896</td>
+                <td>燃える羽 / なわとびＬｖ５ / プロテイン</td>
+            </tr>
+            <tr>
+                <td class="center">２－Ａ</td>
+                <td class="center">ＴＯＷＥＲ</td>
+                <td class="center">350</td>
+                <td>黒い歯車 / 骨つき肉 / 回復薬 / サンドバッグ</td>
+            </tr>
+            <tr>
+                <td class="center">２－Ｂ</td>
+                <td class="center">ＶＡＬＬＥＹ</td>
+                <td class="center">1200</td>
+                <td>銀の毛皮 / スピーカー / ビタミン剤</td>
+            </tr>
+            <tr>
+                <td class="center">３－Ａ</td>
+                <td class="center">ＦＯＲＥＳＴ</td>
+                <td class="center">580</td>
+                <td>グレイの爪 / 高い肉 / 修復ソフト / ダンベル</td>
+            </tr>
+            <tr>
+                <td class="center">３－Ｂ</td>
+                <td class="center">ＯＣＥＡＮ</td>
+                <td class="center">1500</td>
+                <td>聖なる翼 / 高い魚 / 救急箱</td>
+            </tr>
+            <!-- 用戶可在此繼續添加 4-A 到 6-B 的密碼 -->
+        </table>
+    </div>
+
+    <!-- 黑客與競技場 -->
+    <div id="hackers" class="tab-content">
+        <h2>⚔️ 黑客事件 & 競技場 (Hackers & Colosseum)</h2>
+        
+        <h3>黑客事件觸發</h3>
+        <table>
+            <tr>
+                <th>黑客名稱</th>
+                <th>出現條件 / 特點</th>
+            </tr>
+            <tr>
+                <td>Super Hero Hacker</td>
+                <td>隨機出現，通常帶有強力完全體。</td>
+            </tr>
+            <tr>
+                <td>Money Hacker</td>
+                <td>身上持有大量 $D 時較易遭遇，勝利可獲豐厚獎金。</td>
+            </tr>
+            <tr>
+                <td>Digimonkey (數碼猴子)</td>
+                <td>特殊事件觸發，擊敗後有機率獲得稀有道具。</td>
+            </tr>
+        </table>
+
+        <h3>競技場 (Colosseum) 日程表</h3>
+        <table>
+            <tr>
+                <th class="center">星期</th>
+                <th>賽事主題</th>
+                <th>優勢屬性</th>
+                <th>Boss 備註</th>
+            </tr>
+            <tr>
+                <td class="center">星期一</td>
+                <td>龍之咆哮</td>
+                <td>火 / 龍</td>
+                <td>機械暴龍獸</td>
+            </tr>
+            <tr>
+                <td class="center">星期二</td>
+                <td>自然之魂</td>
+                <td>草 / 地</td>
+                <td>長毛象獸</td>
+            </tr>
+            <tr>
+                <td class="center">星期三</td>
+                <td>深海救星</td>
+                <td>水 / 冰</td>
+                <td>超海龍獸</td>
+            </tr>
+            <tr>
+                <td class="center">星期四</td>
+                <td>風之守衛</td>
+                <td>風 / 飛行</td>
+                <td>伽樓達獸</td>
+            </tr>
+            <tr>
+                <td class="center">星期五</td>
+                <td>鋼鐵帝國</td>
+                <td>機械</td>
+                <td>機械巨龍獸</td>
+            </tr>
+            <tr>
+                <td class="center">星期六 / 日</td>
+                <td>週末總決賽 / 自由賽</td>
+                <td>無限制</td>
+                <td>隱藏 Boss 挑戰</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Ver 1-4 進化表 -->
+    <div id="evolution" class="tab-content">
+        <h2>🦖 Ver 1-4 進化條件 (Evolution Chart)</h2>
+        
+        <h3>Ver 1 進化線</h3>
+        <table>
+            <tr>
+                <th>數碼獸 (階段)</th>
+                <th class="center">失誤要求</th>
+                <th>喜歡的食物</th>
+                <th>討厭的食物</th>
+                <th>進化路線</th>
+            </tr>
+            <tr>
+                <td>亞古獸 (成長期)</td>
+                <td class="center">N/A</td>
+                <td>肉</td>
+                <td>野菜</td>
+                <td>-> 暴龍獸 / 巨龍獸</td>
+            </tr>
+            <tr>
+                <td>暴龍獸 (成熟期)</td>
+                <td class="center">3次或以下</td>
+                <td>普通の肉 & フルーツ</td>
+                <td>安い肉 & 安い魚</td>
+                <td>-> 機械暴龍獸</td>
+            </tr>
+            <tr>
+                <td>機械暴龍獸 (完全體)</td>
+                <td class="center">符合完全體條件</td>
+                <td>高い肉 & 高い魚</td>
+                <td>安い野菜 & 安い魚</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>巨龍獸 (成熟期)</td>
+                <td class="center">4次或以上</td>
+                <td>安い肉</td>
+                <td>高い魚</td>
+                <td>-> 豆豆獸</td>
+            </tr>
+        </table>
+
+        <h3>Ver 2 進化線</h3>
+        <table>
+            <tr>
+                <th>數碼獸 (階段)</th>
+                <th class="center">失誤要求</th>
+                <th>喜歡的食物</th>
+                <th>討厭的食物</th>
+                <th>進化路線</th>
+            </tr>
+            <tr>
+                <td>加布獸 (成長期)</td>
+                <td class="center">N/A</td>
+                <td>魚</td>
+                <td>肉</td>
+                <td>-> 加魯魯獸 / 角龍獸</td>
+            </tr>
+            <tr>
+                <td>加魯魯獸 (成熟期)</td>
+                <td class="center">3次或以下</td>
+                <td>高い魚 & フルーツ</td>
+                <td>安い肉 & 安い野菜</td>
+                <td>-> 獸人加魯魯</td>
+            </tr>
+        </table>
+        <div class="note">
+            <p><strong>溫馨提示：</strong>Ver 3 (巴達獸線) 及 Ver 4 (比丘獸線) 的具體失誤容錯率請參考 Excel 完整圖鑑。原則上，維持 0-3 次失誤並積極對戰，是進化為主角團完全體的關鍵。</p>
+        </div>
+    </div>
+
+    <!-- SS 融合 & 道具 -->
+    <div id="ss-fusion" class="tab-content">
+        <h2>🧬 SS 專屬融合與進化道具</h2>
+        
+        <h3>SS 限定融合進化 (Fusion)</h3>
+        <p>利用特定屬性的數碼獸放置於相鄰的 Folder，或透過特定條件合體，可進化成 SS 版限定數碼獸：</p>
+        <table>
+            <tr>
+                <th>目標數碼獸</th>
+                <th>所需條件 / 融合素材</th>
+            </tr>
+            <tr>
+                <td><strong>聖龍獸 (HolyDramon)</strong></td>
+                <td>神聖屬性 + 龍屬性 完全體融合 (詳細隱藏條件)</td>
+            </tr>
+            <tr>
+                <td><strong>女惡魔獸 (LadyDevimon)</strong></td>
+                <td>惡魔屬性 + 暗黑屬性 (如惡魔獸/吸血魔獸相關)</td>
+            </tr>
+            <tr>
+                <td><strong>黃金劍獅獸 (SaberLeomon)</strong></td>
+                <td>獅子獸 + 特定高勝率條件 / 野獸屬性融合</td>
+            </tr>
+        </table>
+
+        <h3>進化道具列表 (Evolution Items)</h3>
+        <table>
+            <tr>
+                <th>道具名稱</th>
+                <th>對應進化目標</th>
+                <th>獲取方法</th>
+            </tr>
+            <tr>
+                <td>メタルパーツ (Metal Parts)</td>
+                <td>機械屬性 (如機械暴龍獸、機械巨龍獸)</td>
+                <td>搜索密碼 1-A / 競技場獎勵</td>
+            </tr>
+            <tr>
+                <td>グレイの爪 (Grey Claws)</td>
+                <td>暴龍獸系強化</td>
+                <td>搜索密碼 3-A</td>
+            </tr>
+            <tr>
+                <td>黒い歯車 (Black Gear)</td>
+                <td>惡魔/病毒種強制進化</td>
+                <td>搜索密碼 2-A</td>
+            </tr>
+            <tr>
+                <td>聖なる翼 (Holy Wings)</td>
+                <td>天使獸 / 神聖屬性</td>
+                <td>搜索密碼 3-B</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 被選中嘅大細路 DigiKidult. All Rights Reserved.</p>
+        <p>本網頁基於 Google Sheet 數據自動生成 | 點陣圖復古設計</p>
+    </div>
+</div>
+
+<script>
+    // Tab 切換功能腳本
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        
+        // 隱藏所有 tab 內容
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
+        
+        // 移除所有按鈕的 active 狀態
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        
+        // 顯示當前點擊的 tab，並加上 active 標籤
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
