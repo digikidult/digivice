@@ -230,6 +230,15 @@
                 
                 <form id="reportForm" onsubmit="sendReport(event)">
                     <div style="margin-bottom: 12px;">
+                        <label class="form-label">Device Type</label>
+                        <select id="r_device" class="search-bar" style="margin-bottom: 0; cursor: pointer;" required>
+                            <option value="" disabled selected>Select Device...</option>
+                            <option value="D-Terminal">D-Terminal</option>
+                            <option value="D-Gather">D-Gather</option>
+                            <option value="Both / Unknown">Both / Unknown</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 12px;">
                         <label class="form-label">Digimon No.</label>
                         <input type="text" id="r_no" class="search-bar" style="margin-bottom: 0;" placeholder="e.g. 350" required>
                     </div>
@@ -243,7 +252,7 @@
                     </div>
                     <div style="margin-bottom: 20px;">
                         <label class="form-label">Additional Notes</label>
-                        <textarea id="r_notes" class="search-bar" style="margin-bottom: 0; resize: vertical; height: 100px;" placeholder="Is this for D-Terminal or D-Gather?"></textarea>
+                        <textarea id="r_notes" class="search-bar" style="margin-bottom: 0; resize: vertical; height: 100px;" placeholder="e.g. Tested working on my device."></textarea>
                     </div>
                     <button type="submit" class="tab-btn" style="width: 100%; font-size: 1rem; padding: 15px;">>>> SEND VIA EMAIL <<<</button>
                 </form>
@@ -1084,13 +1093,14 @@
     // Email Submission Logic
     function sendReport(e) {
         e.preventDefault();
+        const device = document.getElementById('r_device').value;
         const no = document.getElementById('r_no').value;
         const name = document.getElementById('r_name').value;
         const code = document.getElementById('r_code').value;
         const notes = document.getElementById('r_notes').value;
 
         const subject = encodeURIComponent(`[Digivice Guide] Report Missing Passcode: No.${no} ${name}`);
-        const body = encodeURIComponent(`Hello DigiKidult,\n\nI would like to report a missing or incorrect passcode for the database.\n\n[Details]\nDigimon No: ${no}\nDigimon Name: ${name}\nPasscode: ${code}\n\n[Additional Notes]\n${notes}\n\nThank you!`);
+        const body = encodeURIComponent(`Hello DigiKidult,\n\nI would like to report a missing or incorrect passcode for the database.\n\n[Details]\nDevice Type: ${device}\nDigimon No: ${no}\nDigimon Name: ${name}\nPasscode: ${code}\n\n[Additional Notes]\n${notes}\n\nThank you!`);
 
         // Uses the mailto protocol to open default email client addressed to your brand email
         window.location.href = `mailto:digikidult@gmail.com?subject=${subject}&body=${body}`;
