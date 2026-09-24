@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-ARK 25th COLOR EVOLUTION 中文攻略 | DigiKidult</title>
+    <!-- 引入清晰易讀的現代字體與微像素字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 舒適護眼的 Slate & Mint 賽博配色板 */
+            --bg-base: #0f172a;        /* 柔和深藍灰底色 */
+            --bg-card: #1e293b;        /* 容器/卡片背景 */
+            --bg-card-inner: #0b1329;  /* 內層資訊框背景 */
+            --bg-table-head: #134e4a;  /* 深松石綠表頭 */
+            --bg-row-alt: #162032;     /* 表格隔行微調 */
+            --bg-row-hover: #1e3a5f;   /* 滑鼠停留高亮 */
+
+            --text-main: #e2e8f0;      /* 主內文：柔和淺灰白 */
+            --text-dim: #94a3b8;       /* 次要說明文字：淡藍灰 */
+            --accent-mint: #34d399;    /* 核心強調：薄荷綠 */
+            --accent-cyan: #38bdf8;    /* 次要標記：天青藍 */
+            --accent-gold: #fbbf24;    /* 警告/Boss高亮：柔和暖金 */
+
+            --border-main: #334155;    /* 邊框線條 */
+            --border-accent: #059669;  /* 強調框線：翡翠綠 */
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Noto Sans TC', 'DotGothic16', sans-serif;
+            margin: 0;
+            padding: 20px 14px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            border: 1px solid var(--border-main);
+            border-radius: 8px;
+            padding: 28px;
+            background-color: var(--bg-card);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 封面圖 Cover Art 容器 */
+        .cover-container {
+            width: 100%;
+            max-height: 380px;
+            overflow: hidden;
+            border-radius: 6px;
+            border: 1px solid var(--border-main);
+            margin-bottom: 24px;
+            position: relative;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cover-container::after {
+            content: " ";
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'DotGothic16', 'Noto Sans TC', sans-serif;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            margin: 0 0 8px 0;
+        }
+
+        h2 {
+            color: var(--accent-mint);
+            font-size: 1.25rem;
+            border-bottom: 2px solid var(--border-main);
+            padding-bottom: 10px;
+            margin-top: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        h3 {
+            color: var(--accent-cyan);
+            font-size: 1.05rem;
+            margin-top: 18px;
+        }
+
+        .header-box {
+            text-align: center;
+            border: 1px solid var(--border-accent);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #111e33 0%, #0a1120 100%);
+        }
+
+        .header-box p {
+            margin: 6px 0;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            background-color: #065f46;
+            color: #ecfdf5;
+            border: 1px solid #10b981;
+            padding: 6px 14px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .social-btn:hover {
+            background-color: #10b981;
+            color: #064e3b;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+        }
+
+        .other-guides {
+            background-color: var(--bg-card-inner);
+            border: 1px solid var(--border-main);
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 4px;
+            padding: 14px 18px;
+            margin: 18px 0;
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        .other-guides a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            margin-right: 14px;
+            display: inline-block;
+        }
+
+        .other-guides a:hover {
+            color: #bae6fd;
+            text-decoration: underline;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 8px;
+            margin: 24px 0;
+        }
+
+        .nav-grid a {
+            text-align: center;
+            border: 1px solid var(--border-main);
+            color: var(--text-main);
+            padding: 9px 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: #131d2e;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-grid a:hover {
+            background-color: #047857;
+            border-color: var(--accent-mint);
+            color: #fff;
+        }
+
+        .box {
+            border: 1px solid var(--border-main);
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            background-color: var(--bg-card-inner);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 16px 0 24px 0;
+            border: 1px solid var(--border-main);
+            border-radius: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid var(--border-main);
+            padding: 10px 12px;
+        }
+
+        th {
+            background-color: var(--bg-table-head);
+            color: #fef08a;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--bg-row-alt);
+        }
+
+        tr:hover {
+            background-color: var(--bg-row-hover);
+        }
+
+        .highlight {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .cyan {
+            color: var(--accent-cyan);
+            font-weight: 500;
+        }
+
+        .mint {
+            color: var(--accent-mint);
+        }
+
+        small {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        ul, ol {
+            padding-left: 22px;
+            margin: 8px 0;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            border-top: 1px solid var(--border-main);
+            padding-top: 20px;
+            font-size: 0.82rem;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- 🖼️ 封面圖片區域 (Cover Art) -->
+    <div class="cover-container">
+        <img class="cover-image" src="cover.jpg" alt="D-ARK 25th COLOR EVOLUTION Cover Art" onerror="this.style.display='none'">
+    </div>
+
+    <!-- Header -->
+    <div class="header-box">
+        <h1>D-ARK 25th COLOR EVOLUTION 中文攻略</h1>
+        <p>作者：<strong class="mint">DigiKidult 被選中嘅大細路</strong> (IG | Threads) / <strong class="mint">iLoveHTC</strong> / <strong class="mint">李溫</strong></p>
+        <p>最後更新：2026.08.07</p>
+        <div class="social-links">
+            <a class="social-btn" href="https://line.me/ti/g2/eYIajLtHCn12hIQ8ilKif0i5A6GSAQDxvmDD2Q" target="_blank">台灣 Line 社群：數碼寶貝綜合交流空間</a>
+            <a class="social-btn" href="https://www.facebook.com/DigiKidult/" target="_blank">香港 FB 社群：數碼暴龍研究關注組</a>
+            <a class="social-btn" href="https://www.instagram.com/digikidult/" target="_blank">DigiKidult Instagram</a>
+        </div>
+    </div>
+
+    <!-- 其他 25th 攻略連結與說明書 -->
+    <div class="other-guides">
+        <strong class="highlight">相關 25th 世代攻略與說明書連結：</strong><br>
+        • <a href="https://docs.google.com/spreadsheets/d/18tFtJk0kc_kEIHSfwgboF7rD2-9gliJGCjFlQ0qkCEk/edit?usp=sharing" target="_blank">デジヴァイス -25th COLOR EVOLUTION- 中文攻略</a><br>
+        • <a href="https://docs.google.com/spreadsheets/d/18VtPzWsGOd2xgh-Owcnp6MIE57ha1bQxOqdqn6YadEA/edit?usp=drivesdk" target="_blank">D-3 25th COLOR EVOLUTION- 中文攻略</a><br>
+        • <a href="https://docs.google.com/spreadsheets/d/15ZNsy_bM15Ht7fQiwgvIugUOnd62CMQ4qiHsnkj5jbE/edit?gid=184361674#gid=184361674" target="_blank">彩色超代 中文攻略</a><br>
+        <div style="margin-top: 6px;">
+            <strong class="mint">設備使用提醒：</strong><br>
+            • <strong>省電提示：</strong>螢幕熄滅後，計步功能一樣適用，這是省電功能，不用擔心。<br>
+            • <strong>充電提示：</strong>充電時，當出現「綠色電池 + 閃電」符號即表示充電完成。（從完全沒電到充滿約 1.5 小時內）。<br>
+            • <strong>免責聲明：</strong>本網站不以營利為目的。歡迎加入社群交流與獲取活動公告。
+        </div>
+    </div>
+
+    <!-- 導航列 -->
+    <div class="nav-grid">
+        <a href="#nav-system">按鍵操作</a>
+        <a href="#nav-menu">一般選單</a>
+        <a href="#nav-battle">戰鬥與傷害矩陣</a>
+        <a href="#nav-evolution">羈絆與進化路線</a>
+        <a href="#nav-helpers">友軍資料</a>
+        <a href="#nav-cards">全 40 張數碼卡</a>
+        <a href="#nav-items">道具與營地系統</a>
+        <a href="#nav-walkthrough">關卡攻略機制</a>
+    </div>
+
+    <!-- 1. 按鍵指南 -->
+    <section id="nav-system">
+        <h2>🎮 按鍵指南</h2>
+        <div class="box">
+            <ul>
+                <li><strong>待機鍵</strong>：分成「輕按」與「長壓」兩種方式。<br>
+                    - 在主畫面「輕按」：進入休眠。<br>
+                    - 在其餘畫面「輕按」：返回主畫面。<br>
+                    - 「長壓」：一律都是關機。
+                </li>
+                <li><strong>上鍵</strong>：<br>
+                    - 在夥伴步行畫面「短按」：查看步數（Area Clear 餘下所需步數 / All Steps 目前總步數）。<br>
+                    - 在步行介面「長按」：查看時間與電量。
+                </li>
+                <li><strong>A 鍵</strong>：確定 / 在步行介面按 A 鍵進入「營地」功能。</li>
+                <li><strong>B 鍵</strong>：取消 / 返回。</li>
+                <li><strong>下鍵</strong>：切換選項。</li>
+                <li><small class="highlight">P.S. 背面那顆小按鈕為重置開關，用於排除當機等異常狀況，而非實際的設備重置。</small></li>
+            </ul>
+        </div>
+
+        <h2>🚩 開始遊玩</h2>
+        <div class="box">
+            選擇你的初始夥伴（松田啟人 / 牧野留姬 / 李健良），然後開始步行（搖機）。
+        </div>
+    </section>
+
+    <!-- 2. 一般選單 -->
+    <section id="nav-menu">
+        <h2>📋 一般選單 (Main Menu)</h2>
+        <div class="box">
+            <ul>
+                <li><strong class="mint">[Card / 數碼卡]</strong>：查看可用之數碼卡。</li>
+                <li><strong class="mint">[Digimon / 數碼獸]</strong>：<br>
+                    a. <em>Partner (夥伴數碼獸)</em>：<br>
+                    &nbsp;&nbsp;i. Change: 變更使用中的夥伴數碼獸。<br>
+                    &nbsp;&nbsp;ii. Digivolution: 查看可用之進化路線。<br>
+                    &nbsp;&nbsp;iii. Bond: 查看目前與夥伴數碼獸的羈絆等級。<br>
+                    b. <em>Friend (友軍)</em>：選擇可用之友軍數碼獸協助戰鬥（已選擇之友軍會顯示 ★ 符號）。
+                </li>
+                <li><strong class="mint">[Map / 地圖]</strong>：查看及選取可用之地圖進行冒險。</li>
+                <li><strong class="mint">[Training / 訓練]</strong>：每步行 300 步可解鎖一次訓練機會，以進行戰鬥模式練習（模式隨機：連打 / 振動 / 指定組合）。訓練成功後可取得 10 點數碼裝甲搜索點數（最多可累積至 90 點）。</li>
+                <li><strong class="mint">[Search / 搜索]</strong>：使用 10 點數碼裝甲搜索點數進行一次搜索，隨機出現以下事件：<br>
+                    a. 隨機獲得一種數碼卡 | b. 隨機獲得物品 | c. 進行隨機戰鬥
+                </li>
+                <li><strong class="mint">[Recover / 治療]</strong>：受傷時使用。</li>
+                <li><strong class="mint">[Link / 通信對戰]</strong>：a. vs D-ARK（對戰彩色 D-ARK 用）| b. vs OTHERS（對戰其他彩色暴龍機用）。</li>
+                <li><strong class="mint">[Play Mode / 進化演出]</strong>：<br>
+                    a. Digivolution Viewer: 播放進化動畫。<br>
+                    b. Sound: 被選召的孩子及夥伴數碼獸的聲優演出。<br>
+                    c. Memory: 記憶回放。<br>
+                    d. Ending: 通關後可重播相關通關動畫。
+                </li>
+                <li><strong class="mint">[Setting / 設定]</strong>：設置亮度、聲音、震動、時間、搖步倍數（最大 5 倍）等。</li>
+                <li><strong class="mint">[Power-off / 電源OFF]</strong>：關機。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 3. 戰鬥相關與傷害矩陣 -->
+    <section id="nav-battle">
+        <h2>⚔️ 戰鬥系統與傷害判定</h2>
+        <div class="box">
+            <ul>
+                <li><strong>戰鬥模式 (3 種對波指派)</strong>：<br>
+                    • <em>i) 連按 Press</em>：在對波時快速連按 A 鍵。<br>
+                    • <em>ii) 搖機 Shake</em>：在對波時搖動暴龍機。<br>
+                    • <em>iii) 指定組合 QTE</em>：在對波時跟隨指示按下相應按鍵組合。
+                </li>
+                <li><strong>選擇 "Battle" 後操作</strong>：按上 / 下鍵選取以成長期或更高階進化等級出戰。<br>
+                    <small class="highlight">⚠️ 注意：若在選擇進化階段畫面右側出現「！」圖示，即代表使用此進化階段必敗！</small>
+                </li>
+                <li><strong>HP 與勝負機制</strong>：不論進化階段，對戰雙方基本血量均為 <span class="cyan">HP 5</span>。任何一方 HP 歸 0 即告負。本代無法在戰鬥中更換數碼獸，亦取消了逃走功能。</li>
+                <li><strong>友軍協力攻擊</strong>：設置友軍後，有機率於戰鬥中追加攻擊（攻擊力固定為 1）。<br>
+                    <small class="mint">*** 若取得「手機」特殊道具（一次性消耗品），下場戰鬥必定觸發夥伴數碼獸協力攻擊（攻擊力為 3）！</small>
+                </li>
+            </ul>
+        </div>
+
+        <h3>💥 進化階段攻擊力傷害矩陣 (攻方 ↓ vs 防方 →)</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>攻方 ↓ \ 防方 →</th>
+                        <th>成長期</th>
+                        <th>裝甲體 / 成熟期</th>
+                        <th>完全體</th>
+                        <th>究極體</th>
+                        <th>超究極體 / 特殊*</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>成長期</strong></td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>裝甲體 / 成熟期</strong></td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>完全體</strong></td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>究極體</strong></td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>超究極體 / 特殊*</strong></td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="box">
+            <small>*特殊階級包含：真紅蓮騎士獸、墮天地獄獸 爆裂形態 (BM)、Mother D-Reaper、寄生蟲獸等。</small>
+        </div>
+    </section>
+
+    <!-- 4. 羈絆等級與夥伴進化路線 -->
+    <section id="nav-evolution">
+        <h2>🧬 羈絆等級與夥伴進化路線</h2>
+        <div class="box">
+            <strong>羈絆等級機制：</strong><br>
+            通過戰鬥（聯機對戰不計算）提升羈絆等級（每階段最大 5 級）以解鎖不同進化：<br>
+            • <strong>解鎖成熟期</strong>：5 場戰鬥勝利（贏 1 場加 1 格 Bonding）。<br>
+            • <strong>解鎖完全體</strong>：10 場戰鬥勝利（贏 2 場加 1 格 Bonding）。<br>
+            &nbsp;&nbsp;<em>* 特例：迪路獸解鎖天女獸需 20 場戰鬥勝利（贏 4 場加 1 格 Bonding）。</em><br>
+            • <strong>解鎖究極體</strong>：15 場戰鬥勝利（贏 3 場加 1 格 Bonding）。<br>
+            &nbsp;&nbsp;<em>* 特例：解鎖戰鬥暴龍獸需先解鎖喪屍暴龍獸，即機械暴龍獸後需共 25 場勝利才解鎖。</em>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>馴獸師 Tamer</th>
+                        <th>成長期 Rookie</th>
+                        <th>成熟期 Champion<br><small>(勝場 5)</small></th>
+                        <th>完全體 Ultimate<br><small>(勝場 15)</small></th>
+                        <th>究極體 / 特殊形態 Mega<br><small>(勝場 20 / 25 / 35 / 特殊)</small></th>
+                        <th>特殊解鎖條件</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>松田啟人</strong></td>
+                        <td>基爾獸</td>
+                        <td>古拉獸</td>
+                        <td>大古拉獸</td>
+                        <td>
+                            • 破滅魔龍獸 (勝場 25)<br>
+                            • 紅蓮騎士獸 (勝場 35)<br>
+                            • 紅蓮騎士獸&amp;古拉尼<br>
+                            • 真紅蓮騎士獸 CM
+                        </td>
+                        <td>
+                            • 紅蓮騎士獸&amp;古拉尼: 完成 Area 40-5 + 累積勝場 40<br>
+                            • 真紅蓮騎士獸: 完成 Area 42-4 + 累積勝場 45
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>牧野留姬</strong></td>
+                        <td>妖狐獸</td>
+                        <td>九尾狐獸</td>
+                        <td>祭師獸</td>
+                        <td>沙古牙獸</td>
+                        <td>累積勝場達標解鎖</td>
+                    </tr>
+                    <tr>
+                        <td><strong>李健良</strong></td>
+                        <td>大耳獸</td>
+                        <td>加魯哥獸</td>
+                        <td>拉比獸</td>
+                        <td>撒多格杜獸</td>
+                        <td>累積勝場達標解鎖</td>
+                    </tr>
+                    <tr>
+                        <td><strong>秋山遼</strong><br><small class="cyan">(完成 Area 25-5 解鎖)</small></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>科學飛龍獸</td>
+                        <td>裁決獸</td>
+                        <td>解鎖後出戰累積勝場進化</td>
+                    </tr>
+                    <tr>
+                        <td><strong>小愛&amp;小真</strong><br><small class="cyan">(完成 Area 37-2 解鎖)</small></td>
+                        <td>小妖獸</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>
+                            • 墮天地獄獸<br>
+                            • 墮天地獄獸&amp;貝希摩斯<br>
+                            • 墮天地獄獸 爆裂形態 (BM)
+                        </td>
+                        <td>
+                            • 墮天&amp;貝希摩斯: 1.完成所有關卡(含Secret) 2.完成其餘角色全進化<br>
+                            • 墮天爆裂形態: 累積勝場達 45
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 5. 友軍資料 -->
+    <section id="nav-helpers">
+        <h2>🤝 友軍資料 (首次遇見並完成事件/戰鬥後加入)</h2>
+        <div class="box">
+            友軍不可由玩家直接操控，但可在選單中設為協力數碼獸（顯示 ★），於戰鬥中發動追加攻擊！
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>階段</th>
+                        <th>代表數碼獸與加入關卡 (節錄)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>幼年期 I &amp; II</strong></td>
+                        <td>
+                            水母獸 (43-1) / 巧克力獸 (18-2) / 雪球獸 (19-5)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>成長期</strong></td>
+                        <td>
+                            加支獸 (1-2) / 蘑菇獸 (1-3) / 礦石獸 (1-5) / 艾力獸 (3-2) / 基剎獸 (3-5) / 蝌蚪獸 (6-4) / 古尼獸 (13-1) / 花拉獸 (15-2) / 食夢獸 (28-1)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>成熟期</strong></td>
+                        <td>
+                            獨角馬獸 (1-4) / 鼻涕獸 (1-6) / 角龍獸 (1-7) / 黑暗巨龍獸 (1-8) / 螳螂獸 (2-2) / 鼻屎獸 (2-3) / 鑽地獸 (2-4) / 毛人獸 (2-6) / 火焰獸 (2-7) / 巨龍獸 (3-6) / 金剛獸 (3-7) / 紅鼻屎獸 (4-4) / 雪人獸 (5-3) / 貝殼獸 (5-4) / 龍蝦獸 (5-5) / 怪蛙獸 (6-2) / 蟑螂獸 (7-3)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>完全體</strong></td>
+                        <td>
+                            安社魯獸 (7-3) / 喪屍暴龍獸 (9-3) / 機械暴龍獸(藍) (10-6) / 奇蛙獸 (13-2) / 蛋蛋獸 (14-4) / 怪蛙皇 (15-5) / 超海龍獸 (16-3) / 基米拉獸 (17-5) / 玉兔獸 (18-5) / 大古加獸 (20-3) / 木乃伊獸 (22-3) / 亞基利獸 (22-4) / 長毛象獸 (25-1) / 騎士獸 (25-4)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>究極體</strong></td>
+                        <td>
+                            基路比獸(惡) (18-6) / 黑暗戰鬥暴龍獸 (23-3) / 青龍獸 (28-6) / 究極魔獸 (38-3) / 貝利亞吸血魔獸 (41-4) / 超惡魔獸 (43-2) / 滅世魔獸 (43-3)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 6. 全 40 張數碼卡牌清單 -->
+    <section id="nav-cards">
+        <h2>🃏 全 40 張數碼卡牌資料庫 (Card Database)</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>卡牌名稱</th>
+                        <th>編號</th>
+                        <th>效果類型</th>
+                        <th>效果說明</th>
+                        <th>解鎖區域</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>高速插件B (High Speed Plug-In B)</td><td>St-51</td><td>先制攻擊1點傷害</td><td>對戰開始時向對手造成 1 點傷害</td><td>初始時</td></tr>
+                    <tr><td>2</td><td>強化晶片 (Boost Chip)</td><td>Bo-208</td><td>傷害+1</td><td>僅限第一回合，搭檔造成的傷害 +1</td><td>初始時</td></tr>
+                    <tr><td>3</td><td>重金屬 (Heavy Metal)</td><td>Bo-18t</td><td>傷害+1</td><td>僅限第一回合，搭檔造成的傷害 +1</td><td>初始時</td></tr>
+                    <tr><td>4</td><td>奧爾萬迪爾之箭 (Aurvandil's Arrow)</td><td>St-382</td><td>傷害+1</td><td>僅限第一回合，搭檔造成的傷害 +1</td><td>初始時</td></tr>
+                    <tr><td>5</td><td>耐力之種 (Seed of Durability)</td><td>Bo-153</td><td>HP恢復</td><td>完全恢復來自敵方第一次成功命中所造成的傷害</td><td>初始時</td></tr>
+                    <tr><td>6</td><td>惡魔晶片 (Devil Chip)</td><td>Bo-151</td><td>傷害+1</td><td>僅限第一回合，搭檔造成的傷害 +1</td><td>初始時</td></tr>
+                    <tr><td>7</td><td>訓練握把 (Training Grips)</td><td>St-381</td><td>小遊戲簡化</td><td>僅限第一回合，小遊戲所需的按鍵輸入次數減少</td><td>初始時</td></tr>
+                    <tr><td>8</td><td>白羽翼 (White Wings)</td><td>Bo-46</td><td>受傷-1</td><td>敵方第一次成功命中所造成的傷害減少 1 點</td><td>完成 Area 4-1</td></tr>
+                    <tr><td>9</td><td>高速插件D (High Speed Plug-In D)</td><td>Re-83</td><td>先制攻擊1點傷害</td><td>對戰開始時向對手造成 1 點傷害</td><td>完成 Area 4-2</td></tr>
+                    <tr><td>10</td><td>影分身！ (Alias!)</td><td>Bo-22t</td><td>完全閃避</td><td>敵方第一次成功命中所造成的傷害降為 0</td><td>完成 Area 4-3</td></tr>
+                    <tr><td>11</td><td>雪亞古獸 (Yuki Agumon)</td><td>Bo-126</td><td>雪亞古獸攻擊</td><td>僅限第一回合，搭檔造成的傷害 +1，並改變攻擊圖像</td><td>完成 Area 4-4</td></tr>
+                    <tr><td>12</td><td>螳螂獸 (Snimon)</td><td>Bo-25</td><td>螳螂獸攻擊</td><td>僅限第一回合，搭檔造成的傷害 +1，並改變攻擊圖像</td><td>完成 Area 5-3</td></tr>
+                    <tr><td>13</td><td>火焰獸 (Meramon)</td><td>Bo-5</td><td>火焰獸攻擊</td><td>僅限第一回合，搭檔造成的傷害 +1，並改變攻擊圖像</td><td>完成 Area 6-4</td></tr>
+                    <tr><td>14</td><td>膨脹空間！！ (Inflating Space!!)</td><td>Bo-23t</td><td>受傷-2</td><td>敵方第一次成功命中所造成的傷害減少 2 點</td><td>完成 Area 7-2</td></tr>
+                    <tr><td>15</td><td>高速插件H (High Speed Plug-In H)</td><td>Bo-445</td><td>先制攻擊2點傷害</td><td>對戰開始時向對手造成 2 點傷害</td><td>完成 Area 8-1</td></tr>
+                    <tr><td>16</td><td>攻擊插件A (Offense Plug-In A)</td><td>St-376</td><td>傷害+1</td><td>僅限第一回合，搭檔造成的傷害 +1</td><td>完成 Area 8-3</td></tr>
+                    <tr><td>17</td><td>鋼鐵加魯魯獸 (Metal Garurumon)</td><td>Bo-109</td><td>鋼鐵加魯魯攻擊</td><td>僅限第一回合，搭檔造成的傷害 +1，並改變攻擊圖像</td><td>完成 Area 11-3</td></tr>
+                    <tr><td>18</td><td>超進化組件S</td><td>-</td><td>特殊效果</td><td>-</td><td>-</td></tr>
+                    <tr><td>19</td><td>藍卡 (Blue Card)</td><td>-</td><td>特殊進化</td><td>-</td><td>-</td></tr>
+                    <tr><td>20</td><td>勇氣之盾 (Brave Shield)</td><td>St-384</td><td>我方扣血-2</td><td>敵方第一次成功命中所造成的傷害減少 2 點</td><td>完成 Area 14-1</td></tr>
+                    <tr><td>21</td><td>鋼鑽 (Steel Drill)</td><td>Bo-47</td><td>機制簡化</td><td>僅限第一回合，所需的按鍵輸入次數減少</td><td>完成 Area 14-3</td></tr>
+                    <tr><td>22</td><td>能量充電器 (Power Charger)</td><td>Bo-448</td><td>傷害+2</td><td>僅限第一回合，搭檔造成的傷害 +2</td><td>完成 Area 14-4</td></tr>
+                    <tr><td>23</td><td>托爾之錘 (Thor Hammer)</td><td>Bo-541</td><td>先制攻擊2點傷害</td><td>對戰開始時向對手造成 2 點傷害</td><td>完成 Area 15-2</td></tr>
+                    <tr><td>24</td><td>力量插件W (Strength Plug-In W)</td><td>Bo-443</td><td>傷害+2</td><td>僅限第一回合，搭檔造成的傷害 +2</td><td>完成 Area 15-3</td></tr>
+                    <tr><td>25</td><td>高速插件T (High Speed Plug-In T)</td><td>Bo-498</td><td>先制攻擊3點傷害</td><td>對戰開始時向對手造成 3 點傷害</td><td>完成 Area 16-2</td></tr>
+                    <tr><td>26</td><td>防禦插件G (Defense Plug-In G)</td><td>Bo-497</td><td>受傷-3</td><td>敵方第一次成功命中所造成的傷害減少 3 點</td><td>完成 Area 16-4 / 15-3</td></tr>
+                    <tr><td>27</td><td>無效化插件P (Invalidation Plug-In P)</td><td>Bo-539</td><td>完全閃避</td><td>敵方第一次成功命中所造成的傷害降為 0</td><td>完成 Area 18-4</td></tr>
+                    <tr><td>28</td><td>力量插件O (Strength Plug-In O)</td><td>Bo-540</td><td>傷害+3</td><td>僅限第一回合，搭檔造成的傷害 +3</td><td>完成 Area 20-6</td></tr>
+                    <tr><td>29</td><td>填裝插件Q (Reload Plug-In Q)</td><td>St-814</td><td>HP恢復</td><td>完全恢復來自敵方第一次成功命中所造成的傷害</td><td>TBC</td></tr>
+                    <tr><td>30</td><td>自制藍卡 Blue Card (Custom)</td><td>-</td><td>特殊進化</td><td>-</td><td>-</td></tr>
+                    <tr><td>31</td><td>命運的光輝！！ (The Sparkle of Fate!!)</td><td>Bo-491</td><td>傷害+2</td><td>僅限第一回合，搭檔造成的傷害 +2</td><td>完成 Area 20-6</td></tr>
+                    <tr><td>32</td><td>國王裝置 (King Device)</td><td>Bo-642</td><td>傷害+3</td><td>僅限第一回合，搭檔造成的傷害 +3</td><td>完成 Area 26-3</td></tr>
+                    <tr><td>33</td><td>女惡魔獸 (Lady Devimon)</td><td>St-209</td><td>女惡魔獸攻擊</td><td>僅限第一回合，搭檔造成的傷害 +1，並改變攻擊圖像</td><td>完成 Area 27-9</td></tr>
+                    <tr><td>34</td><td>雪人獸 (Yukidarumon)</td><td>Bo-633</td><td>雪人獸攻擊</td><td>僅限第一回合，搭檔造成的傷害 +1，並改變攻擊圖像</td><td>TBC</td></tr>
+                    <tr><td>35</td><td>騎士裝置 (Knight Device)</td><td>Bo-697</td><td>完全閃避</td><td>敵方第一次成功命中所造成的傷害降為 0</td><td>完成 Area 36-3</td></tr>
+                    <tr><td>36</td><td>王后裝置 (Queen Device)</td><td>Bo-693</td><td>受傷-3</td><td>敵方第一次成功命中所造成的傷害減少 3 點</td><td>完成 Area 40-4</td></tr>
+                    <tr><td>37</td><td>紅卡 (Red Card)</td><td>-</td><td>特殊進化</td><td>-</td><td>-</td></tr>
+                    <tr><td>38</td><td>戰鬥飛斧 (Battle Tomahawk)</td><td>Bo-542</td><td>先制攻擊2點傷害</td><td>對戰開始時，搭檔立即造成 2 點傷害</td><td>完成 Area 43-1</td></tr>
+                    <tr><td>39</td><td>航空之翼 (Aero Wing)</td><td>Bo-543</td><td>受傷-2</td><td>敵方第一次成功命中所造成的傷害減少 2 點</td><td>完成 Area 43-3</td></tr>
+                    <tr><td>40</td><td>貝殼獸 (Shellmon)</td><td>St-188</td><td>貝殼獸攻擊</td><td>僅限第一回合，搭檔造成的傷害 +1，並改變攻擊圖像</td><td>完成 Area 49-1</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 7. 道具與營地系統 -->
+    <section id="nav-items">
+        <h2>🎒 道具與營地系統 (Items &amp; Camp)</h2>
+        <div class="box">
+            <strong>道具入手方法：</strong><br>
+            • <strong>初期贈送</strong>：部分營地道具會按所屬版本於開始遊戲時贈送。<br>
+            • <strong>事件掉落</strong>：完成事件後有機會獲得寶箱，當中的道具是隨機的。
+        </div>
+
+        <h3>⚡ 特殊道具 (取得後自動消耗發動效果)</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>道具名稱</th>
+                        <th>一次性效果說明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong class="highlight">手機</strong></td>
+                        <td>往下一關卡步行時會有夥伴同行，並會在戰鬥中必定觸發夥伴協力攻擊（攻擊力 3）。<br><small>* 效果生效期間，前往夥伴劇情事件關卡並抵達終點時，會強制觸發戰鬥。</small></td>
+                    </tr>
+                    <tr>
+                        <td><strong class="highlight">馴獸師旗幟</strong></td>
+                        <td>除目前身處的地點外，所有可前往地點之所需步數直接歸零 (0 步)！</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="box">
+            <strong>營地互動項目：</strong><br>
+            • <strong>道具 / 食物</strong>：版本限定，松田啟人 / 牧野留姬 / 李健良 各有專屬食物道具。<br>
+            • <strong>野餐 Picnic</strong>：各版本通用。<br>
+            • <strong>玩遊戲 Play Games</strong>：各版本通用共 2 款。<br>
+            • <strong>睡覺 Sleep</strong>：各版本通用共 10 款。
+        </div>
+    </section>
+
+    <!-- 8. 關卡攻略機制 -->
+    <section id="nav-walkthrough">
+        <h2>🗺️ 冒險關卡推進機制 (Walkthrough Rules)</h2>
+        <div class="box">
+            <ul>
+                <li><strong>關卡類型</strong>：<br>
+                    • <em>Event</em>：完成步數要求後觸發劇情事件，無須戰鬥。<br>
+                    • <em>Boss</em>：完成步數要求後迎戰指定數碼獸。<br>
+                    • <em>Secret</em>：隱藏關卡，解鎖後可對戰指定稀有數碼獸。
+                </li>
+                <li><strong>解鎖新地點</strong>：完成目前地點的所有主線事件（Secret 關卡非必要），即可解鎖下一個遊玩地點。</li>
+                <li><strong>解鎖 Secret 關卡</strong>：每個地點均有一個隱藏事件，為隨機解鎖機制（完成同一地點內的夥伴劇情或對戰事件時有機率觸發解鎖）。</li>
+                <li><strong>解鎖新地圖</strong>：完成目前大區域內所有地點的事件後（Secret 關卡不計算），即解鎖下一張大世界地圖。</li>
+                <li><strong>友軍加入</strong>：完成友軍劇情或戰鬥後，首次遇見的數碼獸即加入友軍支援名冊。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© DigiKidult 被選中嘅大細路 &amp; iLoveHTC &amp; 李溫 | D-ARK 25th COLOR EVOLUTION 中文攻略</p>
+        <p>All data strictly sourced from DigiKidult D-ARK 25th database.</p>
+    </div>
+</div>
+
+</body>
+</html>
