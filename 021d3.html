@@ -49,7 +49,7 @@
             text-align: center;
             border: 2px solid var(--border-line);
             padding: 16px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             background: #000;
         }
         .social-links {
@@ -137,7 +137,7 @@
         .cyan {
             color: var(--cyan-glow);
         }
-        ul {
+        ul, ol {
             padding-left: 20px;
             margin: 8px 0;
         }
@@ -157,332 +157,419 @@
 <body>
 
 <div class="container">
-    <!-- 頂部標題區 -->
+    <!-- Header -->
     <div class="header-box">
         <h1>美版D-3 021 全攻略<br><span style="font-size: 1.2rem; color: #fff;">Guide for US D-3 ver 1</span></h1>
         <p>By <strong>DigiKidult 被選中嘅大細路</strong> | 最後更新 Last Update: 7 June 2024</p>
         <div class="social-links">
-            <a class="social-btn" href="https://chat.whatsapp.com/IIkyFlmj4IUJeGdZ0L3AG2" target="_blank">數碼暴龍研究所 Whatsapp 社群</a>
-            <a class="social-btn" href="https://www.facebook.com/DigiKidult/" target="_blank">DigiKidult Facebook</a>
-            <a class="social-btn" href="https://www.instagram.com/digikidult/" target="_blank">DigiKidult Instagram</a>
+            <a class="social-btn" href="https://chat.whatsapp.com/IIkyFlmj4IUJeGdZ0L3AG2" target="_blank">數碼暴龍研究所 Whatsapp 社群 (Chinese Channel)</a>
+            <a class="social-btn" href="https://www.facebook.com/DigiKidult/" target="_blank">DigiKidult Facebook page</a>
+            <a class="social-btn" href="https://www.instagram.com/digikidult//" target="_blank">DigiKidult Instragram</a>
         </div>
     </div>
 
-    <!-- 其他美版暴龍機攻略連結 -->
+    <!-- 其他美版攻略 -->
     <div class="other-guides">
         <strong>其他美版暴龍機攻略 Guide for other Digivice:</strong><br>
-        • <a href="https://bit.ly/USdigiviceguide" target="_blank">美版電波資料整合 (011/012/0125)</a>
-        • <a href="https://bit.ly/USD-3ver2" target="_blank">美版D-3 022全攻略 (Ver 2)</a>
-        • <a href="https://bit.ly/USD-3ver3" target="_blank">美版D-3 023全攻略 (Ver 3)</a>
-        • <a href="https://bit.ly/D-powerVer1" target="_blank">D-Power 031全攻略 (Ver 1)</a><br>
-        • <strong>版本查詢：</strong>美版D-3如何檢查所屬版本？ <a href="https://bit.ly/USdigiviceDB" target="_blank">bit.ly/USdigiviceDB</a>
+        • <a href="https://bit.ly/USdigiviceguide" target="_blank">美版電波資料整合 (011/012/0125) Guide for US Digivice Ver 1 / 2 / 2.5</a><br>
+        • <a href="https://bit.ly/USD-3ver2" target="_blank">美版D-3 022全攻略 | Guide for US D-3 ver 2</a><br>
+        • <a href="https://bit.ly/USD-3ver3" target="_blank">美版D-3 023全攻略 | Guide for US D-3 ver 3</a><br>
+        • <a href="https://bit.ly/D-powerVer1" target="_blank">D-Power 031全攻略 | Guide for US D-Power ver 1</a><br>
+        • <strong>美版D-3如何檢查所屬版本? First things first, how to check the version of your US D-3?</strong><br>
+        看這個就對了 All your need is in here! 👉 <a href="https://bit.ly/USdigiviceDB" target="_blank">bit.ly/USdigiviceDB</a>
     </div>
 
-    <!-- 導航列 -->
+    <!-- 頁面快速導覽 -->
     <div class="nav-grid">
-        <a href="#control">按鍵與選單</a>
-        <a href="#pow">攻擊組合 POW</a>
-        <a href="#stats">夥伴能力數值</a>
-        <a href="#armor-pow">POW 對裝甲影響</a>
-        <a href="#digiegg">數碼裝甲一覽</a>
-        <a href="#maps">3 大關卡地圖</a>
-        <a href="#postgame">通關後白虎獸</a>
+        <a href="#nav-system">按鍵與選單</a>
+        <a href="#nav-steps">步數及DP / 事件</a>
+        <a href="#nav-battle">戰鬥與攻擊組合</a>
+        <a href="#nav-stats">夥伴數值 (Stats)</a>
+        <a href="#nav-armor-pow">POW對裝甲體影響</a>
+        <a href="#nav-digiegg">數碼裝甲 (DigiEgg)</a>
+        <a href="#nav-walkthrough">關卡資料 (Walkthrough)</a>
+        <a href="#nav-postgame">通關後 (Post-game)</a>
     </div>
 
     <!-- 1. 按鍵與選單 -->
-    <section id="control">
-        <h2>🕹️ 按鍵指南與選單系統 (Navigations & Menus)</h2>
+    <section id="nav-system">
+        <h2>按鍵指南 | Navigations</h2>
         <div class="box">
-            <strong>按鍵指南 | Navigations:</strong><br>
-            • <strong>►</strong>：選擇 (A)<br>
-            • <strong>右上鍵</strong>：確定 (B)<br>
-            • <strong>右下鍵</strong>：取消 (C)<br>
-            • <strong>設置靜音 Mute</strong>：同時按 A + B (Press A and B simultaneously.)
+            • <strong>►</strong> ：選擇 (A) | <strong>右上鍵</strong>：確定 (B) | <strong>右下鍵</strong>：取消 (C)<br>
+            • <strong>►</strong> : Select (A) | <strong>Upper Right</strong> : Execute (B) | <strong>Lower Right</strong>: Cancel (C)<br>
+            • <strong>設置靜音</strong> : 同時按A+B | <strong>Mute</strong>: Press A and B simultaneously.
         </div>
 
+        <h2>開始遊玩 | Get Started</h2>
         <div class="box">
-            <strong>開始遊玩 | Get Started:</strong><br>
-            選擇你的初始夥伴（V仔獸 / 麻鷹獸 / 穿山獸 / 巴達獸 / 迪露獸），然後開始步行（搖機）。<br>
+            選擇你的初始顆伴 (V仔獸 / 麻鷹獸 / 迪露獸 / 穿山獸 / 巴達獸)，然後開始步行 (搖機)<br>
             <small>Choose your initial partner (Veemon / Hawkmon / Armadillomon / Patamon / Tailmon), then start walking (shaking).</small>
         </div>
 
+        <h2>一般選單 | NON-BATTLE MENU</h2>
         <div class="box">
-            <strong>一般選單 | NON-BATTLE MENU:</strong>
             <ul>
-                <li><span class="highlight">States（狀態）</span>：查看數碼暴龍及其進化之 Life 及 Attack 數值，最後查看之數碼暴龍會作為步行夥伴。</li>
-                <li><span class="highlight">Map（地圖）</span>：共 3 關，必須順序闖關，不能跳關（通關前無法任意切換）。</li>
-                <li><span class="highlight">DigiEgg（數碼裝甲）</span>：查看目前擁有的數碼裝甲。</li>
-                <li><span class="highlight">Slot game（老虎機）</span>：轉動輪盤以抽選兩隻數碼暴龍，依結果減少或增加關卡距離。</li>
-                <li><span class="highlight">Medical（藥）</span>：受傷時使用。</li>
-                <li><span class="highlight">V.S.（對戰）</span>：與其他暴龍機連接對戰。</li>
-            </ul>
-        </div>
-
-        <div class="box">
-            <strong>查看步數及 DP | Check Steps & D-power (在夥伴步行畫面按 B 鍵查看):</strong>
-            <ul>
-                <li><strong>Distance (距離)</strong>：本關餘下所需步數。</li>
-                <li><strong>Steps (步數)</strong>：目前已步行的總數。</li>
-                <li><strong>D-power (DP)</strong>：進化所需的能量。成熟期消耗 8 DP；完全體消耗 12 DP；究極體需 16 DP。最大值 99，每 100 步增加 1 DP。</li>
-                <li><strong>勝率 Winning ratios</strong>：對外連線對戰之勝率百分比。</li>
-            </ul>
-        </div>
-
-        <div class="box">
-            <strong>隨機事件 | Events while walking:</strong>
-            <ul>
-                <li><strong>1. 普通戰鬥 Normal Battle</strong>：步行時每約 400 - 600 步便會遭遇敵人。</li>
-                <li><strong>2. 數碼裝甲 DigiEgg</strong>：反覆按 B 鍵直到達到 4 格。成功的話將隨機獲得數碼裝甲或失散的夥伴。</li>
-            </ul>
-        </div>
-
-        <div class="box">
-            <strong>戰鬥機制與戰鬥選單 | BATTLE MENU:</strong>
-            <ul>
-                <li><strong>FIGHT (戰鬥)</strong>：在出現 "Count" 時搖機，以搖出之 POW 決定攻擊組合。</li>
-                <li><strong>DigiEgg (數碼裝甲)</strong>：裝甲進化用，無須使用 DP（但戰鬥結束時有一定機率出現裝甲損壞）。</li>
-                <li><strong>DIGIVOLVE (進化)</strong>：常規進化用（在擊敗所在地區的中 Boss 前此項會被隱藏）。成熟期 8 DP、完全體 12 DP、究極體 16 DP。</li>
-                <li><strong>PARTY (換人)</strong>：戰鬥中變更出戰夥伴。</li>
-                <li><strong>ESC (逃走)</strong>：逃離戰鬥。</li>
-                <li><strong>勝負機制</strong>：每回合 4 輪攻擊，攻擊力較高的一方命中對方；相同則相互抵消。任何一方陣亡即告負。戰勝有機會獲得額外 DP；戰敗時距離將額外增加 500 步懲罰。</li>
+                <li><strong>States（狀態）</strong>：查看數碼暴龍及其進化之Life及Attack數值，最後查看之數碼暴龍會作為步行顆伴。<br><small>Check the Life and Attack stats of your Digimon and their evolution. And select your active partner for the last Digimon you check.</small></li>
+                <li><strong>Map（地圖）</strong>：共3關，必須順序闖關，不能跳關。<br><small>Total 3 locations in the game in a fixed order, and you cannot switch between them until you have completed the game.</small></li>
+                <li><strong>DigiEgg（數碼裝甲）</strong>：查看目前擁有的數碼裝甲。<br><small>Check the DigiEgg you currently have.</small></li>
+                <li><strong>Slot game（老虎機）</strong>：轉動輪盤以抽選兩隻數碼暴龍並此結果，以減少或增加關卡距離。<br><small>Spin the wheels to get two Digimon, and gain or lose distance depending on what was drawn.</small></li>
+                <li><strong>Medical（藥）</strong>：受傷時使用。<br><small>Use this option when you got an injured Digimon.</small></li>
+                <li><strong>V.S.（對戰）</strong>：與其他暴龍機對戰。<br><small>Connect and battle with another Digivice/Vpet;</small></li>
             </ul>
         </div>
     </section>
 
-    <!-- 2. POW 攻擊組合 -->
-    <section id="pow">
-        <h2>⚔️ 攻擊組合 (Combination of Attacks)</h2>
-        <p>戰鬥中搖出之 POW 點數對應每回合 4 輪空炮 (N) 或有效攻擊 (Y)：</p>
+    <!-- 2. 步數及DP / 隨機事件 -->
+    <section id="nav-steps">
+        <h2>查看步數及DP | Check Steps & D-power</h2>
+        <div class="box">
+            在伙伴步行畫面，按B鍵可查看 (Press B button on the walking screen to check):
+            <ul>
+                <li><strong>Distance (距離)</strong>: 本關餘下所需步數 (Distance remaining on the current map)</li>
+                <li><strong>Steps (步數)</strong>: 目前已步行的總數 (The total number of steps taken)</li>
+                <li><strong>D-power</strong>: 進化所需的能量 (成熟期消耗8DP; 完全體消耗12DP ; 究極體需16DP)<br><small>Energy for Evolutions: 8 DP for Champion, 12 DP for Ultimate, and 16 DP for Mega</small><br>- 最大99 ; 每100步增加1DP (Max. value:99; Add 1DP every 100 steps)</li>
+                <li><strong>勝率 Winning ratios</strong>: 對戰勝利百分比 (Win percentage ratios against other’s Digivice when we battling)</li>
+            </ul>
+        </div>
+
+        <h2>隨機事件 | Events while walking</h2>
+        <div class="box">
+            <ul>
+                <li><strong>1. 普通戰鬥 Normal Battle</strong><br>- 步行時，每約400-600步便會出現敵人 (When walking, you can be attacked by enemy Digimon for every 400-600 steps)</li>
+                <li><strong>2. 數碼裝甲 DigiEgg</strong><br>- 反覆按B鍵直到達到4格。成功的話，將隨機獲得數碼裝甲 或 失散的顆伴 (Press the B button repeatedly until it reaches 4 bars. If you succeed, you will get a DigiEgg randomly OR a lost partner.)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 3. 戰鬥與攻擊組合 -->
+    <section id="nav-battle">
+        <h2>戰鬥相關 | About Battle</h2>
+        <div class="box">
+            <ul>
+                <li>每回合有四輪攻擊，以搖機之結果 (POW) 決定攻擊組合 (空炮/有效攻擊)，攻擊力較高的一方能成功攻擊對方。如雙方攻擊力相同，則攻擊該輪會相互抵消。<br><small>Each round consists of four turns of attacks, and the combination of null/vaild attacks is determined by the result of your shakes (POW). The side with the higher attack power, will successfully attacks the opponent. If both sides have equal attack power, the attacks of this turn will cancel each other out.</small></li>
+                <li><strong>勝負機制</strong>：任何一方之數碼暴龍陣亡，即告負 (Winning condition: Digimon on either side is defeated, it results in a loss.)</li>
+                <li><strong>戰勝獎勵</strong>: 有機會得到額外DP (Victory Reward: Chance to receive extra DP)</li>
+                <li><strong>戰敗時</strong>：距離將額外增加500步。(Defeat in Battle: Results in a penalty of 500 points added to your distance.)</li>
+            </ul>
+        </div>
+
+        <h2>戰鬥選單 | BATTLE MENU</h2>
+        <div class="box">
+            <ul>
+                <li><strong>FIGHT (戰鬥)</strong>: 在出現 "Count" 時搖機，以搖出之POW決定攻擊組合 (When "Count" appears, shake the device and the combination of attacks will be determined by the resulting POW value.)</li>
+                <li><strong>DigiEgg (數碼裝甲)</strong>: 裝甲進化用，無須使用DP (但戰鬥結束時，有一定機率出現裝甲損壞) (For Armor Evolutions, no DP required. But a chance of armor damage at the end of battles.)</li>
+                <li><strong>DIGIVOLVE (進化)</strong>: [在擊敗所在地區的中Boss前，此項會被隱藏 This will be hidden until the miniboss of the current area is defeated.] 常規進化用 - 成熟期消耗8DP; 完全體消耗12DP ; 究極體需16DP (For Normal Evolutions - 8 DP for Champion, 12 DP for Ultimate, and 16 DP for Mega)</li>
+                <li><strong>PARTY (換人)</strong>: 戰鬥中變更顆伴 (Change your partner digimon for the fight)</li>
+                <li><strong>ESC (逃走)</strong>: 逃離戰鬥 (Escape from the current battle)</li>
+            </ul>
+        </div>
+
+        <h2>攻擊組合 | Combination of attacks</h2>
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th>POW</th>
+                        <th rowspan="2">POW</th>
+                        <th colspan="4">空炮/有效攻擊 Null/Vaild attacks</th>
+                    </tr>
+                    <tr>
                         <th>1st</th>
                         <th>2nd</th>
                         <th>3rd</th>
                         <th>4th</th>
-                        <th>有效命中次數</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>0</td><td>N</td><td>N</td><td>N</td><td><span class="highlight">Y</span></td><td>1</td></tr>
-                    <tr><td>10</td><td>N</td><td><span class="highlight">Y</span></td><td>N</td><td>N</td><td>1</td></tr>
-                    <tr><td>20</td><td>N</td><td>N</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td>2</td></tr>
-                    <tr><td>30</td><td><span class="highlight">Y</span></td><td>N</td><td>N</td><td><span class="highlight">Y</span></td><td>2</td></tr>
-                    <tr><td>40</td><td>N</td><td><span class="highlight">Y</span></td><td>N</td><td><span class="highlight">Y</span></td><td>2</td></tr>
-                    <tr><td>50</td><td>N</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td>N</td><td>2</td></tr>
-                    <tr><td>60</td><td><span class="highlight">Y</span></td><td>N</td><td><span class="highlight">Y</span></td><td>N</td><td>2</td></tr>
-                    <tr><td>70</td><td><span class="highlight">Y</span></td><td>N</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td>3</td></tr>
-                    <tr><td>80</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td>N</td><td><span class="highlight">Y</span></td><td>3</td></tr>
-                    <tr><td>90</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td><span class="highlight">4 (全有效)</span></td></tr>
+                    <tr><td>0</td><td>N</td><td>N</td><td>N</td><td>Y</td></tr>
+                    <tr><td>10</td><td>N</td><td>Y</td><td>N</td><td>N</td></tr>
+                    <tr><td>20</td><td>N</td><td>N</td><td>Y</td><td>Y</td></tr>
+                    <tr><td>30</td><td>Y</td><td>N</td><td>N</td><td>Y</td></tr>
+                    <tr><td>40</td><td>N</td><td>Y</td><td>N</td><td>Y</td></tr>
+                    <tr><td>50</td><td>N</td><td>Y</td><td>Y</td><td>N</td></tr>
+                    <tr><td>60</td><td>Y</td><td>N</td><td>Y</td><td>N</td></tr>
+                    <tr><td>70</td><td>Y</td><td>N</td><td>Y</td><td>Y</td></tr>
+                    <tr><td>80</td><td>Y</td><td>Y</td><td>N</td><td>Y</td></tr>
+                    <tr><td>90</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- 3. 夥伴數值 -->
-    <section id="stats">
-        <h2>📊 夥伴數值 (Partner Stats)</h2>
+    <!-- 4. 夥伴數值 -->
+    <section id="nav-stats">
+        <h2>夥伴數值 | Partner Stats</h2>
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th>夥伴</th>
-                        <th>成長期 (HP / AP)</th>
-                        <th>裝甲體 1 (HP / AP)</th>
-                        <th>裝甲體 2 / 特殊 (HP / AP)</th>
-                        <th>成熟期 (HP / AP)</th>
-                        <th>完全體 (HP / AP)</th>
-                        <th>究極體 (HP / AP)</th>
+                        <th>階段</th>
+                        <th>數值</th>
+                        <th>V仔獸 Veemon</th>
+                        <th>蟲蟲獸 Wormmon<br><small class="cyan">(在第二關擊敗他後自動加入 Will join right after you beat him at Map 2)</small></th>
+                        <th>麻鷹獸 Hawkmon</th>
+                        <th>迪露獸 Tailmon<br><small>(神聖環丟失 Holy Ring lost)</small></th>
+                        <th>穿山獸 Armadimon</th>
+                        <th>巴達獸 Patamon</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- 成長期 -->
                     <tr>
-                        <td><strong>V仔獸 Veemon</strong></td>
-                        <td>Life: 3<br>Attack: 1</td>
-                        <td>烈焰獸 Flamedramon<br>Life: 5 / Attack: 2-4*</td>
-                        <td>雷龍獸 Lighdramon<br>Life: 7 / Attack: 2-4*<br><span class="highlight">金甲龍獸 Magnamon<br>Life: 14 / Attack: 5</span></td>
-                        <td>V仔獸EX XV-mon<br>Life: 8 / Attack: 3</td>
-                        <td>機甲龍獸 Paildramon<br>Life: 11 / Attack: 4</td>
-                        <td>帝皇龍甲獸 Imperialdramon<br>Life: 14 / Attack: 5</td>
+                        <th rowspan="2">成長期<br>Rookie</th>
+                        <th>Life (HP)</th>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
                     </tr>
                     <tr>
-                        <td><strong>蟲蟲獸 Wormmon</strong><br><small class="cyan">(Map 2 擊敗後加入)</small></td>
-                        <td>Life: 3<br>Attack: 1</td>
+                        <th>Attack (AP)</th>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <!-- 裝甲體 -->
+                    <tr>
+                        <th rowspan="4">裝甲體<br>Armor</th>
+                        <th>Life (HP)</th>
+                        <td>
+                            烈焰獸 Flamedramon: 5<br>
+                            雷龍獸 Lighdramon: 7
+                        </td>
                         <td>-</td>
+                        <td>
+                            鐵鷹獸 Holsmon: 5<br>
+                            忍者獸 Shurimon: 7
+                        </td>
+                        <td>尼菲迪獸 Nefertimon: 7</td>
+                        <td>
+                            鋼鑽獸 digmon: 6<br>
+                            潛鯊獸 Sabmarimon: 8
+                        </td>
+                        <td>天馬獸 Pegasusmon: 7</td>
+                    </tr>
+                    <tr>
+                        <th>Attack (AP)</th>
+                        <td>
+                            烈焰獸: 2-4*<br>
+                            雷龍獸: 2-4*
+                        </td>
                         <td>-</td>
-                        <td>飛蟲獸 Stingmon<br>Life: 8 / Attack: 3</td>
-                        <td>恐蜂獸 Dinobeemon<br>Life: 11 / Attack: 4</td>
-                        <td>究極古加獸 Grankuwagamon<br>Life: 14 / Attack: 5</td>
+                        <td>
+                            鐵鷹獸: 2-4*<br>
+                            忍者獸: 2-4*
+                        </td>
+                        <td>尼菲迪獸: 2-4*</td>
+                        <td>
+                            鋼鑽獸: 2-4*<br>
+                            潛鯊獸: 2-4*
+                        </td>
+                        <td>天馬獸: 2-4*</td>
                     </tr>
                     <tr>
-                        <td><strong>麻鷹獸 Hawkmon</strong></td>
-                        <td>Life: 3<br>Attack: 1</td>
-                        <td>鐵鷹獸 Holsmon<br>Life: 5 / Attack: 2-4*</td>
-                        <td>忍者獸 Shurimon<br>Life: 7 / Attack: 2-4*</td>
-                        <td>亞古拉獸 Aquilamon<br>Life: 7 / Attack: 3</td>
-                        <td>人面戰鷹獸 Silphymon<br>Life: 11 / Attack: 4</td>
-                        <td>女戰神獸 Valkyrimon<br>Life: 14 / Attack: 5</td>
+                        <td colspan="7"><small>*每回合隨機 Random in each round</small></td>
                     </tr>
                     <tr>
-                        <td><strong>迪露獸 Tailmon</strong><br><small>(神聖環丟失)</small></td>
-                        <td>Life: 3<br>Attack: 1</td>
-                        <td>尼菲迪獸 Nefertimon<br>Life: 7 / Attack: 2-4*</td>
-                        <td>-</td>
-                        <td>迪露獸 Tailmon<br>Life: 7 / Attack: 3</td>
-                        <td>天女獸 Angelwomon<br>Life: 11 / Attack: 4</td>
-                        <td>聖龍獸 Holydramon<br>Life: 14 / Attack: 5</td>
+                        <td colspan="7">
+                            <span class="highlight">擊敗白虎獸後，解鎖「奇蹟」裝甲後可進化 (After defeating Baihumon, you will unlock the "Miracle" armor for this evolution):</span><br>
+                            <strong>金甲龍獸 Magnamon</strong> : Life(HP) 14 | Attack(AP) 5
+                        </td>
+                    </tr>
+                    <!-- 成熟期 -->
+                    <tr>
+                        <th rowspan="2">成熟期<br>Champion</th>
+                        <th>Life (HP)</th>
+                        <td>V仔獸EX XV-mon: 8</td>
+                        <td>飛蟲獸 Stingmon: 8</td>
+                        <td>亞古拉獸 Aquilamon: 7</td>
+                        <td>迪露獸 Tailmon: 7</td>
+                        <td>戰甲獸 Ankylomon: 9</td>
+                        <td>天使獸 Angemon: 7</td>
                     </tr>
                     <tr>
-                        <td><strong>穿山獸 Armadimon</strong></td>
-                        <td>Life: 3<br>Attack: 1</td>
-                        <td>鋼鑽獸 Digmon<br>Life: 6 / Attack: 2-4*</td>
-                        <td>潛鯊獸 Submarimon<br>Life: 8 / Attack: 2-4*</td>
-                        <td>戰甲獸 Ankylomon<br>Life: 9 / Attack: 3</td>
-                        <td>古神獸 Shakkoumon<br>Life: 11 / Attack: 4</td>
-                        <td>維京毛人獸 Vikemon<br>Life: 14 / Attack: 5</td>
+                        <th>Attack (AP)</th>
+                        <td>V仔獸EX: 3</td>
+                        <td>飛蟲獸: 3</td>
+                        <td>亞古拉獸: 3</td>
+                        <td>迪露獸: 3</td>
+                        <td>戰甲獸: 3</td>
+                        <td>天使獸: 3</td>
+                    </tr>
+                    <!-- 完全體 -->
+                    <tr>
+                        <th rowspan="3">完全體<br>Ultimate</th>
+                        <td colspan="7"><small class="highlight">初遇玄武獸後：解鎖常規進化至完全期 (When 1st meet Xuanwumon, will unlock the normal evolution to the Ultimate.)</small></td>
                     </tr>
                     <tr>
-                        <td><strong>巴達獸 Patamon</strong></td>
-                        <td>Life: 3<br>Attack: 1</td>
-                        <td>天馬獸 Pegasusmon<br>Life: 7 / Attack: 2-4*</td>
-                        <td>-</td>
-                        <td>天使獸 Angemon<br>Life: 7 / Attack: 3</td>
-                        <td>神聖天使獸 Holyangemon<br>Life: 11 / Attack: 4</td>
-                        <td>究極天使獸 Seraphimon<br>Life: 14 / Attack: 5</td>
+                        <th>Life (HP)</th>
+                        <td>機甲龍獸 Paildramon: 11</td>
+                        <td>恐蜂獸 Dinobeemon: 11</td>
+                        <td>人面戰鷹獸 Silphymon: 11</td>
+                        <td>天女獸 Angelwomon: 11</td>
+                        <td>古神獸 Shakkoumon: 11</td>
+                        <td>神聖天使獸 Holyangemon: 11</td>
+                    </tr>
+                    <tr>
+                        <th>Attack (AP)</th>
+                        <td>機甲龍獸: 4</td>
+                        <td>恐蜂獸: 4</td>
+                        <td>人面戰鷹獸: 4</td>
+                        <td>天女獸: 4</td>
+                        <td>古神獸: 4</td>
+                        <td>神聖天使獸: 4</td>
+                    </tr>
+                    <!-- 究極體 -->
+                    <tr>
+                        <th rowspan="3">究極體<br>Mega</th>
+                        <td colspan="7"><small class="highlight">初遇白虎獸：解鎖常規進化至究極體 (When 1st meet Baihumon, will unlock the normal evolution to the Mega during the battle.)</small></td>
+                    </tr>
+                    <tr>
+                        <th>Life (HP)</th>
+                        <td>帝皇龍甲獸 Imperialdramon: 14</td>
+                        <td>究極古加獸 Grankuwagamon: 14</td>
+                        <td>女戰神獸 Valkyrimon: 14</td>
+                        <td>聖龍獸 Holydramon: 14</td>
+                        <td>維京毛人獸 Vikemon: 14</td>
+                        <td>究極天使獸 Seraphimon: 14</td>
+                    </tr>
+                    <tr>
+                        <th>Attack (AP)</th>
+                        <td>帝皇龍甲獸: 5</td>
+                        <td>究極古加獸: 5</td>
+                        <td>女戰神獸: 5</td>
+                        <td>聖龍獸: 5</td>
+                        <td>維京毛人獸: 5</td>
+                        <td>究極天使獸: 5</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <p>
-            * <strong>進化解鎖機制：</strong><br>
-            • <strong>完全體</strong>：初遇玄武獸後解鎖常規進化至完全體。<br>
-            • <strong>究極體</strong>：初遇白虎獸時，於戰鬥中解鎖常規進化至究極體。<br>
-            • <strong>金甲龍獸</strong>：擊敗白虎獸後解鎖「奇蹟」裝甲即可進化。<br>
-            • * 裝甲體 Attack 數值每回合隨機為 2 至 4。
-        </p>
     </section>
 
-    <!-- 4. POW 對裝甲體 AP 影響 -->
-    <section id="armor-pow">
-        <h2>🎲 POW 對裝甲體之 AP 影響 (測試紀錄)</h2>
+    <!-- 5. POW 對裝甲體之 AP 影響 -->
+    <section id="nav-armor-pow">
+        <h2>POW對裝甲體之AP影響 | The implications of POW on AP of Armor-level Digimons (To be updated)</h2>
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
                         <th>POW</th>
-                        <th>烈焰獸</th>
-                        <th>雷龍獸</th>
-                        <th>忍者獸</th>
-                        <th>鋼鑽獸</th>
-                        <th>潛鯊獸</th>
-                        <th>天馬獸</th>
-                        <th>尼菲迪獸</th>
+                        <th>烈焰獸 Flamedramon</th>
+                        <th>雷龍獸 Lighdramon</th>
+                        <th>忍者獸 Shurimon</th>
+                        <th>鋼鑽獸 digmon</th>
+                        <th>潛鯊獸 Sabmarimon</th>
+                        <th>天馬獸 Pegasusmon</th>
+                        <th>尼菲迪獸 Nefertimon</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>0</td><td>AP 3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>AP 4</td><td>-</td></tr>
-                    <tr><td>10</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                    <tr><td>20</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                    <tr><td>30</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                    <tr><td>40</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                    <tr><td>50</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>AP 3</td><td>-</td></tr>
-                    <tr><td>60</td><td>AP 4</td><td>-</td><td>-</td><td>-</td><td>-</td><td>AP 4</td><td>-</td></tr>
-                    <tr><td>70</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                    <tr><td>80</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>AP 3</td><td>AP 4</td></tr>
-                    <tr><td>90</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>AP 3</td><td>AP 3</td></tr>
+                    <tr><td>0</td><td>AP3</td><td></td><td></td><td></td><td></td><td>AP4</td><td></td></tr>
+                    <tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>20</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>40</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>50</td><td></td><td></td><td></td><td></td><td></td><td>AP3</td><td></td></tr>
+                    <tr><td>60</td><td>AP4</td><td></td><td></td><td></td><td></td><td>AP4</td><td></td></tr>
+                    <tr><td>70</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>80</td><td></td><td></td><td></td><td></td><td></td><td>AP3</td><td>AP4</td></tr>
+                    <tr><td>90</td><td></td><td></td><td></td><td></td><td></td><td>AP3</td><td>AP3</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- 5. 數碼裝甲一覽 -->
-    <section id="digiegg">
-        <h2>🛡️ 數碼裝甲 (DigiEgg) 一覽</h2>
+    <!-- 6. 數碼裝甲 -->
+    <section id="nav-digiegg">
+        <h2>數碼裝甲 | DigiEgg</h2>
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th>數碼裝甲</th>
-                        <th>裝甲進化</th>
-                        <th>備註 Remark</th>
+                        <th>數碼裝甲 DigiEgg</th>
+                        <th>裝甲進化 Armor Evolution</th>
+                        <th>備注 Remark</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>勇氣 Courage</strong></td>
-                        <td>V仔獸 ＞ 烈焰獸</td>
-                        <td>開始遊戲選擇或步行尋找到 V仔獸時自動獲得</td>
+                        <td>V仔獸 ＞ 烈焰獸 (Veemon &gt; Flamedramon)</td>
+                        <td>如開始遊戲時選擇/步行時尋找到V仔獸，會自動獲得 (If you choose Veemon at the beginning or encounter him while walking, will automatically obtain it as starter pack)</td>
                     </tr>
                     <tr>
                         <td><strong>友情 Friendship</strong></td>
-                        <td>V仔獸 ＞ 雷龍獸</td>
-                        <td>步行隨機事件獲得</td>
+                        <td>V仔獸 ＞ 雷龍獸 (Veemon &gt; Lighdramon)</td>
+                        <td>-</td>
                     </tr>
                     <tr>
                         <td><strong>愛情 Love</strong></td>
-                        <td>麻鷹獸 ＞ 鐵鷹獸</td>
-                        <td>開始遊戲選擇或步行尋找到 麻鷹獸時自動獲得</td>
+                        <td>麻鷹獸 ＞ 鐵鷹獸 (Hawkmon &gt; Holsmon)</td>
+                        <td>如開始遊戲時選擇/步行時找到麻鷹獸，會自動獲得 (If choosing Hawkmon at the beginning or encounter him while walking, will automatically obtain it as starter pack)</td>
                     </tr>
                     <tr>
                         <td><strong>純真 Purity</strong></td>
-                        <td>麻鷹獸 ＞ 忍者獸</td>
-                        <td>步行隨機事件獲得</td>
+                        <td>麻鷹獸 ＞ 忍者獸 (Hawkmon &gt; Shurimon)</td>
+                        <td>-</td>
                     </tr>
                     <tr>
                         <td><strong>知識 Knowledge</strong></td>
-                        <td>穿山獸 ＞ 鋼鑽獸</td>
-                        <td>開始遊戲選擇或步行尋找到 穿山獸時自動獲得</td>
+                        <td>穿山獸 ＞ 鋼鑽獸 (Armadimon &gt; digmon)</td>
+                        <td>如開始遊戲時選擇/步行時找到穿山獸，會自動獲得 (If choosing Armadimon at the beginning or encounter him while walking, will automatically obtain it as starter pack)</td>
                     </tr>
                     <tr>
                         <td><strong>誠實 Sincerity</strong></td>
-                        <td>穿山獸 ＞ 潛鯊獸</td>
-                        <td>步行隨機事件獲得</td>
+                        <td>穿山獸 ＞ 潛鯊獸 (Armadimon &gt; Sabmarimon)</td>
+                        <td>-</td>
                     </tr>
                     <tr>
                         <td><strong>希望 Hope</strong></td>
-                        <td>巴達獸 ＞ 天馬獸</td>
-                        <td>開始遊戲選擇或步行尋找到 巴達獸時自動獲得</td>
+                        <td>巴達獸 ＞ 天馬獸 (Patamon &gt; Pegasusmon)</td>
+                        <td>如開始遊戲時選擇/步行時找到巴達獸，會自動獲得 (If choosing Patamon at the beginning or encounter him while walking, will automatically obtain it as starter pack)</td>
                     </tr>
                     <tr>
                         <td><strong>光明 Light</strong></td>
-                        <td>迪路獸 ＞ 尼菲迪獸</td>
-                        <td>開始遊戲選擇或步行尋找到 迪路獸時自動獲得</td>
+                        <td>迪路獸 ＞ 尼菲迪獸 (Tailmon &gt; Nefertimon)</td>
+                        <td>如開始遊戲時選擇/步行時找到迪路獸，會自動獲得 (If choosing Tailmon at the beginning or encounter her while walking, will automatically obtain it as starter pack)</td>
                     </tr>
                     <tr>
-                        <td><span class="highlight">奇蹟 Miracles</span></td>
-                        <td>V仔獸 ＞ 金甲龍獸</td>
-                        <td>在第三關擊敗白虎獸後自動獲得 (Get it after defeating Baihumon at Map 3)</td>
+                        <td><strong>奇蹟 Miracles</strong></td>
+                        <td>V仔獸 ＞ 金甲龍獸 (Veemon &gt; Magnamon)</td>
+                        <td>在第三關擊敗白虎獸後，會自動獲得 (Get it after defeating Baihumon at Map 3)</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- 6. 關卡資料 -->
-    <section id="maps">
-        <h2>🗺️ 關卡資料 (Walkthrough)</h2>
+    <!-- 7. 關卡資料 -->
+    <section id="nav-walkthrough">
+        <h2>關卡資料 | Walkthrough</h2>
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
                         <th>關卡</th>
-                        <th>總步數</th>
-                        <th>中Boss (相遇步數)</th>
-                        <th>特別事件 (相遇步數)</th>
-                        <th>終點：大Boss</th>
-                        <th>出現敵人 Enemy</th>
+                        <th>關卡步數<br>Total distance</th>
+                        <th>中Boss<br>MiniBoss</th>
+                        <th>特別事件<br>Special Event</th>
+                        <th>終點：大Boss<br>Destination: Big Boss</th>
+                        <th>敵人 Enemy</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>第一關 Area 1</strong></td>
+                        <td><strong>第一關<br>Area 1</strong></td>
                         <td>24,000</td>
                         <td>
+                            相遇點: 14,000<br>
                             <strong>黑戰鬥暴龍獸 BK Wargreymon</strong><br>(Life 8 | Attack 3)<br>
-                            <em>相遇點：14,000</em><br>
-                            <small class="highlight">擊敗此關中Boss前，只能使用裝甲進化</small>
+                            <small class="highlight">擊敗此關中Boss前，只能使用裝甲進化 (Only Armor Evolution available before defeat the miniboss on this map)</small>
                         </td>
                         <td>-</td>
                         <td>
@@ -490,43 +577,43 @@
                             (Life 10 | Attack 3)
                         </td>
                         <td>
-                            小火焰獸 (HP 1, AP 1)<br>
-                            玩具亞古獸 (HP 2, AP 1)<br>
-                            獨角馬獸 (HP 2, AP 2)<br>
-                            鼻屎獸 (HP 4, AP 2)<br>
-                            飛龍獸 (HP 5, AP 1)<br>
-                            大角獸 (HP 7, AP 3)
+                            小火焰獸 Petimeramon (HP1 AP1)<br>
+                            玩具亞古獸 Toyagumon (HP2 AP1)<br>
+                            獨角馬獸 Yunimon (HP2 AP2)<br>
+                            鼻屎獸 Vegimon (HP4 AP2)<br>
+                            飛龍獸 Airdramon (HP5 AP1)<br>
+                            大角獸 Tuskmon (HP7 AP3)
                         </td>
                     </tr>
                     <tr>
-                        <td><strong>第二關 Area 2</strong></td>
+                        <td><strong>第二關<br>Area 2</strong></td>
                         <td>30,000</td>
                         <td>
+                            相遇點: 16,000<br>
                             <strong>外星獸 Ebemon</strong><br>(Life 7 | Attack 3)<br>
-                            <em>相遇點：16,000</em><br>
-                            <small class="highlight">擊敗此關中Boss前，只能使用裝甲進化</small>
+                            <small class="highlight">擊敗此關中Boss前，只能使用裝甲進化 (Only Armor Evolution available before defeat the miniboss on this map)</small>
                         </td>
                         <td>
+                            相遇點: 30,000<br>
                             <strong>蟲蟲獸 Wormmon</strong><br>(Life 3 | Attack 1)<br>
-                            <em>相遇點：30,000</em><br>
-                            <small class="cyan">擊敗蟲蟲獸後會加入隊伍</small>
+                            <small class="cyan">擊敗蟲蟲獸後會加入隊伍 (Wormmon will join the team after defeat him)</small>
                         </td>
                         <td>
                             <strong>玄武獸 Xuanwumon</strong><br>
                             (Life 14 | Attack 4)<br>
-                            <small class="highlight">首次對戰：解鎖完全體並強制進化</small>
+                            <small class="highlight">首次對戰：解鎖完全體並強制進化 (Unlock Ultimate and force evolution during the 1st battle)</small>
                         </td>
                         <td>
-                            玩具亞古獸 (HP 2, AP 1)<br>
-                            飛龍獸 (HP 5, AP 1)<br>
-                            巨龍獸 (HP 4, AP 2)<br>
-                            角龍獸 (HP 6, AP 2)<br>
-                            螳螂獸 (HP 6, AP 3)<br>
-                            獨眼龍獸 (HP 8, AP 3)
+                            玩具亞古獸 Toyagumon (HP2 AP1)<br>
+                            飛龍獸 Airdramon (HP5 AP1)<br>
+                            巨龍獸 Tyrannomon (HP4 AP2)<br>
+                            角龍獸 Monochromon (HP6 AP2)<br>
+                            螳螂獸 Snimon (HP6 AP3)<br>
+                            獨眼龍獸 Cyclomon (HP8 AP3)
                         </td>
                     </tr>
                     <tr>
-                        <td><strong>第三關 Area 3</strong></td>
+                        <td><strong>第三關<br>Area 3</strong></td>
                         <td>20,000</td>
                         <td>-</td>
                         <td>-</td>
@@ -535,10 +622,10 @@
                             (Life 8 | Attack 5)
                         </td>
                         <td>
-                            螳螂獸 (HP 6, AP 3)<br>
-                            獨眼龍獸 (HP 8, AP 3)<br>
-                            多達獸 (HP 9, AP 3)<br>
-                            三頭龍獸 (HP 6, AP 4)
+                            螳螂獸 Snimon (HP6 AP3)<br>
+                            獨眼龍獸 Cyclomon (HP8 AP3)<br>
+                            多達獸 Tortamon (HP9 AP3)<br>
+                            三頭龍獸 Deltamon (HP6 AP4)
                         </td>
                     </tr>
                 </tbody>
@@ -546,29 +633,29 @@
         </div>
     </section>
 
-    <!-- 7. 通關後白虎獸 -->
-    <section id="postgame">
-        <h2>👑 通關後隱藏要素 (Post-game)</h2>
+    <!-- 8. 通關後 -->
+    <section id="nav-postgame">
+        <h2>通關後 | Post-game</h2>
         <div class="box">
-            <h3 style="margin-top: 0; color: var(--gold-accent);">終極Boss：白虎獸 Baihumon (Life 15 | Attack 5)</h3>
-            <p><strong>出現條件 (How to trigger):</strong></p>
+            <h3 style="margin-top: 0; color: var(--gold-accent);">終極Boss Ultimate Boss: 白虎獸 Baihumon (Life 15 | Attack 5)</h3>
+            <p><strong>出現條件 How to trigger:</strong></p>
             <ol>
-                <li><strong>總步數 (Total Steps)</strong>：&gt;= 120,000 步</li>
-                <li><strong>擊敗青龍獸兩次</strong> (Defeated Qinglongmon twice)</li>
-                <li><strong>已取得所有夥伴</strong> (Got all partners)</li>
-                <li><strong>持有 8 種數碼裝甲</strong> (Have 8 DigiEggs on hand)</li>
+                <li><strong>總步數 Total Steps</strong>: &gt;= 120,000</li>
+                <li><strong>擊敗青龍獸兩次</strong> Defeated Qinglongmon twice</li>
+                <li><strong>已取得所有顆伴</strong> Got all partners</li>
+                <li><strong>持有8種數碼裝甲</strong> Have 8 DigiEggs on hand</li>
             </ol>
-            <p><strong>解鎖隱藏要素獎勵 (Rewards for the Hidden Level):</strong></p>
+            <p><strong>解鎖隱藏要素獎勵 Rewards for the Hidden Level:</strong></p>
             <ul>
-                <li><span class="highlight">首次對戰</span>：解鎖究極體並於戰鬥中強制進化 (Unlock Mega and force evolution during the 1st battle)。</li>
-                <li><span class="highlight">成功擊敗後</span>：解鎖並獲得<strong>「奇蹟」數碼裝甲</strong> (Unlock and get DigiEgg "Miracle" after defeat him)。</li>
+                <li><span class="highlight">首次對戰：解鎖究極體並強制進化</span> (Unlock Mega and force evolution during the 1st battle)</li>
+                <li><span class="highlight">成功擊敗後：解鎖並獲得「奇蹟」裝甲</span> (Unlock and get DigiEgg "Miracle" after defeat him)</li>
             </ul>
         </div>
     </section>
 
-    <!-- 頁尾 -->
+    <!-- Footer -->
     <div class="footer">
-        <p>© DigiKidult 被選中嘅大細路 | 美版 D-3 021 全攻略</p>
+        <p>© DigiKidult 被選中嘅大細路 | 美版D-3 021 全攻略 (Guide for US D-3 ver 1)</p>
         <p>All data strictly sourced from DigiKidult US D-3 ver 1 database.</p>
     </div>
 </div>
