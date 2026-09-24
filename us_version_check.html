@@ -5,22 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>US Anime Digivice Version Check Guide 4.0 - 被選中嘅大細路 DigiKidult</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap');
+
     :root {
-      --bg-dark: #0a0f1d;
-      --card-bg: #131c31;
-      --card-inner: #0b1325;
-      --card-hover: #18243e;
-      --border-color: #24324d;
-      --border-bright: #3b82f6;
-      --accent-cyan: #38bdf8;
-      --accent-blue: #60a5fa;
-      --accent-yellow: #fbbf24;
-      --accent-green: #4ade80;
-      --accent-orange: #fb923c;
-      --accent-purple: #c084fc;
-      --text-main: #f1f5f9;
-      --text-sub: #cbd5e1;
-      --text-muted: #94a3b8;
+      --bg-color: #202020;
+      --panel-bg: #e0f8cf; /* Retro LCD Green */
+      --panel-border: #000000;
+      --text-main: #0f380f;
+      --text-highlight: #306230;
+      --accent-red: #e52521;
+      --accent-blue: #0484d1;
+      --accent-yellow: #f6b704;
+      --btn-bg: #8b9bb4;
+      --btn-active: #e0f8cf;
     }
 
     * {
@@ -30,22 +27,33 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", Roboto, sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-main);
+      /* Fallback to monospace if offline and font can't load */
+      font-family: 'DotGothic16', 'Courier New', Courier, monospace;
+      background-color: var(--bg-color);
+      color: #ffffff;
       display: flex;
       flex-direction: column;
       height: 100vh;
       overflow: hidden;
-      -webkit-font-smoothing: antialiased;
+      -webkit-font-smoothing: none; /* Pixelated look */
+    }
+
+    /* 8-Bit Borders */
+    .pixel-box {
+      background: var(--panel-bg);
+      color: var(--text-main);
+      border: 4px solid var(--panel-border);
+      box-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+      border-radius: 2px;
+      padding: 20px;
+      margin-bottom: 24px;
     }
 
     /* Top Brand & Title Bar */
     header {
-      background: rgba(19, 28, 49, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-color);
-      padding: 14px 24px;
+      background: #000;
+      border-bottom: 4px solid #fff;
+      padding: 16px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -56,345 +64,221 @@
     .brand-container {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
     .brand-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      width: 48px;
+      height: 48px;
+      background: var(--accent-blue);
+      border: 4px solid #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: #ffffff;
-      box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-family: 'Press Start 2P', monospace;
+      font-size: 1rem;
+      color: #fff;
+      box-shadow: 2px 2px 0px #000;
     }
 
     .title-group h1 {
-      font-size: 1.18rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #ffffff;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--accent-yellow);
+      text-shadow: 2px 2px 0px #000;
     }
 
     .title-group .author-meta {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-top: 3px;
+      font-size: 1rem;
+      color: #fff;
+      margin-top: 6px;
     }
 
     .author-meta a {
-      color: var(--accent-cyan);
+      color: var(--accent-blue);
       text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .author-meta a:hover {
-      text-decoration: underline;
-      color: #7dd3fc;
-    }
-
-    .badge-offline {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      background: rgba(74, 222, 128, 0.12);
-      color: var(--accent-green);
-      border: 1px solid rgba(74, 222, 128, 0.3);
-      padding: 2px 8px;
-      border-radius: 9999px;
-      font-weight: 600;
+      background: #fff;
+      padding: 0 4px;
+      font-weight: bold;
     }
 
     /* Main Display Area */
     main {
       flex: 1;
       overflow-y: auto;
-      padding: 28px;
-      scroll-behavior: smooth;
+      padding: 24px;
+      background-image: 
+        linear-gradient(45deg, #111 25%, transparent 25%, transparent 75%, #111 75%, #111),
+        linear-gradient(45deg, #111 25%, transparent 25%, transparent 75%, #111 75%, #111);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
     }
 
     .layout-wrapper {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .guide-page {
       display: none;
-      animation: fadeIn 0.2s ease-in-out;
     }
 
     .guide-page.active {
       display: block;
+      animation: flashIn 0.3s steps(2, start);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Card Panels */
-    .card-panel {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 22px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .card-panel-header {
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 14px;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    @keyframes flashIn {
+      0% { opacity: 0; }
+      50% { opacity: 1; background: #fff; }
+      100% { opacity: 1; }
     }
 
     .card-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--accent-cyan);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .card-tag {
-      font-family: monospace;
-      font-size: 0.8rem;
-      background: var(--card-inner);
-      border: 1px solid var(--border-color);
-      padding: 3px 8px;
-      border-radius: 6px;
-      color: var(--text-muted);
-    }
-
-    /* Method Instruction Boxes */
-    .method-card {
-      background: var(--card-inner);
-      border-left: 4px solid var(--accent-cyan);
-      border-radius: 0 10px 10px 0;
-      padding: 18px 20px;
-      margin-bottom: 18px;
-      border-top: 1px solid var(--border-color);
-      border-right: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .method-card.orange { border-left-color: var(--accent-orange); }
-    .method-card.purple { border-left-color: var(--accent-purple); }
-    .method-card.yellow { border-left-color: var(--accent-yellow); }
-
-    .method-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .step-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(56, 189, 248, 0.15);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      color: var(--accent-cyan);
-      padding: 2px 10px;
-      border-radius: 6px;
-      font-family: monospace;
-      font-size: 0.9rem;
-      font-weight: 700;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 1.1rem;
+      color: var(--text-main);
+      border-bottom: 4px dashed var(--text-highlight);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
     }
 
     .text-zh {
-      font-size: 0.96rem;
-      line-height: 1.7;
-      color: var(--text-sub);
-      margin-bottom: 6px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
 
     .text-en {
-      font-size: 0.88rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--text-highlight);
     }
 
     .key-highlight {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #ffffff;
-      padding: 1px 7px;
-      border-radius: 4px;
-      font-weight: 600;
-      font-family: monospace;
-      font-style: normal;
+      background: var(--text-main);
+      color: var(--panel-bg);
+      padding: 2px 6px;
+      text-transform: uppercase;
+    }
+
+    /* Images */
+    .visual-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .visual-box {
+      flex: 1;
+      min-width: 250px;
+      border: 4px solid var(--text-main);
+      background: #fff;
+      padding: 4px;
+      box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+    }
+
+    .visual-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+      image-rendering: pixelated;
+    }
+
+    .visual-caption {
+      text-align: center;
+      background: var(--text-main);
+      color: var(--panel-bg);
+      padding: 4px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-top: 4px;
     }
 
     /* Version Tables */
-    .table-container {
-      background: var(--card-inner);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      overflow-x: auto;
-      margin-top: 14px;
-    }
-
     table {
       width: 100%;
       border-collapse: collapse;
-      text-align: left;
-      font-size: 0.88rem;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: 4px solid var(--text-main);
     }
 
     thead th {
-      background: rgba(15, 23, 42, 0.8);
-      color: var(--text-sub);
-      font-weight: 600;
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border-color);
-      white-space: nowrap;
+      background: var(--text-main);
+      color: var(--panel-bg);
+      padding: 10px;
+      text-align: left;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.8rem;
     }
 
     tbody tr {
-      border-bottom: 1px solid var(--border-color);
-      transition: background 0.15s;
-    }
-
-    tbody tr:last-child {
-      border-bottom: none;
-    }
-
-    tbody tr:hover {
-      background: var(--card-hover);
+      border-bottom: 4px solid var(--text-main);
     }
 
     tbody td {
-      padding: 12px 16px;
-      vertical-align: middle;
-      color: var(--text-muted);
+      padding: 10px;
+      border-right: 4px solid var(--text-main);
     }
 
-    .badge-v {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      font-family: monospace;
-      border: 1px solid transparent;
-    }
-
-    .v-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border-color: rgba(56, 189, 248, 0.3); }
-    .v-yellow { background: rgba(251, 191, 36, 0.15); color: var(--accent-yellow); border-color: rgba(251, 191, 36, 0.3); }
-    .v-purple { background: rgba(192, 132, 252, 0.15); color: var(--accent-purple); border-color: rgba(192, 132, 252, 0.3); }
-    .v-green { background: rgba(74, 222, 128, 0.15); color: var(--accent-green); border-color: rgba(74, 222, 128, 0.3); }
-
-    /* Intro Info Box */
-    .author-card {
-      background: var(--card-inner);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 16px 20px;
-      margin-top: 16px;
-      line-height: 1.6;
-      font-size: 0.9rem;
-      color: var(--text-sub);
-    }
-
-    .external-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .ext-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      color: var(--accent-cyan);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: all 0.15s;
-    }
-
-    .ext-btn:hover {
-      border-color: var(--accent-cyan);
-      background: var(--card-hover);
+    tbody td:last-child {
+      border-right: none;
     }
 
     /* Fixed Bottom Navigation */
     footer {
-      background: #070b14;
-      border-top: 1px solid var(--border-color);
+      background: var(--text-main);
+      border-top: 4px solid #fff;
       display: flex;
-      align-items: center;
-      padding: 0 16px;
+      padding: 8px;
+      gap: 8px;
       overflow-x: auto;
-      flex-shrink: 0;
     }
 
     .tab-btn {
+      font-family: 'Press Start 2P', monospace;
       appearance: none;
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid transparent;
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      font-weight: 500;
-      padding: 12px 20px;
+      background: var(--btn-bg);
+      border: 4px solid #000;
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 14px 16px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
       white-space: nowrap;
-      transition: all 0.15s ease;
+      box-shadow: inset -4px -4px 0px rgba(0,0,0,0.3);
     }
 
     .tab-btn:hover {
-      color: var(--text-main);
-      background: rgba(255, 255, 255, 0.03);
+      background: #a3b8cc;
+    }
+
+    .tab-btn:active {
+      box-shadow: inset 4px 4px 0px rgba(0,0,0,0.3);
     }
 
     .tab-btn.active {
-      color: var(--accent-cyan);
-      border-bottom-color: var(--accent-cyan);
-      background: var(--card-bg);
-      font-weight: 600;
+      background: var(--btn-active);
+      color: var(--text-main);
+      box-shadow: inset 4px 4px 0px rgba(0,0,0,0.2);
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Title Bar -->
+  <!-- Top Bar -->
   <header>
     <div class="brand-container">
       <div class="brand-avatar">DK</div>
       <div class="title-group">
-        <h1>
-          US Anime Digivice Version Check Guide 4.0
-          <span class="badge-offline">Standalone Viewer</span>
-        </h1>
+        <h1>US Anime Digivice Version<br>Check Guide 4.0</h1>
         <div class="author-meta">
-          美版暴龍機版本檢查教學 4.0 • by <a href="https://www.facebook.com/DigiKidult" target="_blank" rel="noreferrer">@Digikidult</a>
+          by <a href="https://www.facebook.com/DigiKidult" target="_blank">@Digikidult</a> | RETRO CLASSIC UI
         </div>
       </div>
     </div>
@@ -406,359 +290,222 @@
 
       <!-- ================= 簡介 Introduction ================= -->
       <section id="tab-intro" class="guide-page active">
-        <div class="card-panel">
-          <div class="card-panel-header">
-            <div class="card-title">美版暴龍機版本檢查教學 4.0 總覽</div>
-            <span class="card-tag">Guide Overview</span>
-          </div>
-
-          <p class="text-zh" style="font-size: 1.02rem; font-weight: 500; color: #ffffff;">
-            Version Check Guide 4.0 for US Digivice (D2, D-3, D-Power &amp; D-Tector)
+        <div class="pixel-box">
+          <div class="card-title">▶ MISSION BRIEFING</div>
+          <p class="text-zh">
+            Just a Digimon Tamer from Hong Kong, passionate about sharing Digimon secrets and news, with a special focus on retro games and Digivices.
           </p>
-
-          <div class="author-card">
-            <p><strong>About DigiKidult:</strong></p>
-            <p style="margin-top: 6px; color: var(--text-muted);">
-              Just a Digimon Tamer from Hong Kong, passionate about sharing Digimon secrets and news, with a special focus on retro games and Digivices.
-            </p>
-            <div class="external-links">
-              <a class="ext-btn" href="https://www.facebook.com/DigiKidult" target="_blank" rel="noreferrer">Facebook (@DigiKidult)</a>
-              <a class="ext-btn" href="https://twitter.com/DigiKidult/" target="_blank" rel="noreferrer">Twitter (@DigiKidult)</a>
-              <a class="ext-btn" href="http://bit.ly/JpDigiviceDB" target="_blank" rel="noreferrer">日版暴龍機資料庫 (JP DB)</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-panel">
-          <div class="card-panel-header">
-            <div class="card-title">快速進入除錯模式檢查指令 (Quick Debug Checklist)</div>
-            <span class="card-tag">Reset Shortcut</span>
-          </div>
-
-          <!-- D2 Quick -->
-          <div class="method-card">
-            <div class="method-title">
-              <span>電波 / 神聖計劃 D2 Digivice</span>
-              <span class="step-badge">A + B + Reset</span>
-            </div>
-            <div class="text-zh">只需按住 <span class="key-highlight">A + B</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。</div>
-            <div class="text-en">Hold down the A and B buttons simultaneously while pressing and releasing the Reset button.</div>
-          </div>
-
-          <!-- D-3 Quick -->
-          <div class="method-card yellow">
-            <div class="method-title">
-              <span>D-3 系列</span>
-              <span class="step-badge">A + Left + Reset</span>
-            </div>
-            <div class="text-zh">只需按住 <span class="key-highlight">A + 左</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。</div>
-            <div class="text-en">Hold down the A and Left buttons simultaneously while pressing and releasing the Reset button.</div>
-          </div>
-
-          <!-- D-Power Ver 1 Quick -->
-          <div class="method-card orange">
-            <div class="method-title">
-              <span>D-Power Ver 1 (031)</span>
-              <span class="step-badge">Left + Down + Reset</span>
-            </div>
-            <div class="text-zh">只需按住 <span class="key-highlight">左 + 下</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。</div>
-            <div class="text-en">Hold down the Left and Down buttons simultaneously while pressing and releasing the Reset button.</div>
-          </div>
-
-          <!-- D-Power Ver 2 & 3 Quick -->
-          <div class="method-card orange">
-            <div class="method-title">
-              <span>D-Power Ver 2 &amp; Ver 3 (032 &amp; 033X)</span>
-              <span class="step-badge">Left + Right + Reset</span>
-            </div>
-            <div class="text-zh">只需按住 <span class="key-highlight">左 + 右</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。</div>
-            <div class="text-en">Hold down the Left and Right buttons simultaneously while pressing and releasing the Reset button.</div>
-          </div>
-
-          <!-- D-Tector Quick -->
-          <div class="method-card purple">
-            <div class="method-title">
-              <span>D-Tector 系列</span>
-              <span class="step-badge">A + B + Reset</span>
-            </div>
-            <div class="text-zh">只需按住 <span class="key-highlight">A + B</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。</div>
-            <div class="text-en">Hold down the A and B buttons simultaneously while pressing and releasing the Reset button.</div>
+          <p class="text-en" style="margin-top: 16px;">
+            > TARGET: US Digivice (D2, D-3, D-Power & D-Tector)<br>
+            > OBJECTIVE: ENTER DEBUG MODE & CHECK VERSION
+          </p>
+          <div style="margin-top: 24px;">
+            <a href="http://bit.ly/JpDigiviceDB" target="_blank" style="color: var(--text-main); font-weight: bold; background: var(--accent-yellow); padding: 4px 8px; text-decoration: none; border: 2px solid #000;">[LINK] JP Digivice DB (日版教學)</a>
           </div>
         </div>
       </section>
 
       <!-- ================= 電波 D2 ================= -->
       <section id="tab-d2" class="guide-page">
-        <div class="card-panel">
-          <div class="card-panel-header">
-            <div class="card-title">電波 / 神聖計劃 D2 Digivice</div>
-            <span class="card-tag">Series 1</span>
+        <div class="pixel-box">
+          <div class="card-title">▶ SERIES 1: DIGIVICE (D2)</div>
+          
+          <div class="text-zh">
+            只需按住 <span class="key-highlight">A + B</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
+            (部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面)
+          </div>
+          <div class="text-en">
+            Simply hold down the A and B buttons simultaneously while pressing and releasing the reset button.<br>
+            (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
           </div>
 
-          <div class="method-card">
-            <div class="method-title">
-              <span>進入 Debug 模式檢查方法</span>
-              <span class="step-badge">A + B + Reset</span>
+          <div class="visual-grid">
+            <div class="visual-box">
+              <img src="https://drive.google.com/uc?export=view&id=1GxhkCp-jIEbyqJoUWyWNCiwDLiP9Uu6PaM_0KHDUKQ" alt="D2 Debug Screen 1">
+              <div class="visual-caption">DEBUG DATA A</div>
             </div>
-            <div class="text-zh">
-              只需按住 <span class="key-highlight">A + B</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
-              <strong>備註：</strong>部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面。
-            </div>
-            <div class="text-en">
-              Simply hold down the A and B buttons simultaneously while pressing and releasing the reset button.<br>
-              (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
+            <div class="visual-box">
+              <img src="https://drive.google.com/uc?export=view&id=1SQo7hIdNnu5D-RGtXVLfwGkv-YXBHZQ7N0eHqi_EHA" alt="D2 Debug Screen 2">
+              <div class="visual-caption">DEBUG DATA B</div>
             </div>
           </div>
 
-          <div class="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th style="width: 140px;">機種</th>
-                  <th style="width: 140px;">版本</th>
-                  <th>版本代碼 (Code) 與規格說明</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Digivice D2</strong></td>
-                  <td><span class="badge-v v-blue">Ver 1</span></td>
-                  <td>美版初代電波機晶片代碼，開機提供初代八主角夥伴數碼獸選擇。</td>
-                </tr>
-                <tr>
-                  <td><strong>Digivice D2</strong></td>
-                  <td><span class="badge-v v-yellow">Ver 2</span></td>
-                  <td>第二代升級晶片代碼，增加裝甲體進化與修正步數計算。</td>
-                </tr>
-                <tr>
-                  <td><strong>Digivice D2</strong></td>
-                  <td><span class="badge-v v-purple">Ver 2.5</span></td>
-                  <td>限定配色升級晶片版，內置究極體數據與特殊對戰模式。</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>DEVICE</th>
+                <th>VERSION</th>
+                <th>CODE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Digivice D2</td><td>Ver 1</td><td>-</td></tr>
+              <tr><td>Digivice D2</td><td>Ver 2</td><td>-</td></tr>
+              <tr><td>Digivice D2</td><td>Ver 2.5</td><td>-</td></tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
       <!-- ================= D-3 ================= -->
       <section id="tab-d3" class="guide-page">
-        <div class="card-panel">
-          <div class="card-panel-header">
-            <div class="card-title">D-3 系列</div>
-            <span class="card-tag">Series 2</span>
+        <div class="pixel-box">
+          <div class="card-title">▶ SERIES 2: D-3</div>
+          
+          <div class="text-zh">
+            只需按住 <span class="key-highlight">A + 左</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
+            (部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面)
+          </div>
+          <div class="text-en">
+            Simply hold down the A and Left buttons simultaneously while pressing and releasing the reset button.<br>
+            (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
           </div>
 
-          <div class="method-card yellow">
-            <div class="method-title">
-              <span>進入 Debug 模式檢查方法</span>
-              <span class="step-badge">A + Left + Reset</span>
-            </div>
-            <div class="text-zh">
-              只需按住 <span class="key-highlight">A + 左</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
-              <strong>備註：</strong>部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面。
-            </div>
-            <div class="text-en">
-              Simply hold down the A and Left buttons simultaneously while pressing and releasing the reset button.<br>
-              (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
+          <div class="visual-grid">
+            <div class="visual-box">
+              <img src="https://drive.google.com/uc?export=view&id=16LIRyFlMltZffirO9_xk6y2T1Gn4Nfivu1iq4UH-lQ" alt="D-3 Debug Screen">
+              <div class="visual-caption">D-3 DEBUG DATA</div>
             </div>
           </div>
 
-          <div class="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th style="width: 140px;">機種</th>
-                  <th style="width: 140px;">版本</th>
-                  <th>版本代碼 (Code) 與規格說明</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Digivice D3</strong></td>
-                  <td><span class="badge-v v-blue">Ver 1</span></td>
-                  <td>美版初代 D-3，收錄初期三位拍檔（V仔獸、麻鷹獸、穿山獸）。</td>
-                </tr>
-                <tr>
-                  <td><strong>Digivice D3</strong></td>
-                  <td><span class="badge-v v-yellow">Ver 2</span></td>
-                  <td>加入蟲蟲獸與巴達獸/迪路獸進化鏈，支援 DNA Digivolution。</td>
-                </tr>
-                <tr>
-                  <td><strong>Digivice D3</strong></td>
-                  <td><span class="badge-v v-purple">Ver 3</span></td>
-                  <td>完全版晶片，追加全究極體解鎖與最終 Boss 連鎖對戰。</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>DEVICE</th>
+                <th>VERSION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Digivice D3</td><td>Ver 1</td></tr>
+              <tr><td>Digivice D3</td><td>Ver 2</td></tr>
+              <tr><td>Digivice D3</td><td>Ver 3</td></tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
       <!-- ================= D-Power ================= -->
       <section id="tab-dpower" class="guide-page">
-        <div class="card-panel">
-          <div class="card-panel-header">
-            <div class="card-title">D-Power 系列</div>
-            <span class="card-tag">Series 3</span>
-          </div>
-
-          <!-- Ver 1 -->
-          <div class="method-card orange">
-            <div class="method-title">
-              <span>Ver 1 (031) Debug 檢查</span>
-              <span class="step-badge">Left + Down + Reset</span>
-            </div>
+        <div class="pixel-box">
+          <div class="card-title">▶ SERIES 3: D-POWER</div>
+          
+          <div style="border-bottom: 4px dashed var(--text-highlight); padding-bottom: 16px; margin-bottom: 16px;">
+            <h3 style="margin-bottom: 8px;">[ VER 1 (031) ]</h3>
             <div class="text-zh">
-              只需按住 <span class="key-highlight">左 + 下</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
-              <strong>備註：</strong>部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面。
+              只需按住 <span class="key-highlight">左 + 下</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。
             </div>
             <div class="text-en">
-              Simply hold down the left and down buttons simultaneously while pressing and releasing the reset button.<br>
-              (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
+              Simply hold down the left and down buttons simultaneously while pressing and releasing the reset button.
+            </div>
+            <div class="visual-grid">
+              <div class="visual-box">
+                <img src="https://drive.google.com/uc?export=view&id=1ZbngLEWZ5NUacVsxxFQ0u_mV2cornjyJryw9Yt0Xfw" alt="D-Power Ver 1 Debug">
+                <div class="visual-caption">VER 1: 031</div>
+              </div>
             </div>
           </div>
 
-          <!-- Ver 2 & 3 -->
-          <div class="method-card orange">
-            <div class="method-title">
-              <span>Ver 2 &amp; Ver 3 (032 &amp; 033X) Debug 檢查</span>
-              <span class="step-badge">Left + Right + Reset</span>
-            </div>
+          <div>
+            <h3 style="margin-bottom: 8px;">[ VER 2 & 3 (032 & 033X) ]</h3>
             <div class="text-zh">
-              只需按住 <span class="key-highlight">左 + 右</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
-              <strong>備註：</strong>部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面。
+              只需按住 <span class="key-highlight">左 + 右</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。
             </div>
             <div class="text-en">
-              Simply hold down the left and right buttons simultaneously while pressing and releasing the reset button.<br>
-              (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
+              Simply hold down the left and right buttons simultaneously while pressing and releasing the reset button.
+            </div>
+            <div class="visual-grid">
+              <div class="visual-box">
+                <img src="https://drive.google.com/uc?export=view&id=1OLOyNZ1u8XeT3Y97ijrRbzK5hhN2977PBRKR3tWEPA" alt="D-Power Ver 2/3 Debug">
+                <div class="visual-caption">VER 2/3: 032 / 033X</div>
+              </div>
             </div>
           </div>
 
-          <div class="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th style="width: 140px;">機種</th>
-                  <th style="width: 140px;">區域 / 版本</th>
-                  <th>版本代碼 (Code)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>DPower</strong></td>
-                  <td>USA <span class="badge-v v-blue">Ver 1</span></td>
-                  <td><code>031</code></td>
-                </tr>
-                <tr>
-                  <td><strong>DPower</strong></td>
-                  <td>USA <span class="badge-v v-yellow">Ver 2</span></td>
-                  <td><code>032</code></td>
-                </tr>
-                <tr>
-                  <td><strong>DPower</strong></td>
-                  <td>USA <span class="badge-v v-purple">Ver 3</span></td>
-                  <td><code>033X</code></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>REGION</th>
+                <th>VERSION</th>
+                <th>CODE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>USA</td><td>Ver 1</td><td>031</td></tr>
+              <tr><td>USA</td><td>Ver 2</td><td>032</td></tr>
+              <tr><td>USA</td><td>Ver 3</td><td>033X</td></tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
       <!-- ================= D-Tector ================= -->
       <section id="tab-dtector" class="guide-page">
-        <div class="card-panel">
-          <div class="card-panel-header">
-            <div class="card-title">D-Tector 系列</div>
-            <span class="card-tag">Series 4</span>
+        <div class="pixel-box">
+          <div class="card-title">▶ SERIES 4: D-TECTOR</div>
+          
+          <div class="text-zh">
+            只需按住 <span class="key-highlight">A + B</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
+            (部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面)
+          </div>
+          <div class="text-en">
+            Simply hold down the A and B buttons simultaneously while pressing and releasing the reset button.<br>
+            (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
           </div>
 
-          <div class="method-card purple">
-            <div class="method-title">
-              <span>進入 Debug 模式檢查方法</span>
-              <span class="step-badge">A + B + Reset</span>
+          <div class="visual-grid">
+            <div class="visual-box">
+              <img src="https://drive.google.com/uc?export=view&id=1OG0uJgSvYClgjntFDxzXeYRCv0jsexzjatGRE9gw4g" alt="D-Tector Debug Screen 1">
+              <div class="visual-caption">D-TECTOR SCAN A</div>
             </div>
-            <div class="text-zh">
-              只需按住 <span class="key-highlight">A + B</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
-              <strong>備註：</strong>部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面。
-            </div>
-            <div class="text-en">
-              Simply hold down the A and B buttons simultaneously while pressing and releasing the reset button.<br>
-              (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
+            <div class="visual-box">
+              <img src="https://drive.google.com/uc?export=view&id=17aAjsCzGzx-aeCzecRU_XC348NgqabgGPZGR6IMriA" alt="D-Tector Debug Screen 2">
+              <div class="visual-caption">D-TECTOR SCAN B</div>
             </div>
           </div>
 
-          <div class="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th style="width: 140px;">機種</th>
-                  <th style="width: 160px;">版本代碼 (Code)</th>
-                  <th>輸入名字後動畫 (Animation after name entry)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>D-Tector</strong></td>
-                  <td><span class="badge-v v-blue">US v1.01</span></td>
-                  <td>基礎初代十鬥士魂掃描動畫流程。</td>
-                </tr>
-                <tr>
-                  <td><strong>D-Tector</strong></td>
-                  <td><span class="badge-v v-yellow">US v2.00</span></td>
-                  <td>升級版掃描識別程式，支援更廣泛的卡片條碼。</td>
-                </tr>
-                <tr>
-                  <td><strong>D-Tector</strong></td>
-                  <td><span class="badge-v v-green">ASIA v2.00</span></td>
-                  <td>亞洲發行版 v2.00，部分開機動畫效果有微調。</td>
-                </tr>
-                <tr>
-                  <td><strong>D-Tector</strong></td>
-                  <td><span class="badge-v v-purple">ASIA v3.00</span></td>
-                  <td>超魂進化支援版，新增凱撒暴龍獸與麥格納加魯魯獸數據。</td>
-                </tr>
-                <tr>
-                  <td><strong>D-Tector</strong></td>
-                  <td><span class="badge-v v-orange">ASIA v4.00</span></td>
-                  <td>完整資料庫收錄版，對戰與條碼感應程式最終修訂。</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>CODE</th>
+                <th>ANIMATION (AFTER NAME)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>US v1.01</td><td>-</td></tr>
+              <tr><td>US v2.00</td><td>-</td></tr>
+              <tr><td>ASIA v2.00</td><td>-</td></tr>
+              <tr><td>ASIA v3.00</td><td>-</td></tr>
+              <tr><td>ASIA v4.00</td><td>-</td></tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
     </div>
   </main>
 
-  <!-- Bottom Sheet Tabs -->
+  <!-- Bottom Nav -->
   <footer>
-    <button class="tab-btn active" onclick="switchSheet('tab-intro', this)">
-      <span>簡介 Introduction</span>
-    </button>
-    <button class="tab-btn" onclick="switchSheet('tab-d2', this)">
-      <span>電波 D2</span>
-    </button>
-    <button class="tab-btn" onclick="switchSheet('tab-d3', this)">
-      <span>D-3</span>
-    </button>
-    <button class="tab-btn" onclick="switchSheet('tab-dpower', this)">
-      <span>D-Power</span>
-    </button>
-    <button class="tab-btn" onclick="switchSheet('tab-dtector', this)">
-      <span>D-Tector</span>
-    </button>
+    <button class="tab-btn active" onclick="switchSheet('tab-intro', this)">INTRO</button>
+    <button class="tab-btn" onclick="switchSheet('tab-d2', this)">D2</button>
+    <button class="tab-btn" onclick="switchSheet('tab-d3', this)">D-3</button>
+    <button class="tab-btn" onclick="switchSheet('tab-dpower', this)">D-POWER</button>
+    <button class="tab-btn" onclick="switchSheet('tab-dtector', this)">D-TECTOR</button>
   </footer>
 
   <script>
     function switchSheet(sheetId, btn) {
-      document.querySelectorAll('.guide-page').forEach(page => page.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.guide-page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+      });
 
       const activePage = document.getElementById(sheetId);
       if (activePage) {
+        // Trigger reflow for animation restart
+        void activePage.offsetWidth; 
         activePage.classList.add('active');
       }
       btn.classList.add('active');
