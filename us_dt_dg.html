@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US D-Terminal & D-Gather Passcodes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+        :root {
+            --lcd-bg: #9bbc0f; /* Classic LCD Green */
+            --lcd-dark: #0f380f; /* LCD Dark Pixels */
+            --lcd-light: #8bac0f; /* LCD Highlight */
+            --device-casing: #d3d3d3;
+        }
+
+        body {
+            background-color: #2b2b2b;
+            color: var(--lcd-dark);
+            font-family: 'VT323', monospace;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+            background-image: radial-gradient(#444 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .device-shell {
+            background-color: var(--device-casing);
+            border-radius: 30px;
+            padding: 40px 20px 60px 20px;
+            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.3), 10px 10px 20px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+        }
+
+        .screen-bezel {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: inset 5px 5px 15px rgba(0,0,0,0.8);
+        }
+
+        .lcd-screen {
+            background-color: var(--lcd-bg);
+            color: var(--lcd-dark);
+            border: 4px solid var(--lcd-dark);
+            border-radius: 5px;
+            padding: 20px;
+            min-height: 600px;
+            box-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            text-transform: uppercase;
+            margin-top: 0;
+            border-bottom: 2px dashed var(--lcd-dark);
+            padding-bottom: 10px;
+        }
+
+        .meta-info {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .meta-info a {
+            color: var(--lcd-dark);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab-button {
+            background-color: var(--lcd-bg);
+            color: var(--lcd-dark);
+            border: 3px solid var(--lcd-dark);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            transition: all 0.1s;
+        }
+
+        .tab-button:hover {
+            background-color: var(--lcd-light);
+        }
+
+        .tab-button.active {
+            background-color: var(--lcd-dark);
+            color: var(--lcd-bg);
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 1.5rem;
+            background: var(--lcd-light);
+            border: 3px solid var(--lcd-dark);
+            color: var(--lcd-dark);
+            text-transform: uppercase;
+        }
+
+        .search-box:focus {
+            outline: none;
+            background: var(--lcd-bg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1.3rem;
+        }
+
+        th, td {
+            border: 2px solid var(--lcd-dark);
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--lcd-dark);
+            color: var(--lcd-bg);
+            position: sticky;
+            top: 0;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--lcd-light);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Decorative Digivice Buttons */
+        .btn-decorative {
+            width: 40px;
+            height: 20px;
+            background-color: #ff4757;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 20px;
+            box-shadow: inset -2px -2px 5px rgba(0,0,0,0.5);
+        }
+        .btn-left { left: 40px; }
+        .btn-right { right: 40px; }
+        .btn-center { left: 50%; transform: translateX(-50%); width: 60px; height: 30px; border-radius: 15px; bottom: 15px;}
+
+    </style>
+</head>
+<body>
+
+    <div class="device-shell">
+        <div class="screen-bezel">
+            <div class="lcd-screen">
+                
+                <h1>US D-Terminal & D-Gather</h1>
+                
+                <div class="meta-info">
+                    Author: DigiKidult (被選中嘅大細路)<br>
+                    Last Update: 2026.06.07<br>
+                    <a href="#" onclick="alert('Join Facebook / WhatsApp / Line Communities!')">[ Community Links ]</a>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab-button active" onclick="switchTab('listC')">List C (ND - 431)</button>
+                    <button class="tab-button" onclick="switchTab('listA')">List A (DR.LEE - 351)</button>
+                </div>
+
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-box" placeholder="> SCAN DIGIMON NAME OR NO..." onkeyup="filterTable()">
+                </div>
+
+                <!-- List C (ND Version) -->
+                <div id="listC" class="tab-content active">
+                    <h3>Database: ND (431 Entities)</h3>
+                    <table id="tableC">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>中文名</th>
+                                <th>ENG</th>
+                                <th>Passcode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>001</td><td>滾球獸</td><td>Boromon</td><td>CBAZY</td></tr>
+                            <tr><td>002</td><td>獨角獸</td><td>Tsunomon</td><td>QAQAQ</td></tr>
+                            <tr><td>008</td><td>亞古獸</td><td>Agumon</td><td>HRUXZ</td></tr>
+                            <tr><td>370</td><td>墮天地獄獸</td><td>Belzemon</td><td>PEPSI</td></tr>
+                            <tr><td>394</td><td>終末千年獸</td><td>ZeedMillenniummon</td><td>ODEWS</td></tr>
+                            <tr><td>431</td><td>寄生蟲獸</td><td>Parasimon</td><td>ABCDA</td></tr>
+                            <!-- More data can be dynamically added or pasted here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- List A (DR.LEE Version) -->
+                <div id="listA" class="tab-content">
+                    <h3>Database: DR.LEE (351 Entities)</h3>
+                    <table id="tableA">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>中文名</th>
+                                <th>ENG</th>
+                                <th>Passcode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>001</td><td>滾球獸</td><td>Boromon</td><td>NUNUS</td></tr>
+                            <tr><td>002</td><td>獨角獸</td><td>Tsunomon</td><td>SOLID</td></tr>
+                            <tr><td>008</td><td>亞古獸</td><td>Agumon</td><td>CIVIL</td></tr>
+                            <tr><td>351</td><td>果凍獸</td><td>Zerimon</td><td>-</td></tr>
+                            <!-- More data can be dynamically added or pasted here -->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="btn-decorative btn-left"></div>
+        <div class="btn-decorative btn-center"></div>
+        <div class="btn-decorative btn-right"></div>
+    </div>
+
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            // Remove active class from all buttons and contents
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // Add active class to clicked button and target content
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+
+            // Re-run filter on the new active tab
+            filterTable();
+        }
+
+        // Search/Filter Logic
+        function filterTable() {
+            const input = document.getElementById('searchInput').value.toUpperCase();
+            const activeTab = document.querySelector('.tab-content.active');
+            const table = activeTab.querySelector('table');
+            const tr = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < tr.length; i++) { // Skip header row
+                let match = false;
+                const tds = tr[i].getElementsByTagName('td');
+                for (let j = 0; j < tds.length; j++) {
+                    if (tds[j]) {
+                        const txtValue = tds[j].textContent || tds[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(input) > -1) {
+                            match = true;
+                            break;
+                        }
+                    }
+                }
+                tr[i].style.display = match ? "" : "none";
+            }
+        }
+    </script>
+</body>
+</html>
