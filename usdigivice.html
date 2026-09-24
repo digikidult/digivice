@@ -52,6 +52,40 @@
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
         }
 
+        /* 封面圖 Cover Art 容器樣式 */
+        .cover-container {
+            width: 100%;
+            max-height: 380px;
+            overflow: hidden;
+            border-radius: 6px;
+            border: 1px solid var(--border-main);
+            margin-bottom: 24px;
+            position: relative;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 復古 CRT 掃描線覆蓋層 (可選精緻質感) */
+        .cover-container::after {
+            content: " ";
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
         h1, h2, h3 {
             font-family: 'DotGothic16', 'Noto Sans TC', sans-serif;
             text-align: center;
@@ -263,6 +297,13 @@
 <body>
 
 <div class="container">
+    
+    <!-- 🖼️ 封面圖片區域 (Cover Art) -->
+    <!-- 你可以將同一目錄下的封面圖片命名為 cover.jpg，或者替換為圖片網址 -->
+    <div class="cover-container">
+        <img class="cover-image" src="cover.jpg" alt="美版電波/神聖計劃全攻略 Cover Art" onerror="this.style.display='none'">
+    </div>
+
     <!-- Header -->
     <div class="header-box">
         <h1>美版電波/神聖計劃全攻略 (011/012/0125)</h1>
