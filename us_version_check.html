@@ -6,20 +6,21 @@
   <title>US Anime Digivice Version Check Guide 4.0 - 被選中嘅大細路 DigiKidult</title>
   <style>
     :root {
-      --bg-dark: #0f172a;
-      --card-bg: #1e293b;
-      --card-inner: #0f172a;
-      --border-color: #334155;
-      --accent-blue: #38bdf8;
-      --accent-orange: #fb923c;
+      --bg-dark: #0a0f1d;
+      --card-bg: #131c31;
+      --card-inner: #0b1325;
+      --card-hover: #18243e;
+      --border-color: #24324d;
+      --border-bright: #3b82f6;
+      --accent-cyan: #38bdf8;
+      --accent-blue: #60a5fa;
+      --accent-yellow: #fbbf24;
       --accent-green: #4ade80;
+      --accent-orange: #fb923c;
       --accent-purple: #c084fc;
-      --text-main: #f8fafc;
+      --text-main: #f1f5f9;
+      --text-sub: #cbd5e1;
       --text-muted: #94a3b8;
-      --badge-v1: #0284c7;
-      --badge-v2: #d97706;
-      --badge-v3: #7c3aed;
-      --badge-v4: #dc2626;
     }
 
     * {
@@ -29,7 +30,7 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Microsoft JhengHei", Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", Roboto, sans-serif;
       background-color: var(--bg-dark);
       color: var(--text-main);
       display: flex;
@@ -41,56 +42,70 @@
 
     /* Top Brand & Title Bar */
     header {
-      background: rgba(30, 41, 59, 0.95);
+      background: rgba(19, 28, 49, 0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border-color);
-      padding: 12px 24px;
+      padding: 14px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
       z-index: 10;
     }
 
-    .brand-group {
+    .brand-container {
       display: flex;
       align-items: center;
       gap: 14px;
     }
 
-    .brand-icon {
-      width: 38px;
-      height: 38px;
+    .brand-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
       background: linear-gradient(135deg, #0284c7, #38bdf8);
-      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: #ffffff;
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .doc-meta h1 {
-      font-size: 1.15rem;
+    .title-group h1 {
+      font-size: 1.18rem;
       font-weight: 700;
       letter-spacing: 0.5px;
       display: flex;
       align-items: center;
       gap: 10px;
+      color: #ffffff;
     }
 
-    .doc-meta .subtitle {
-      font-size: 0.8rem;
+    .title-group .author-meta {
+      font-size: 0.82rem;
       color: var(--text-muted);
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
-    .offline-tag {
+    .author-meta a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .author-meta a:hover {
+      text-decoration: underline;
+      color: #7dd3fc;
+    }
+
+    .badge-offline {
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      background: rgba(74, 222, 128, 0.15);
+      background: rgba(74, 222, 128, 0.12);
       color: var(--accent-green);
       border: 1px solid rgba(74, 222, 128, 0.3);
       padding: 2px 8px;
@@ -98,7 +113,7 @@
       font-weight: 600;
     }
 
-    /* Main Display View */
+    /* Main Display Area */
     main {
       flex: 1;
       overflow-y: auto;
@@ -106,17 +121,17 @@
       scroll-behavior: smooth;
     }
 
-    .content-container {
-      max-width: 1200px;
+    .layout-wrapper {
+      max-width: 1100px;
       margin: 0 auto;
     }
 
-    .guide-section {
+    .guide-page {
       display: none;
       animation: fadeIn 0.2s ease-in-out;
     }
 
-    .guide-section.active {
+    .guide-page.active {
       display: block;
     }
 
@@ -125,80 +140,116 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Section Cards */
-    .hero-card {
+    /* Card Panels */
+    .card-panel {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      margin-bottom: 22px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
-    .hero-title {
-      font-size: 1.35rem;
+    .card-panel-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
       font-weight: 700;
-      color: var(--accent-blue);
-      margin-bottom: 6px;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-tag {
+      font-family: monospace;
+      font-size: 0.8rem;
+      background: var(--card-inner);
+      border: 1px solid var(--border-color);
+      padding: 3px 8px;
+      border-radius: 6px;
+      color: var(--text-muted);
+    }
+
+    /* Method Instruction Boxes */
+    .method-card {
+      background: var(--card-inner);
+      border-left: 4px solid var(--accent-cyan);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 20px;
+      margin-bottom: 18px;
+      border-top: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .method-card.orange { border-left-color: var(--accent-orange); }
+    .method-card.purple { border-left-color: var(--accent-purple); }
+    .method-card.yellow { border-left-color: var(--accent-yellow); }
+
+    .method-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .hero-desc {
-      font-size: 0.92rem;
-      color: var(--text-muted);
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--accent-cyan);
+      padding: 2px 10px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .text-zh {
+      font-size: 0.96rem;
+      line-height: 1.7;
+      color: var(--text-sub);
+      margin-bottom: 6px;
+    }
+
+    .text-en {
+      font-size: 0.88rem;
       line-height: 1.6;
+      color: var(--text-muted);
+      font-style: italic;
     }
 
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
+    .key-highlight {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-family: monospace;
+      font-style: normal;
     }
 
-    .summary-box {
+    /* Version Tables */
+    .table-container {
       background: var(--card-inner);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 16px;
-    }
-
-    .summary-box h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #e2e8f0;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .summary-box ul {
-      list-style-type: none;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .summary-box ul li::before {
-      content: "•";
-      color: var(--accent-blue);
-      font-weight: bold;
-      display: inline-block;
-      width: 1em;
-      margin-left: 2px;
-    }
-
-    /* Detailed Version Comparison Tables */
-    .table-wrapper {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
       overflow-x: auto;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      margin-top: 14px;
     }
 
     table {
@@ -209,17 +260,17 @@
     }
 
     thead th {
-      background: rgba(15, 23, 42, 0.9);
-      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-sub);
       font-weight: 600;
-      padding: 14px 18px;
+      padding: 12px 16px;
       border-bottom: 1px solid var(--border-color);
       white-space: nowrap;
     }
 
     tbody tr {
       border-bottom: 1px solid var(--border-color);
-      transition: background-color 0.15s;
+      transition: background 0.15s;
     }
 
     tbody tr:last-child {
@@ -227,49 +278,72 @@
     }
 
     tbody tr:hover {
-      background: rgba(255, 255, 255, 0.02);
+      background: var(--card-hover);
     }
 
     tbody td {
-      padding: 14px 18px;
-      vertical-align: top;
-      line-height: 1.5;
+      padding: 12px 16px;
+      vertical-align: middle;
+      color: var(--text-muted);
     }
 
-    .tag {
+    .badge-v {
       display: inline-block;
       padding: 3px 8px;
       border-radius: 4px;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 700;
       font-family: monospace;
-      letter-spacing: 0.5px;
+      border: 1px solid transparent;
     }
 
-    .tag-v1 { background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.4); }
-    .tag-v2 { background: rgba(217, 119, 6, 0.2); color: #fbbf24; border: 1px solid rgba(217, 119, 6, 0.4); }
-    .tag-v3 { background: rgba(124, 58, 237, 0.2); color: #c084fc; border: 1px solid rgba(124, 58, 237, 0.4); }
-    .tag-v4 { background: rgba(220, 38, 38, 0.2); color: #f87171; border: 1px solid rgba(220, 38, 38, 0.4); }
-    .tag-eu { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+    .v-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border-color: rgba(56, 189, 248, 0.3); }
+    .v-yellow { background: rgba(251, 191, 36, 0.15); color: var(--accent-yellow); border-color: rgba(251, 191, 36, 0.3); }
+    .v-purple { background: rgba(192, 132, 252, 0.15); color: var(--accent-purple); border-color: rgba(192, 132, 252, 0.3); }
+    .v-green { background: rgba(74, 222, 128, 0.15); color: var(--accent-green); border-color: rgba(74, 222, 128, 0.3); }
 
-    .check-key {
-      font-weight: 600;
-      color: #e2e8f0;
+    /* Intro Info Box */
+    .author-card {
+      background: var(--card-inner);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      line-height: 1.6;
+      font-size: 0.9rem;
+      color: var(--text-sub);
     }
 
-    .tip-box {
-      background: rgba(56, 189, 248, 0.06);
-      border-left: 3px solid var(--accent-blue);
-      padding: 12px 16px;
-      border-radius: 0 6px 6px 0;
-      font-size: 0.85rem;
-      color: #94a3b8;
+    .external-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
       margin-top: 14px;
     }
 
-    /* Fixed Bottom Sheets Tab Bar */
+    .ext-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+
+    .ext-btn:hover {
+      border-color: var(--accent-cyan);
+      background: var(--card-hover);
+    }
+
+    /* Fixed Bottom Navigation */
     footer {
-      background: #090d16;
+      background: #070b14;
       border-top: 1px solid var(--border-color);
       display: flex;
       align-items: center;
@@ -278,7 +352,7 @@
       flex-shrink: 0;
     }
 
-    .tab-item {
+    .tab-btn {
       appearance: none;
       background: transparent;
       border: none;
@@ -295,14 +369,14 @@
       transition: all 0.15s ease;
     }
 
-    .tab-item:hover {
+    .tab-btn:hover {
       color: var(--text-main);
       background: rgba(255, 255, 255, 0.03);
     }
 
-    .tab-item.active {
-      color: var(--accent-blue);
-      border-bottom-color: var(--accent-blue);
+    .tab-btn.active {
+      color: var(--accent-cyan);
+      border-bottom-color: var(--accent-cyan);
       background: var(--card-bg);
       font-weight: 600;
     }
@@ -310,281 +384,382 @@
 </head>
 <body>
 
-  <!-- Top Bar -->
+  <!-- Top Title Bar -->
   <header>
-    <div class="brand-group">
-      <div class="brand-icon">DK</div>
-      <div class="doc-meta">
+    <div class="brand-container">
+      <div class="brand-avatar">DK</div>
+      <div class="title-group">
         <h1>
           US Anime Digivice Version Check Guide 4.0
-          <span class="offline-tag">Offline Standalone</span>
+          <span class="badge-offline">Standalone Viewer</span>
         </h1>
-        <div class="subtitle">美版暴龍機版本檢查教學 4.0 (D2 / D-3 / D-Power / D-Tector) • @digikidult</div>
+        <div class="author-meta">
+          美版暴龍機版本檢查教學 4.0 • by <a href="https://www.facebook.com/DigiKidult" target="_blank" rel="noreferrer">@Digikidult</a>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- Content Container -->
+  <!-- Main Content Area -->
   <main>
-    <div class="content-container">
+    <div class="layout-wrapper">
 
       <!-- ================= 簡介 Introduction ================= -->
-      <section id="tab-intro" class="guide-section active">
-        <div class="hero-card">
-          <div class="hero-title">美版暴龍機版本速查教學 4.0 總覽</div>
-          <div class="hero-desc">
-            美版與歐版（Bandai America / Bandai Europe）動畫系列暴龍機在硬體外殼、天線插頭、水晶銘牌、卡槽感應以及開機選單邏輯上均與日版有顯著不同。本教學整理 D2 (Digivice)、D-3、D-Power 及 D-Tector 四大系列的各版本外觀特徵、開機測試法及核心差異。
+      <section id="tab-intro" class="guide-page active">
+        <div class="card-panel">
+          <div class="card-panel-header">
+            <div class="card-title">美版暴龍機版本檢查教學 4.0 總覽</div>
+            <span class="card-tag">Guide Overview</span>
           </div>
 
-          <div class="summary-grid">
-            <div class="summary-box">
-              <h3>電波暴龍機 (D2)</h3>
-              <ul>
-                <li><strong>Ver 1:</strong> 初代八隻數碼獸，無內部特定存檔代碼</li>
-                <li><strong>Ver 2:</strong> 增加穿山獸/麻鷹獸/V仔獸進化鏈</li>
-                <li><strong>Ver 2.5:</strong> 特別配色透明外殼，限定收錄</li>
-              </ul>
-            </div>
-            <div class="summary-box">
-              <h3>D-3 系列</h3>
-              <ul>
-                <li><strong>Ver 1:</strong> 經典天線設計，初期六隻主角獸</li>
-                <li><strong>Ver 2:</strong> 蟲蟲獸/飛蟲獸加入，數碼裝甲進化</li>
-                <li><strong>Ver 3:</strong> 最終完全收錄版，追加究極體連鎖</li>
-              </ul>
-            </div>
-            <div class="summary-box">
-              <h3>D-Power 系列</h3>
-              <ul>
-                <li><strong>美版 Ver 1 / 2:</strong> 圓弧外殼，頂部專用刷卡條感應</li>
-                <li><strong>美版 Ver 3:</strong> 歐亞版同規外型，按鍵反饋與字庫升級</li>
-                <li><strong>刷卡感應:</strong> 支援條碼與特製厚卡感應判讀</li>
-              </ul>
-            </div>
-            <div class="summary-box">
-              <h3>D-Tector 系列</h3>
-              <ul>
-                <li><strong>Ver 1 / 2:</strong> 條碼掃描式感應，十鬥士魂進化</li>
-                <li><strong>Ver 3 / 4:</strong> 擴充更多鬥士數據與高階對戰模式</li>
-                <li><strong>感應方式:</strong> 側面紅外線條碼偵測器滑過感應</li>
-              </ul>
+          <p class="text-zh" style="font-size: 1.02rem; font-weight: 500; color: #ffffff;">
+            Version Check Guide 4.0 for US Digivice (D2, D-3, D-Power &amp; D-Tector)
+          </p>
+
+          <div class="author-card">
+            <p><strong>About DigiKidult:</strong></p>
+            <p style="margin-top: 6px; color: var(--text-muted);">
+              Just a Digimon Tamer from Hong Kong, passionate about sharing Digimon secrets and news, with a special focus on retro games and Digivices.
+            </p>
+            <div class="external-links">
+              <a class="ext-btn" href="https://www.facebook.com/DigiKidult" target="_blank" rel="noreferrer">Facebook (@DigiKidult)</a>
+              <a class="ext-btn" href="https://twitter.com/DigiKidult/" target="_blank" rel="noreferrer">Twitter (@DigiKidult)</a>
+              <a class="ext-btn" href="http://bit.ly/JpDigiviceDB" target="_blank" rel="noreferrer">日版暴龍機資料庫 (JP DB)</a>
             </div>
           </div>
+        </div>
 
-          <div class="tip-box">
-            點擊底部分頁按鈕切換至各機型的詳細檢驗指標、原裝螺絲孔位以及版本對照清單。
+        <div class="card-panel">
+          <div class="card-panel-header">
+            <div class="card-title">快速進入除錯模式檢查指令 (Quick Debug Checklist)</div>
+            <span class="card-tag">Reset Shortcut</span>
+          </div>
+
+          <!-- D2 Quick -->
+          <div class="method-card">
+            <div class="method-title">
+              <span>電波 / 神聖計劃 D2 Digivice</span>
+              <span class="step-badge">A + B + Reset</span>
+            </div>
+            <div class="text-zh">只需按住 <span class="key-highlight">A + B</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。</div>
+            <div class="text-en">Hold down the A and B buttons simultaneously while pressing and releasing the Reset button.</div>
+          </div>
+
+          <!-- D-3 Quick -->
+          <div class="method-card yellow">
+            <div class="method-title">
+              <span>D-3 系列</span>
+              <span class="step-badge">A + Left + Reset</span>
+            </div>
+            <div class="text-zh">只需按住 <span class="key-highlight">A + 左</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。</div>
+            <div class="text-en">Hold down the A and Left buttons simultaneously while pressing and releasing the Reset button.</div>
+          </div>
+
+          <!-- D-Power Ver 1 Quick -->
+          <div class="method-card orange">
+            <div class="method-title">
+              <span>D-Power Ver 1 (031)</span>
+              <span class="step-badge">Left + Down + Reset</span>
+            </div>
+            <div class="text-zh">只需按住 <span class="key-highlight">左 + 下</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。</div>
+            <div class="text-en">Hold down the Left and Down buttons simultaneously while pressing and releasing the Reset button.</div>
+          </div>
+
+          <!-- D-Power Ver 2 & 3 Quick -->
+          <div class="method-card orange">
+            <div class="method-title">
+              <span>D-Power Ver 2 &amp; Ver 3 (032 &amp; 033X)</span>
+              <span class="step-badge">Left + Right + Reset</span>
+            </div>
+            <div class="text-zh">只需按住 <span class="key-highlight">左 + 右</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。</div>
+            <div class="text-en">Hold down the Left and Right buttons simultaneously while pressing and releasing the Reset button.</div>
+          </div>
+
+          <!-- D-Tector Quick -->
+          <div class="method-card purple">
+            <div class="method-title">
+              <span>D-Tector 系列</span>
+              <span class="step-badge">A + B + Reset</span>
+            </div>
+            <div class="text-zh">只需按住 <span class="key-highlight">A + B</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。</div>
+            <div class="text-en">Hold down the A and B buttons simultaneously while pressing and releasing the Reset button.</div>
           </div>
         </div>
       </section>
 
       <!-- ================= 電波 D2 ================= -->
-      <section id="tab-d2" class="guide-section">
-        <div class="hero-card">
-          <div class="hero-title">US Digivice (D2 電波機) 版本檢查</div>
-          <div class="hero-desc">
-            美版電波機（Series 1）外殼厚實，按鍵佈局為雙主鍵配下方滾輪或確認鍵。美版在不同批次間的晶片組與開機選角清單存在明確差異。
+      <section id="tab-d2" class="guide-page">
+        <div class="card-panel">
+          <div class="card-panel-header">
+            <div class="card-title">電波 / 神聖計劃 D2 Digivice</div>
+            <span class="card-tag">Series 1</span>
           </div>
-        </div>
 
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th style="width: 140px;">版本</th>
-                <th style="width: 180px;">外觀配色特徵</th>
-                <th>開機自我檢查 / 初始選擇數碼獸</th>
-                <th>核心功能與戰鬥差異</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="tag tag-v1">Version 1</span></td>
-                <td>灰白原色機身 / 藍色握把、橙色或透明按鍵部件</td>
-                <td>開機直接顯示 <strong>Agumon / Gabumon</strong> 等初代 7-8 隻夥伴數碼獸選擇。</td>
-                <td>步數計算機制為實體金屬擺錘；通訊接點為美版特有雙彈片雙極接觸面。</td>
-              </tr>
-              <tr>
-                <td><span class="tag tag-v2">Version 2</span></td>
-                <td>透藍機身、透綠色外殼配反差按鈕邊緣</td>
-                <td>選角清單中直接加入 <strong>Veemon / Hawkmon / Armadillomon</strong> 圖標。</td>
-                <td>地圖步數縮減，加入新一代進攻骰子連鎖判定機制。</td>
-              </tr>
-              <tr>
-                <td><span class="tag tag-v2">Version 2.5</span></td>
-                <td>限量金屬銀灰、透明紫限量外殼</td>
-                <td>開機畫面帶有專屬代碼顯示，可直接選用全究極體形態。</td>
-                <td>對戰晶片頻率優化，修正了 Ver 1 搖擺感測開關接觸靈敏度延遲問題。</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="method-card">
+            <div class="method-title">
+              <span>進入 Debug 模式檢查方法</span>
+              <span class="step-badge">A + B + Reset</span>
+            </div>
+            <div class="text-zh">
+              只需按住 <span class="key-highlight">A + B</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
+              <strong>備註：</strong>部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面。
+            </div>
+            <div class="text-en">
+              Simply hold down the A and B buttons simultaneously while pressing and releasing the reset button.<br>
+              (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 140px;">機種</th>
+                  <th style="width: 140px;">版本</th>
+                  <th>版本代碼 (Code) 與規格說明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Digivice D2</strong></td>
+                  <td><span class="badge-v v-blue">Ver 1</span></td>
+                  <td>美版初代電波機晶片代碼，開機提供初代八主角夥伴數碼獸選擇。</td>
+                </tr>
+                <tr>
+                  <td><strong>Digivice D2</strong></td>
+                  <td><span class="badge-v v-yellow">Ver 2</span></td>
+                  <td>第二代升級晶片代碼，增加裝甲體進化與修正步數計算。</td>
+                </tr>
+                <tr>
+                  <td><strong>Digivice D2</strong></td>
+                  <td><span class="badge-v v-purple">Ver 2.5</span></td>
+                  <td>限定配色升級晶片版，內置究極體數據與特殊對戰模式。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
       <!-- ================= D-3 ================= -->
-      <section id="tab-d3" class="guide-section">
-        <div class="hero-card">
-          <div class="hero-title">US D-3 系列版本檢查</div>
-          <div class="hero-desc">
-            美版 D-3 內部系統全面轉向 RPG 闖關式地圖。其天線膠件與主板晶片型號標記為辨別美版 Ver 1 至 Ver 3 的關鍵。
+      <section id="tab-d3" class="guide-page">
+        <div class="card-panel">
+          <div class="card-panel-header">
+            <div class="card-title">D-3 系列</div>
+            <span class="card-tag">Series 2</span>
           </div>
-        </div>
 
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th style="width: 140px;">版本</th>
-                <th style="width: 180px;">主要外殼樣式</th>
-                <th>開機畫面與預設隊伍</th>
-                <th>版本獨佔特徵</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="tag tag-v1">Version 1</span></td>
-                <td>本宮大輔藍白配色、井上京紅白配色、火田伊織黃白配色</td>
-                <td>開機直接選擇初期三位拍檔（V仔獸、麻鷹獸、穿山獸）。</td>
-                <td>裝甲進化需要透過通訊或地圖搜尋 Digi-Egg，無後續暗黑魔王角色。</td>
-              </tr>
-              <tr>
-                <td><span class="tag tag-v2">Version 2</span></td>
-                <td>一乘寺賢黑綠配色、高石岳透明白/綠配、八神光粉紅透明</td>
-                <td>開機即包含 <strong>Wormmon</strong>，並新增巴達獸與迪路獸裝甲進化分支。</td>
-                <td>加入「合體進化 (DNA Digivolution)」模式與派達獸暗黑路線解鎖。</td>
-              </tr>
-              <tr>
-                <td><span class="tag tag-v3">Version 3</span></td>
-                <td>透黑限定版、透紅及特殊塗裝款式（量少罕見）</td>
-                <td>開機選單帶有完整選單目錄，可直接讀取全部六位拍檔數碼獸。</td>
-                <td>Boss 地圖加入究極魔獸軍團與帝皇龍甲獸聖騎士形態（Paladin Mode）。</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="method-card yellow">
+            <div class="method-title">
+              <span>進入 Debug 模式檢查方法</span>
+              <span class="step-badge">A + Left + Reset</span>
+            </div>
+            <div class="text-zh">
+              只需按住 <span class="key-highlight">A + 左</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
+              <strong>備註：</strong>部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面。
+            </div>
+            <div class="text-en">
+              Simply hold down the A and Left buttons simultaneously while pressing and releasing the reset button.<br>
+              (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 140px;">機種</th>
+                  <th style="width: 140px;">版本</th>
+                  <th>版本代碼 (Code) 與規格說明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Digivice D3</strong></td>
+                  <td><span class="badge-v v-blue">Ver 1</span></td>
+                  <td>美版初代 D-3，收錄初期三位拍檔（V仔獸、麻鷹獸、穿山獸）。</td>
+                </tr>
+                <tr>
+                  <td><strong>Digivice D3</strong></td>
+                  <td><span class="badge-v v-yellow">Ver 2</span></td>
+                  <td>加入蟲蟲獸與巴達獸/迪路獸進化鏈，支援 DNA Digivolution。</td>
+                </tr>
+                <tr>
+                  <td><strong>Digivice D3</strong></td>
+                  <td><span class="badge-v v-purple">Ver 3</span></td>
+                  <td>完全版晶片，追加全究極體解鎖與最終 Boss 連鎖對戰。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
       <!-- ================= D-Power ================= -->
-      <section id="tab-dpower" class="guide-section">
-        <div class="hero-card">
-          <div class="hero-title">US D-Power (D-Ark) 版本檢查</div>
-          <div class="hero-desc">
-            美版 D-Power 與日版 D-Ark 存在本質結構不同：頂部保留實體刷卡凹槽，內部為光學條碼/雙觸發開關感應器，分為 Ver 1/2 與大幅變更的 Ver 3。
+      <section id="tab-dpower" class="guide-page">
+        <div class="card-panel">
+          <div class="card-panel-header">
+            <div class="card-title">D-Power 系列</div>
+            <span class="card-tag">Series 3</span>
           </div>
-        </div>
 
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th style="width: 140px;">版本</th>
-                <th style="width: 180px;">外殼模具型態</th>
-                <th>刷卡系統與感應機構</th>
-                <th>判別方式</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="tag tag-v1">Version 1</span></td>
-                <td>經典美版蛋形圓潤機身（紅白松田啟人、藍白李健良配色）</td>
-                <td>雙邊觸點感應，相容原裝美版迷你卡及自製條碼厚卡。</td>
-                <td>開機僅提供基爾獸、大耳獸及妖狐獸三隻初代夥伴選擇。</td>
-              </tr>
-              <tr>
-                <td><span class="tag tag-v2">Version 2</span></td>
-                <td>深藍白（秋山遼樣式）及銀藍限定塗裝外殼</td>
-                <td>刷卡條優化，提高感應通過容錯率，支援多重刷卡加成。</td>
-                <td>開機新增<strong>單角龍獸 (Monodramon)</strong> 拍檔選項，地圖終點有帝厲魔機制。</td>
-              </tr>
-              <tr>
-                <td><span class="tag tag-v3">Version 3 / EU</span></td>
-                <td>採用歐規/亞規獨立俐落外殼，按鍵手感較紮實</td>
-                <td>全新字庫渲染與高對比點陣液晶面板，刷卡辨識代碼庫完全重寫。</td>
-                <td>外觀印有專屬標誌，選單支援全部究極體爆裂卡片輸入代碼。</td>
-              </tr>
-            </tbody>
-          </table>
+          <!-- Ver 1 -->
+          <div class="method-card orange">
+            <div class="method-title">
+              <span>Ver 1 (031) Debug 檢查</span>
+              <span class="step-badge">Left + Down + Reset</span>
+            </div>
+            <div class="text-zh">
+              只需按住 <span class="key-highlight">左 + 下</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
+              <strong>備註：</strong>部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面。
+            </div>
+            <div class="text-en">
+              Simply hold down the left and down buttons simultaneously while pressing and releasing the reset button.<br>
+              (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
+            </div>
+          </div>
+
+          <!-- Ver 2 & 3 -->
+          <div class="method-card orange">
+            <div class="method-title">
+              <span>Ver 2 &amp; Ver 3 (032 &amp; 033X) Debug 檢查</span>
+              <span class="step-badge">Left + Right + Reset</span>
+            </div>
+            <div class="text-zh">
+              只需按住 <span class="key-highlight">左 + 右</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
+              <strong>備註：</strong>部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面。
+            </div>
+            <div class="text-en">
+              Simply hold down the left and right buttons simultaneously while pressing and releasing the reset button.<br>
+              (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 140px;">機種</th>
+                  <th style="width: 140px;">區域 / 版本</th>
+                  <th>版本代碼 (Code)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>DPower</strong></td>
+                  <td>USA <span class="badge-v v-blue">Ver 1</span></td>
+                  <td><code>031</code></td>
+                </tr>
+                <tr>
+                  <td><strong>DPower</strong></td>
+                  <td>USA <span class="badge-v v-yellow">Ver 2</span></td>
+                  <td><code>032</code></td>
+                </tr>
+                <tr>
+                  <td><strong>DPower</strong></td>
+                  <td>USA <span class="badge-v v-purple">Ver 3</span></td>
+                  <td><code>033X</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
       <!-- ================= D-Tector ================= -->
-      <section id="tab-dtector" class="guide-section">
-        <div class="hero-card">
-          <div class="hero-title">US D-Tector (D-Scanner) 版本檢查</div>
-          <div class="hero-desc">
-            第四代美版機型改名為 D-Tector。與日版條碼掃描槍不同，美版利用手動推動側面感應模組或滑過卡片條碼讀取鬥士之魂（Spirits）。
+      <section id="tab-dtector" class="guide-page">
+        <div class="card-panel">
+          <div class="card-panel-header">
+            <div class="card-title">D-Tector 系列</div>
+            <span class="card-tag">Series 4</span>
           </div>
-        </div>
 
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th style="width: 140px;">版本</th>
-                <th style="width: 180px;">外殼配色</th>
-                <th>掃描系統支援</th>
-                <th>核心差異與資料庫</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="tag tag-v1">Version 1</span></td>
-                <td>拓也紅黑配色、輝二藍白配色</td>
-                <td>側面運動條碼掃描滑軌，內建基礎十鬥士人型/獸型魂。</td>
-                <td>可讀取基本卡片條碼；通訊接口支援美規暴龍機對戰模式。</td>
-              </tr>
-              <tr>
-                <td><span class="tag tag-v2">Version 2</span></td>
-                <td>純平藍黃配色、泉透紫配色、輝一暗黑透明黑</td>
-                <td>條碼庫升級，支援全部十鬥士雷、風、暗系完整進化鏈。</td>
-                <td>修正了 Ver 1 條碼掃描偶發性 Error 報錯，提升判讀成功率。</td>
-              </tr>
-              <tr>
-                <td><span class="tag tag-v3">Version 3</span></td>
-                <td>凱撒暴龍獸（透紅/金邊）、麥格納加魯魯獸（透白/銀邊）</td>
-                <td>直接支援超魂進化（Hyper Spirit Evolution）及金剛武神獸。</td>
-                <td>機身背面螺絲及電池倉印刷附帶版本標籤識別，內建遊戲步數最高。</td>
-              </tr>
-              <tr>
-                <td><span class="tag tag-v4">Version 4</span></td>
-                <td>透明限定系列，配色極度稀有（美版末代機）</td>
-                <td>收錄歷代全系列主要頭目獸數據資料庫。</td>
-                <td>系統自帶全技能全鬥士解鎖代碼輸入通道，對戰參數最高上限。</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="method-card purple">
+            <div class="method-title">
+              <span>進入 Debug 模式檢查方法</span>
+              <span class="step-badge">A + B + Reset</span>
+            </div>
+            <div class="text-zh">
+              只需按住 <span class="key-highlight">A + B</span> 制同時按下 <span class="key-highlight">Reset</span> 並鬆開即可。<br>
+              <strong>備註：</strong>部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面。
+            </div>
+            <div class="text-en">
+              Simply hold down the A and B buttons simultaneously while pressing and releasing the reset button.<br>
+              (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 140px;">機種</th>
+                  <th style="width: 160px;">版本代碼 (Code)</th>
+                  <th>輸入名字後動畫 (Animation after name entry)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>D-Tector</strong></td>
+                  <td><span class="badge-v v-blue">US v1.01</span></td>
+                  <td>基礎初代十鬥士魂掃描動畫流程。</td>
+                </tr>
+                <tr>
+                  <td><strong>D-Tector</strong></td>
+                  <td><span class="badge-v v-yellow">US v2.00</span></td>
+                  <td>升級版掃描識別程式，支援更廣泛的卡片條碼。</td>
+                </tr>
+                <tr>
+                  <td><strong>D-Tector</strong></td>
+                  <td><span class="badge-v v-green">ASIA v2.00</span></td>
+                  <td>亞洲發行版 v2.00，部分開機動畫效果有微調。</td>
+                </tr>
+                <tr>
+                  <td><strong>D-Tector</strong></td>
+                  <td><span class="badge-v v-purple">ASIA v3.00</span></td>
+                  <td>超魂進化支援版，新增凱撒暴龍獸與麥格納加魯魯獸數據。</td>
+                </tr>
+                <tr>
+                  <td><strong>D-Tector</strong></td>
+                  <td><span class="badge-v v-orange">ASIA v4.00</span></td>
+                  <td>完整資料庫收錄版，對戰與條碼感應程式最終修訂。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
     </div>
   </main>
 
-  <!-- Bottom Sheet Tabs Navigation -->
+  <!-- Bottom Sheet Tabs -->
   <footer>
-    <button class="tab-item active" onclick="navigateTab('tab-intro', this)">
+    <button class="tab-btn active" onclick="switchSheet('tab-intro', this)">
       <span>簡介 Introduction</span>
     </button>
-    <button class="tab-item" onclick="navigateTab('tab-d2', this)">
+    <button class="tab-btn" onclick="switchSheet('tab-d2', this)">
       <span>電波 D2</span>
     </button>
-    <button class="tab-item" onclick="navigateTab('tab-d3', this)">
+    <button class="tab-btn" onclick="switchSheet('tab-d3', this)">
       <span>D-3</span>
     </button>
-    <button class="tab-item" onclick="navigateTab('tab-dpower', this)">
+    <button class="tab-btn" onclick="switchSheet('tab-dpower', this)">
       <span>D-Power</span>
     </button>
-    <button class="tab-item" onclick="navigateTab('tab-dtector', this)">
+    <button class="tab-btn" onclick="switchSheet('tab-dtector', this)">
       <span>D-Tector</span>
     </button>
   </footer>
 
   <script>
-    function navigateTab(sectionId, btn) {
-      document.querySelectorAll('.guide-section').forEach(sec => sec.classList.remove('active'));
-      document.querySelectorAll('.tab-item').forEach(b => b.classList.remove('active'));
+    function switchSheet(sheetId, btn) {
+      document.querySelectorAll('.guide-page').forEach(page => page.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
-      const activeSection = document.getElementById(sectionId);
-      if (activeSection) {
-        activeSection.classList.add('active');
+      const activePage = document.getElementById(sheetId);
+      if (activePage) {
+        activePage.classList.add('active');
       }
       btn.classList.add('active');
     }
