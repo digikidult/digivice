@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美版暴龍機版本檢查教學 4.0 | Version Check Guide 4.0 for US Digivice - DigiKidult</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 柔和護眼 Slate & Mint 配色板 */
+            --bg-base: #0f172a;        /* 深藍灰背景 */
+            --bg-card: #1e293b;        /* 主卡片底色 */
+            --bg-card-inner: #0b1329;  /* 內層展示框 */
+            --bg-table-head: #134e4a;  /* 松石綠表頭 */
+            --bg-row-alt: #162032;     /* 隔行背景 */
+            --bg-row-hover: #1e3a5f;   /* 滑鼠停留效果 */
+
+            --text-main: #e2e8f0;      /* 內文主色：淺灰白 */
+            --text-dim: #94a3b8;       /* 次要提示：灰藍 */
+            --accent-mint: #34d399;    /* 強調：薄荷綠 */
+            --accent-cyan: #38bdf8;    /* 輔助：天青藍 */
+            --accent-gold: #fbbf24;    /* 核心提示：暖金黃 */
+
+            --border-main: #334155;    /* 邊框線 */
+            --border-accent: #059669;  /* 強調框線 */
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Noto Sans TC', 'DotGothic16', sans-serif;
+            margin: 0;
+            padding: 20px 14px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            border: 1px solid var(--border-main);
+            border-radius: 8px;
+            padding: 28px;
+            background-color: var(--bg-card);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 封面橫額容器 */
+        .cover-container {
+            width: 100%;
+            max-height: 360px;
+            overflow: hidden;
+            border-radius: 6px;
+            border: 1px solid var(--border-main);
+            margin-bottom: 24px;
+            position: relative;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: auto;
+            max-height: 360px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cover-container::after {
+            content: " ";
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'DotGothic16', 'Noto Sans TC', sans-serif;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            color: var(--accent-gold);
+            font-size: 1.75rem;
+            margin: 0 0 8px 0;
+        }
+
+        h2 {
+            color: var(--accent-mint);
+            font-size: 1.25rem;
+            border-bottom: 2px solid var(--border-main);
+            padding-bottom: 10px;
+            margin-top: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        h3 {
+            color: var(--accent-cyan);
+            font-size: 1.05rem;
+            margin-top: 18px;
+        }
+
+        .header-box {
+            text-align: center;
+            border: 1px solid var(--border-accent);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #111e33 0%, #0a1120 100%);
+        }
+
+        .header-box p {
+            margin: 6px 0;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            background-color: #065f46;
+            color: #ecfdf5;
+            border: 1px solid #10b981;
+            padding: 6px 14px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .social-btn:hover {
+            background-color: #10b981;
+            color: #064e3b;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin: 24px 0;
+        }
+
+        .nav-grid a {
+            text-align: center;
+            border: 1px solid var(--border-main);
+            color: var(--text-main);
+            padding: 9px 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: #131d2e;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-grid a:hover {
+            background-color: #047857;
+            border-color: var(--accent-mint);
+            color: #fff;
+        }
+
+        .box {
+            border: 1px solid var(--border-main);
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            background-color: var(--bg-card-inner);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 16px 0 24px 0;
+            border: 1px solid var(--border-main);
+            border-radius: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid var(--border-main);
+            padding: 10px 12px;
+        }
+
+        th {
+            background-color: var(--bg-table-head);
+            color: #fef08a;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--bg-row-alt);
+        }
+
+        tr:hover {
+            background-color: var(--bg-row-hover);
+        }
+
+        .highlight {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .cyan {
+            color: var(--accent-cyan);
+            font-weight: 500;
+        }
+
+        .mint {
+            color: var(--accent-mint);
+        }
+
+        .badge-code {
+            display: inline-block;
+            background-color: #022c22;
+            color: #6ee7b7;
+            border: 1px solid #059669;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        small {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        ul, ol {
+            padding-left: 22px;
+            margin: 8px 0;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            border-top: 1px solid var(--border-main);
+            padding-top: 20px;
+            font-size: 0.82rem;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- 封面橫額 (Cover Art) -->
+    <div class="cover-container">
+        <img class="cover-image" src="cover.jpg" alt="美版暴龍機版本檢查教學 4.0 Cover Art" onerror="this.style.display='none'">
+    </div>
+
+    <!-- Header -->
+    <div class="header-box">
+        <h1>美版暴龍機版本檢查教學 4.0</h1>
+        <p style="font-size: 1.1rem; color: #cbd5e1; margin-bottom: 8px;">Version Check Guide 4.0 for US Digivice (D2, D-3, D-Power &amp; D-Tector)</p>
+        <p>By <strong class="mint">@DigiKidult</strong></p>
+        <p style="font-size: 0.85rem; max-width: 800px; margin: 8px auto; color: var(--text-dim);">
+            Just a Digimon Tamer from Hong Kong, passionate about sharing Digimon secrets and news, with a special focus on retro games and Digivices.
+        </p>
+        <div class="social-links">
+            <a class="social-btn" href="https://www.facebook.com/DigiKidult/" target="_blank">Facebook: @DigiKidult</a>
+            <a class="social-btn" href="https://www.instagram.com/digikidult/" target="_blank">Instagram: @digikidult</a>
+            <a class="social-btn" href="https://bit.ly/JpDigiviceDB" target="_blank">日版教學 For JP Digivice (bit.ly/JpDigiviceDB)</a>
+        </div>
+    </div>
+
+    <!-- 快速導航 -->
+    <div class="nav-grid">
+        <a href="#nav-d2">D2 電波/神聖計劃</a>
+        <a href="#nav-d3">D-3</a>
+        <a href="#nav-dpower">D-Power (031/032/033)</a>
+        <a href="#nav-dtector">D-Tector</a>
+    </div>
+
+    <!-- 1. D2 電波/神聖計劃 -->
+    <section id="nav-d2">
+        <h2>📡 電波 / 神聖計劃 D2 Digivice</h2>
+        <div class="box">
+            <strong class="highlight">進入 Debug Mode 檢查版本方法：</strong><br>
+            只需按住 <strong>A + B 鍵</strong> 同時按下 <strong>Reset</strong> 並鬆開即可。<br>
+            <small>(部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面)<br>
+            Simply hold down the A and B buttons simultaneously while pressing and releasing the reset button. (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)</small>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>主機版本</th>
+                        <th>Debug 顯示 Code</th>
+                        <th>備註說明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ver 1 (011)</strong></td>
+                        <td><span class="badge-code">[全黑屏] [Full Black Screen]</span></td>
+                        <td>開機無字元直接全黑</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ver 2 (012)</strong></td>
+                        <td><span class="badge-code">US．V2</span></td>
+                        <td>存在高仿版本，需特別注意辨別</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ver 2.5 (0125)</strong></td>
+                        <td><span class="badge-code">US．V2.5</span></td>
+                        <td>透光外殼特殊版本</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="box">
+            <h3 style="margin-top:0;">如何辨別真品和高仿 (To distinguish between genuine and bootleg):</h3>
+            <ul>
+                <li><strong class="highlight">* 只有 Ver 2 (012) 存在高仿 (Bootleg are all version 2)</strong></li>
+                <li>檢查外殼模具細節、按鈕手感及屏幕邊框印刷。正版零件邊緣整齊清晰。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 2. D-3 -->
+    <section id="nav-d3">
+        <h2>📟 D-3</h2>
+        <div class="box">
+            <strong class="highlight">進入 Debug Mode 檢查版本方法：</strong><br>
+            只需按住 <strong>A + 左鍵 (Left)</strong> 同時按下 <strong>Reset</strong> 並鬆開即可。<br>
+            <small>(部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面)<br>
+            Simply hold down the A and Left buttons simultaneously while pressing and releasing the reset button. (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)</small>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>主機版本</th>
+                        <th>Debug 顯示 Code</th>
+                        <th>備註 / Photo Credit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ver 1 (021)</strong></td>
+                        <td><span class="badge-code">D3US．V1</span></td>
+                        <td>Photo credit: Ralf Wong</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ver 2 (022)</strong></td>
+                        <td>
+                            <span class="badge-code">D3US V2.01</span><br>
+                            <span class="badge-code">D3US V2.02</span>
+                        </td>
+                        <td>
+                            V2.01 credit: Zacuri<br>
+                            V2.02 credit: Ralf Wong
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ver 3 (023)</strong></td>
+                        <td><span class="badge-code">D3US V3.0</span></td>
+                        <td>美版 D-3 最終版本</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 3. D-Power -->
+    <section id="nav-dpower">
+        <h2>🧭 D-Power</h2>
+        
+        <div class="box">
+            <h3 style="margin-top:0;">進入 Debug Mode 方法：</h3>
+            <ul>
+                <li><strong>Ver 1 (031)</strong>：<br>
+                    只需按住 <strong>左 + 下鍵 (Left + Down)</strong> 同時按下 <strong>Reset</strong> 並鬆開即可。<br>
+                    <small>Simply hold down the left and down buttons simultaneously while pressing and releasing the reset button.</small>
+                </li>
+                <li><strong>Ver 2 &amp; 3 (032 &amp; 033X)</strong>：<br>
+                    只需按住 <strong>左 + 右鍵 (Left + Right)</strong> 同時按下 <strong>Reset</strong> 並鬆開即可。<br>
+                    <small>Simply hold down the left and right buttons simultaneously while pressing and releasing the reset button.</small>
+                </li>
+            </ul>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>版本分類</th>
+                        <th>Debug 顯示 Code</th>
+                        <th>備註說明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>USA</strong></td>
+                        <td><span class="badge-code">DPOWER V 1.1 USA</span></td>
+                        <td>美國版限定</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EU/Asia Ver 1 (031)</strong></td>
+                        <td>
+                            <span class="badge-code">DP．EU V1.00</span><br>
+                            <span class="badge-code">DP．EU V1.01</span>
+                        </td>
+                        <td>歐亞版初代</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EU/Asia Ver 2 (032)</strong></td>
+                        <td><span class="badge-code">DPOWER V 2.01</span></td>
+                        <td>歐亞版第二代</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EU/Asia Ver 3 (0330)</strong></td>
+                        <td><span class="badge-code">DPOWER V 3.00</span></td>
+                        <td>存在最終 Boss 當機 Bug</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EU/Asia Ver 3 (0331)</strong></td>
+                        <td><span class="badge-code">DPOWER V 3.01</span></td>
+                        <td>修正當機問題的修正版</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="box">
+            <h3 style="margin-top:0; color: var(--accent-gold);">⚠️ Difference between V3.00 &amp; V3.01? (0330 和 0331 的差異)</h3>
+            <p>
+                <strong>中文說明：</strong><br>
+                由於 <strong>0330 (V3.00)</strong> 存在系統 Bug，會在遇到最後一張地圖的第二位 Boss 時死機。而在 <strong>0331 (V3.01)</strong> 版本中，此 Bug 已被修正。<br>
+                <em>* 0330 可以使用 Debug Mode 去繞過此 Bug 繼續遊玩。但使用此方法打敗該 Boss 後，會無法正常瀏覽角色數值，且無法在通關後繼續遊玩。</em>
+            </p>
+            <p style="color: var(--text-dim); font-size: 0.85rem;">
+                <strong>English:</strong><br>
+                In version 3.00, it has a bug that causes the game to freeze when encountering the second boss on the last map. This issue has been resolved in version 3.01. For v3.00, you can use the debug mode to beat that boss and continue playing. However, after using the debug mode to defeat the boss, you will no longer be able to access and view your character stats or play post-game.
+            </p>
+        </div>
+    </section>
+
+    <!-- 4. D-Tector -->
+    <section id="nav-dtector">
+        <h2>📟 D-Tector</h2>
+        <div class="box">
+            <strong class="highlight">進入 Debug Mode 檢查版本方法：</strong><br>
+            只需按住 <strong>A + B 鍵</strong> 同時按下 <strong>Reset</strong> 並鬆開即可。<br>
+            <small>(部分機種一開始會出現黑畫面，試著按不同按鍵就會跳出版本畫面)<br>
+            Simply hold down the A and B buttons simultaneously while pressing and releasing the reset button. (Note: Some devices may initially display a black screen, but you can simply press a few more buttons to check the version.)</small>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>主機版本</th>
+                        <th>Debug 顯示 Code</th>
+                        <th>開機動畫 Animation<br><small style="color: #cbd5e1;">(After name entry 輸入名字後)</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>US v1.01 (040/041 史前)</strong></td>
+                        <td><span class="badge-code">DS．US V1.01 1</span></td>
+                        <td>Spirit 戰魂</td>
+                    </tr>
+                    <tr>
+                        <td><strong>US v2.00 (041)</strong></td>
+                        <td><span class="badge-code">D-TEC US V2.00 0</span></td>
+                        <td>A moving train 火車</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ASIA v2.00 (042)</strong></td>
+                        <td><span class="badge-code">D-TEC ASIA V2.00 0</span></td>
+                        <td>Cherubimon 基路比獸</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ASIA v3.00 (043)</strong></td>
+                        <td><span class="badge-code">D-TEC ASIA V3.00 0</span></td>
+                        <td>Crusadermon 劍皇獸</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ASIA v4.00 (044)</strong></td>
+                        <td><span class="badge-code">D-TEC ASIA V4.00 0</span></td>
+                        <td>(NA)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="box">
+            <small>Photo credit: Zacuri (IG: _zacuri.wav)</small>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© DigiKidult | 美版暴龍機版本檢查教學 4.0 (Version Check Guide 4.0 for US Digivice)</p>
+        <p>All data strictly sourced from DigiKidult US Digivice Version Database.</p>
+    </div>
+</div>
+
+</body>
+</html>
