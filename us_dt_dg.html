@@ -134,6 +134,13 @@
             background-color: var(--lcd-text);
             color: var(--lcd-bg);
         }
+        
+        .form-label {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            display: block;
+            margin-bottom: 5px;
+        }
 
         table {
             width: 100%;
@@ -173,6 +180,7 @@
             <button class="tab-btn active" onclick="openTab(event, 'Overview')">Overview</button>
             <button class="tab-btn" onclick="openTab(event, 'DrLee')">D-Terminal (351)</button>
             <button class="tab-btn" onclick="openTab(event, 'ND')">D-gather (431)</button>
+            <button class="tab-btn" onclick="openTab(event, 'Report')">Report Missing</button>
         </div>
 
         <!-- OVERVIEW TAB -->
@@ -184,7 +192,6 @@
                 <p><strong>Consolidated by:</strong> DigiKidult 被選中嘅大細路</p>
                 🔗 <a href="https://www.facebook.com/Digikidult" target="_blank"> FACEBOOK </a></p>
                 🔗 <a href="https://www.instagram.com/digikidult/" target="_blank"> Instagram</a></p>
-
             </div>
             <div class="overview-box">
                 <h2>Network Connections</h2>
@@ -214,6 +221,35 @@
                 <tbody id="ndBody"></tbody>
             </table>
         </div>
+
+        <!-- REPORT MISSING TAB -->
+        <div id="Report" class="tab-content">
+            <div class="overview-box">
+                <h2>Data Transmission</h2>
+                <p style="font-size: 0.9rem; margin-bottom: 20px;">Found a missing or incorrect passcode? Send us the data via email directly from this console.</p>
+                
+                <form id="reportForm" onsubmit="sendReport(event)">
+                    <div style="margin-bottom: 12px;">
+                        <label class="form-label">Digimon No.</label>
+                        <input type="text" id="r_no" class="search-bar" style="margin-bottom: 0;" placeholder="e.g. 350" required>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <label class="form-label">Digimon Name</label>
+                        <input type="text" id="r_name" class="search-bar" style="margin-bottom: 0;" placeholder="e.g. Conomon" required>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <label class="form-label">Passcode</label>
+                        <input type="text" id="r_code" class="search-bar" style="margin-bottom: 0;" placeholder="e.g. ABCDE" required>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label class="form-label">Additional Notes</label>
+                        <textarea id="r_notes" class="search-bar" style="margin-bottom: 0; resize: vertical; height: 100px;" placeholder="Is this for D-Terminal or D-Gather?"></textarea>
+                    </div>
+                    <button type="submit" class="tab-btn" style="width: 100%; font-size: 1rem; padding: 15px;">>>> SEND VIA EMAIL <<<</button>
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -1043,6 +1079,21 @@
             }
             tr[i].style.display = displayRow ? "" : "none";
         }
+    }
+
+    // Email Submission Logic
+    function sendReport(e) {
+        e.preventDefault();
+        const no = document.getElementById('r_no').value;
+        const name = document.getElementById('r_name').value;
+        const code = document.getElementById('r_code').value;
+        const notes = document.getElementById('r_notes').value;
+
+        const subject = encodeURIComponent(`[Digivice Guide] Report Missing Passcode: No.${no} ${name}`);
+        const body = encodeURIComponent(`Hello DigiKidult,\n\nI would like to report a missing or incorrect passcode for the database.\n\n[Details]\nDigimon No: ${no}\nDigimon Name: ${name}\nPasscode: ${code}\n\n[Additional Notes]\n${notes}\n\nThank you!`);
+
+        // Uses the mailto protocol to open default email client addressed to your brand email
+        window.location.href = `mailto:digikidult@gmail.com?subject=${subject}&body=${body}`;
     }
 
     // Initialize tables on load
