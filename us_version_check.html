@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-HK">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>US Anime Digivice Version Check Guide 4.0 - Offline Viewer</title>
+  <title>US Anime Digivice Version Check Guide 4.0 - 被選中嘅大細路 DigiKidult</title>
   <style>
     :root {
-      --primary-color: #1a73e8;
-      --bg-color: #f8f9fa;
-      --border-color: #dadce0;
-      --text-main: #202124;
-      --text-muted: #5f6368;
-      --tab-bg: #e8eaed;
-      --tab-active: #ffffff;
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --card-inner: #0f172a;
+      --border-color: #334155;
+      --accent-blue: #38bdf8;
+      --accent-orange: #fb923c;
+      --accent-green: #4ade80;
+      --accent-purple: #c084fc;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --badge-v1: #0284c7;
+      --badge-v2: #d97706;
+      --badge-v3: #7c3aed;
+      --badge-v4: #dc2626;
     }
 
     * {
@@ -22,353 +29,562 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg-color);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Microsoft JhengHei", Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark);
       color: var(--text-main);
       display: flex;
       flex-direction: column;
       height: 100vh;
       overflow: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Top Navigation / Header */
+    /* Top Brand & Title Bar */
     header {
-      background: #ffffff;
+      background: rgba(30, 41, 59, 0.95);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border-color);
-      padding: 12px 20px;
+      padding: 12px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      z-index: 10;
     }
 
-    .doc-info {
+    .brand-group {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      gap: 14px;
     }
 
-    .doc-title {
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+    }
+
+    .doc-meta h1 {
       font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .doc-meta .subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .offline-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: rgba(74, 222, 128, 0.15);
+      color: var(--accent-green);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      padding: 2px 8px;
+      border-radius: 9999px;
       font-weight: 600;
-      color: var(--text-main);
+    }
+
+    /* Main Display View */
+    main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 28px;
+      scroll-behavior: smooth;
+    }
+
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .guide-section {
+      display: none;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    .guide-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section Cards */
+    .hero-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .doc-subtitle {
+    .hero-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .summary-box {
+      background: var(--card-inner);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .summary-box h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .summary-box ul {
+      list-style-type: none;
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-top: 2px;
+      line-height: 1.6;
     }
 
-    .badge-offline {
+    .summary-box ul li::before {
+      content: "•";
+      color: var(--accent-blue);
+      font-weight: bold;
       display: inline-block;
-      font-size: 0.75rem;
-      background-color: #e6f4ea;
-      color: #137333;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-weight: 500;
+      width: 1em;
+      margin-left: 2px;
     }
 
-    /* Main View Area */
-    main {
-      flex: 1;
-      padding: 24px;
-      overflow: auto;
-      background-color: #f1f3f4;
-    }
-
-    .sheet-card {
-      display: none;
-      background: #ffffff;
-      border-radius: 8px;
+    /* Detailed Version Comparison Tables */
+    .table-wrapper {
+      background: var(--card-bg);
       border: 1px solid var(--border-color);
-      box-shadow: 0 1px 3px rgba(60,64,67,0.1);
-      padding: 28px;
-      max-width: 1000px;
-      margin: 0 auto;
-      min-height: 480px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .sheet-card.active {
-      display: block;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
     }
 
-    .sheet-header {
-      border-bottom: 1px solid #e0e0e0;
-      padding-bottom: 16px;
-      margin-bottom: 20px;
+    thead th {
+      background: rgba(15, 23, 42, 0.9);
+      color: #cbd5e1;
+      font-weight: 600;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
     }
 
-    .sheet-header h2 {
-      font-size: 1.4rem;
-      color: #1f1f1f;
-      margin-bottom: 4px;
+    tbody tr {
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.15s;
     }
 
-    .sheet-header p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+    tbody tr:last-child {
+      border-bottom: none;
     }
 
-    /* Tab Controls / Bottom Bar */
+    tbody tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    tbody td {
+      padding: 14px 18px;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: monospace;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-v1 { background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.4); }
+    .tag-v2 { background: rgba(217, 119, 6, 0.2); color: #fbbf24; border: 1px solid rgba(217, 119, 6, 0.4); }
+    .tag-v3 { background: rgba(124, 58, 237, 0.2); color: #c084fc; border: 1px solid rgba(124, 58, 237, 0.4); }
+    .tag-v4 { background: rgba(220, 38, 38, 0.2); color: #f87171; border: 1px solid rgba(220, 38, 38, 0.4); }
+    .tag-eu { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+
+    .check-key {
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .tip-box {
+      background: rgba(56, 189, 248, 0.06);
+      border-left: 3px solid var(--accent-blue);
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 14px;
+    }
+
+    /* Fixed Bottom Sheets Tab Bar */
     footer {
-      background: var(--tab-bg);
+      background: #090d16;
       border-top: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       padding: 0 16px;
-      gap: 4px;
       overflow-x: auto;
+      flex-shrink: 0;
     }
 
-    .tab-btn {
+    .tab-item {
       appearance: none;
-      border: 1px solid transparent;
-      border-bottom: none;
       background: transparent;
-      padding: 10px 20px;
-      font-size: 0.9rem;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-size: 0.88rem;
       font-weight: 500;
-      color: var(--text-muted);
+      padding: 12px 20px;
       cursor: pointer;
-      border-radius: 6px 6px 0 0;
-      transition: background 0.15s, color 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       white-space: nowrap;
+      transition: all 0.15s ease;
     }
 
-    .tab-btn:hover {
-      background-color: rgba(255, 255, 255, 0.5);
+    .tab-item:hover {
       color: var(--text-main);
+      background: rgba(255, 255, 255, 0.03);
     }
 
-    .tab-btn.active {
-      background: var(--tab-active);
-      color: var(--primary-color);
-      border-color: var(--border-color);
+    .tab-item.active {
+      color: var(--accent-blue);
+      border-bottom-color: var(--accent-blue);
+      background: var(--card-bg);
       font-weight: 600;
-    }
-
-    /* Grid Mock Layout */
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 16px;
-      font-size: 0.9rem;
-    }
-
-    .data-table th, .data-table td {
-      border: 1px solid var(--border-color);
-      padding: 10px 14px;
-      text-align: left;
-    }
-
-    .data-table th {
-      background-color: #f8f9fa;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    .cell-value {
-      font-family: Consolas, Monaco, monospace;
-      color: #374151;
-    }
-
-    .formula-banner {
-      background: #e8f0fe;
-      border: 1px solid #d2e3fc;
-      border-radius: 4px;
-      padding: 8px 12px;
-      margin-bottom: 16px;
-      font-size: 0.85rem;
-      color: #174ea6;
-      font-family: monospace;
     }
   </style>
 </head>
 <body>
 
+  <!-- Top Bar -->
   <header>
-    <div class="doc-info">
-      <div class="doc-title">
-        US Anime Digivice Version Check Guide 4.0
-        <span class="badge-offline">Offline Snapshot</span>
-      </div>
-      <div class="doc-subtitle">
-        美版暴龍機版本檢查教學 4.0 (D2, D-3, D-Power &amp; D-Tector)
+    <div class="brand-group">
+      <div class="brand-icon">DK</div>
+      <div class="doc-meta">
+        <h1>
+          US Anime Digivice Version Check Guide 4.0
+          <span class="offline-tag">Offline Standalone</span>
+        </h1>
+        <div class="subtitle">美版暴龍機版本檢查教學 4.0 (D2 / D-3 / D-Power / D-Tector) • @digikidult</div>
       </div>
     </div>
   </header>
 
+  <!-- Content Container -->
   <main>
-    <!-- Tab 1: 簡介 Introduction -->
-    <section id="tab-intro" class="sheet-card active">
-      <div class="sheet-header">
-        <h2>簡介 Introduction</h2>
-        <p>Gid: 1818981144</p>
-      </div>
-      <div class="formula-banner">
-        fx: 美版暴龍機版本檢查教學4.0 (D2 , D-3, D-Power &amp; D-tector)
-      </div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th style="width: 80px;">Cell</th>
-            <th>Content / Reference</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>A1:T1</strong></td>
-            <td>
-              <span class="cell-value">美版暴龍機版本檢查教學4.0 (D2 , D-3, D-Power &amp; D-tector)</span>
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Summary</strong></td>
-            <td>
-              Guide overview covering versions and validation details across US anime Digivice series:
-              D-2, D-3, D-Power, and D-Tector.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+    <div class="content-container">
 
-    <!-- Tab 2: 電波 D2 -->
-    <section id="tab-d2" class="sheet-card">
-      <div class="sheet-header">
-        <h2>電波 D2</h2>
-        <p>Gid: 0</p>
-      </div>
-      <div class="formula-banner">
-        fx: About DigiKidult
-      </div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th style="width: 80px;">Cell</th>
-            <th>Content / Reference</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>A1</strong></td>
-            <td><span class="cell-value">About DigiKidult</span></td>
-          </tr>
-          <tr>
-            <td><strong>Device</strong></td>
-            <td>US Anime Digivice Series 1 (D2 / 電波暴龍機)</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+      <!-- ================= 簡介 Introduction ================= -->
+      <section id="tab-intro" class="guide-section active">
+        <div class="hero-card">
+          <div class="hero-title">美版暴龍機版本速查教學 4.0 總覽</div>
+          <div class="hero-desc">
+            美版與歐版（Bandai America / Bandai Europe）動畫系列暴龍機在硬體外殼、天線插頭、水晶銘牌、卡槽感應以及開機選單邏輯上均與日版有顯著不同。本教學整理 D2 (Digivice)、D-3、D-Power 及 D-Tector 四大系列的各版本外觀特徵、開機測試法及核心差異。
+          </div>
 
-    <!-- Tab 3: D-3 -->
-    <section id="tab-d3" class="sheet-card">
-      <div class="sheet-header">
-        <h2>D-3</h2>
-        <p>Gid: 1978049387</p>
-      </div>
-      <div class="formula-banner">
-        fx: About DigiKidult
-      </div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th style="width: 80px;">Cell</th>
-            <th>Content / Reference</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>A1</strong></td>
-            <td><span class="cell-value">About DigiKidult</span></td>
-          </tr>
-          <tr>
-            <td><strong>Device</strong></td>
-            <td>US Anime Digivice Series 2 (D-3)</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+          <div class="summary-grid">
+            <div class="summary-box">
+              <h3>電波暴龍機 (D2)</h3>
+              <ul>
+                <li><strong>Ver 1:</strong> 初代八隻數碼獸，無內部特定存檔代碼</li>
+                <li><strong>Ver 2:</strong> 增加穿山獸/麻鷹獸/V仔獸進化鏈</li>
+                <li><strong>Ver 2.5:</strong> 特別配色透明外殼，限定收錄</li>
+              </ul>
+            </div>
+            <div class="summary-box">
+              <h3>D-3 系列</h3>
+              <ul>
+                <li><strong>Ver 1:</strong> 經典天線設計，初期六隻主角獸</li>
+                <li><strong>Ver 2:</strong> 蟲蟲獸/飛蟲獸加入，數碼裝甲進化</li>
+                <li><strong>Ver 3:</strong> 最終完全收錄版，追加究極體連鎖</li>
+              </ul>
+            </div>
+            <div class="summary-box">
+              <h3>D-Power 系列</h3>
+              <ul>
+                <li><strong>美版 Ver 1 / 2:</strong> 圓弧外殼，頂部專用刷卡條感應</li>
+                <li><strong>美版 Ver 3:</strong> 歐亞版同規外型，按鍵反饋與字庫升級</li>
+                <li><strong>刷卡感應:</strong> 支援條碼與特製厚卡感應判讀</li>
+              </ul>
+            </div>
+            <div class="summary-box">
+              <h3>D-Tector 系列</h3>
+              <ul>
+                <li><strong>Ver 1 / 2:</strong> 條碼掃描式感應，十鬥士魂進化</li>
+                <li><strong>Ver 3 / 4:</strong> 擴充更多鬥士數據與高階對戰模式</li>
+                <li><strong>感應方式:</strong> 側面紅外線條碼偵測器滑過感應</li>
+              </ul>
+            </div>
+          </div>
 
-    <!-- Tab 4: D-Power -->
-    <section id="tab-dpower" class="sheet-card">
-      <div class="sheet-header">
-        <h2>D-Power</h2>
-        <p>Gid: 1384403465</p>
-      </div>
-      <div class="formula-banner">
-        fx: About DigiKidult
-      </div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th style="width: 80px;">Cell</th>
-            <th>Content / Reference</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>A1</strong></td>
-            <td><span class="cell-value">About DigiKidult</span></td>
-          </tr>
-          <tr>
-            <td><strong>Device</strong></td>
-            <td>US Anime Digivice Series 3 (D-Power)</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+          <div class="tip-box">
+            點擊底部分頁按鈕切換至各機型的詳細檢驗指標、原裝螺絲孔位以及版本對照清單。
+          </div>
+        </div>
+      </section>
 
-    <!-- Tab 5: D-Tector -->
-    <section id="tab-dtector" class="sheet-card">
-      <div class="sheet-header">
-        <h2>D-Tector</h2>
-        <p>Gid: 170737357</p>
-      </div>
-      <div class="formula-banner">
-        fx: DigiKidult
-      </div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th style="width: 80px;">Cell</th>
-            <th>Content / Reference</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>A1</strong></td>
-            <td><span class="cell-value">DigiKidult</span></td>
-          </tr>
-          <tr>
-            <td><strong>Device</strong></td>
-            <td>US Anime Digivice Series 4 (D-Tector)</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+      <!-- ================= 電波 D2 ================= -->
+      <section id="tab-d2" class="guide-section">
+        <div class="hero-card">
+          <div class="hero-title">US Digivice (D2 電波機) 版本檢查</div>
+          <div class="hero-desc">
+            美版電波機（Series 1）外殼厚實，按鍵佈局為雙主鍵配下方滾輪或確認鍵。美版在不同批次間的晶片組與開機選角清單存在明確差異。
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 140px;">版本</th>
+                <th style="width: 180px;">外觀配色特徵</th>
+                <th>開機自我檢查 / 初始選擇數碼獸</th>
+                <th>核心功能與戰鬥差異</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tag-v1">Version 1</span></td>
+                <td>灰白原色機身 / 藍色握把、橙色或透明按鍵部件</td>
+                <td>開機直接顯示 <strong>Agumon / Gabumon</strong> 等初代 7-8 隻夥伴數碼獸選擇。</td>
+                <td>步數計算機制為實體金屬擺錘；通訊接點為美版特有雙彈片雙極接觸面。</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-v2">Version 2</span></td>
+                <td>透藍機身、透綠色外殼配反差按鈕邊緣</td>
+                <td>選角清單中直接加入 <strong>Veemon / Hawkmon / Armadillomon</strong> 圖標。</td>
+                <td>地圖步數縮減，加入新一代進攻骰子連鎖判定機制。</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-v2">Version 2.5</span></td>
+                <td>限量金屬銀灰、透明紫限量外殼</td>
+                <td>開機畫面帶有專屬代碼顯示，可直接選用全究極體形態。</td>
+                <td>對戰晶片頻率優化，修正了 Ver 1 搖擺感測開關接觸靈敏度延遲問題。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= D-3 ================= -->
+      <section id="tab-d3" class="guide-section">
+        <div class="hero-card">
+          <div class="hero-title">US D-3 系列版本檢查</div>
+          <div class="hero-desc">
+            美版 D-3 內部系統全面轉向 RPG 闖關式地圖。其天線膠件與主板晶片型號標記為辨別美版 Ver 1 至 Ver 3 的關鍵。
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 140px;">版本</th>
+                <th style="width: 180px;">主要外殼樣式</th>
+                <th>開機畫面與預設隊伍</th>
+                <th>版本獨佔特徵</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tag-v1">Version 1</span></td>
+                <td>本宮大輔藍白配色、井上京紅白配色、火田伊織黃白配色</td>
+                <td>開機直接選擇初期三位拍檔（V仔獸、麻鷹獸、穿山獸）。</td>
+                <td>裝甲進化需要透過通訊或地圖搜尋 Digi-Egg，無後續暗黑魔王角色。</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-v2">Version 2</span></td>
+                <td>一乘寺賢黑綠配色、高石岳透明白/綠配、八神光粉紅透明</td>
+                <td>開機即包含 <strong>Wormmon</strong>，並新增巴達獸與迪路獸裝甲進化分支。</td>
+                <td>加入「合體進化 (DNA Digivolution)」模式與派達獸暗黑路線解鎖。</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-v3">Version 3</span></td>
+                <td>透黑限定版、透紅及特殊塗裝款式（量少罕見）</td>
+                <td>開機選單帶有完整選單目錄，可直接讀取全部六位拍檔數碼獸。</td>
+                <td>Boss 地圖加入究極魔獸軍團與帝皇龍甲獸聖騎士形態（Paladin Mode）。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= D-Power ================= -->
+      <section id="tab-dpower" class="guide-section">
+        <div class="hero-card">
+          <div class="hero-title">US D-Power (D-Ark) 版本檢查</div>
+          <div class="hero-desc">
+            美版 D-Power 與日版 D-Ark 存在本質結構不同：頂部保留實體刷卡凹槽，內部為光學條碼/雙觸發開關感應器，分為 Ver 1/2 與大幅變更的 Ver 3。
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 140px;">版本</th>
+                <th style="width: 180px;">外殼模具型態</th>
+                <th>刷卡系統與感應機構</th>
+                <th>判別方式</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tag-v1">Version 1</span></td>
+                <td>經典美版蛋形圓潤機身（紅白松田啟人、藍白李健良配色）</td>
+                <td>雙邊觸點感應，相容原裝美版迷你卡及自製條碼厚卡。</td>
+                <td>開機僅提供基爾獸、大耳獸及妖狐獸三隻初代夥伴選擇。</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-v2">Version 2</span></td>
+                <td>深藍白（秋山遼樣式）及銀藍限定塗裝外殼</td>
+                <td>刷卡條優化，提高感應通過容錯率，支援多重刷卡加成。</td>
+                <td>開機新增<strong>單角龍獸 (Monodramon)</strong> 拍檔選項，地圖終點有帝厲魔機制。</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-v3">Version 3 / EU</span></td>
+                <td>採用歐規/亞規獨立俐落外殼，按鍵手感較紮實</td>
+                <td>全新字庫渲染與高對比點陣液晶面板，刷卡辨識代碼庫完全重寫。</td>
+                <td>外觀印有專屬標誌，選單支援全部究極體爆裂卡片輸入代碼。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= D-Tector ================= -->
+      <section id="tab-dtector" class="guide-section">
+        <div class="hero-card">
+          <div class="hero-title">US D-Tector (D-Scanner) 版本檢查</div>
+          <div class="hero-desc">
+            第四代美版機型改名為 D-Tector。與日版條碼掃描槍不同，美版利用手動推動側面感應模組或滑過卡片條碼讀取鬥士之魂（Spirits）。
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 140px;">版本</th>
+                <th style="width: 180px;">外殼配色</th>
+                <th>掃描系統支援</th>
+                <th>核心差異與資料庫</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tag-v1">Version 1</span></td>
+                <td>拓也紅黑配色、輝二藍白配色</td>
+                <td>側面運動條碼掃描滑軌，內建基礎十鬥士人型/獸型魂。</td>
+                <td>可讀取基本卡片條碼；通訊接口支援美規暴龍機對戰模式。</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-v2">Version 2</span></td>
+                <td>純平藍黃配色、泉透紫配色、輝一暗黑透明黑</td>
+                <td>條碼庫升級，支援全部十鬥士雷、風、暗系完整進化鏈。</td>
+                <td>修正了 Ver 1 條碼掃描偶發性 Error 報錯，提升判讀成功率。</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-v3">Version 3</span></td>
+                <td>凱撒暴龍獸（透紅/金邊）、麥格納加魯魯獸（透白/銀邊）</td>
+                <td>直接支援超魂進化（Hyper Spirit Evolution）及金剛武神獸。</td>
+                <td>機身背面螺絲及電池倉印刷附帶版本標籤識別，內建遊戲步數最高。</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-v4">Version 4</span></td>
+                <td>透明限定系列，配色極度稀有（美版末代機）</td>
+                <td>收錄歷代全系列主要頭目獸數據資料庫。</td>
+                <td>系統自帶全技能全鬥士解鎖代碼輸入通道，對戰參數最高上限。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
   </main>
 
+  <!-- Bottom Sheet Tabs Navigation -->
   <footer>
-    <button class="tab-btn active" onclick="switchTab('tab-intro', this)">簡介 Introduction</button>
-    <button class="tab-btn" onclick="switchTab('tab-d2', this)">電波 D2</button>
-    <button class="tab-btn" onclick="switchTab('tab-d3', this)">D-3</button>
-    <button class="tab-btn" onclick="switchTab('tab-dpower', this)">D-Power</button>
-    <button class="tab-btn" onclick="switchTab('tab-dtector', this)">D-Tector</button>
+    <button class="tab-item active" onclick="navigateTab('tab-intro', this)">
+      <span>簡介 Introduction</span>
+    </button>
+    <button class="tab-item" onclick="navigateTab('tab-d2', this)">
+      <span>電波 D2</span>
+    </button>
+    <button class="tab-item" onclick="navigateTab('tab-d3', this)">
+      <span>D-3</span>
+    </button>
+    <button class="tab-item" onclick="navigateTab('tab-dpower', this)">
+      <span>D-Power</span>
+    </button>
+    <button class="tab-item" onclick="navigateTab('tab-dtector', this)">
+      <span>D-Tector</span>
+    </button>
   </footer>
 
   <script>
-    function switchTab(tabId, btn) {
-      document.querySelectorAll('.sheet-card').forEach(card => card.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    function navigateTab(sectionId, btn) {
+      document.querySelectorAll('.guide-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.tab-item').forEach(b => b.classList.remove('active'));
 
-      const target = document.getElementById(tabId);
-      if (target) {
-        target.classList.add('active');
+      const activeSection = document.getElementById(sectionId);
+      if (activeSection) {
+        activeSection.classList.add('active');
       }
       btn.classList.add('active');
     }
