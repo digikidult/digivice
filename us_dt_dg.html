@@ -1,291 +1,1054 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-HK">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>US D-Terminal & D-Gather Passcodes</title>
+    <title>Digivice Guide Classic - D-Terminal Passcodes</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap');
 
         :root {
-            --lcd-bg: #9bbc0f; /* Classic LCD Green */
-            --lcd-dark: #0f380f; /* LCD Dark Pixels */
-            --lcd-light: #8bac0f; /* LCD Highlight */
-            --device-casing: #d3d3d3;
+            --lcd-bg: #8fa07e;
+            --lcd-text: #2b3a1f;
+            --lcd-highlight: #7b8c6a;
+            --shell-bg: #dedede;
         }
 
         body {
-            background-color: #2b2b2b;
-            color: var(--lcd-dark);
-            font-family: 'VT323', monospace;
+            background-color: #222;
+            color: var(--lcd-text);
+            font-family: 'DotGothic16', sans-serif;
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
-            padding: 20px;
-            margin: 0;
-            background-image: radial-gradient(#444 1px, transparent 1px);
-            background-size: 20px 20px;
         }
 
-        .device-shell {
-            background-color: var(--device-casing);
+        .digivice-shell {
+            background-color: var(--shell-bg);
+            border: 8px solid #444;
             border-radius: 30px;
             padding: 40px 20px 60px 20px;
-            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.3), 10px 10px 20px rgba(0,0,0,0.5);
-            width: 100%;
             max-width: 900px;
-            position: relative;
-        }
-
-        .screen-bezel {
-            background-color: #1a1a1a;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: inset 5px 5px 15px rgba(0,0,0,0.8);
+            width: 100%;
+            box-shadow: 12px 12px 0px rgba(0,0,0,0.5), inset 6px 6px 15px rgba(255,255,255,0.8);
         }
 
         .lcd-screen {
             background-color: var(--lcd-bg);
-            color: var(--lcd-dark);
-            border: 4px solid var(--lcd-dark);
-            border-radius: 5px;
+            border: 6px solid #111;
+            border-radius: 12px;
             padding: 20px;
-            min-height: 600px;
-            box-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.2);
-            overflow-y: auto;
+            box-shadow: inset 6px 6px 15px rgba(0,0,0,0.3);
+            min-height: 60vh;
         }
 
         h1, h2, h3 {
+            font-family: 'Press Start 2P', monospace;
             text-align: center;
             text-transform: uppercase;
+            text-shadow: 2px 2px 0px var(--lcd-highlight);
             margin-top: 0;
-            border-bottom: 2px dashed var(--lcd-dark);
-            padding-bottom: 10px;
         }
 
-        .meta-info {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .meta-info a {
-            color: var(--lcd-dark);
-            text-decoration: underline;
-            font-weight: bold;
-        }
+        h1 { font-size: 1.2rem; border-bottom: 4px dashed var(--lcd-text); padding-bottom: 15px; }
+        h2 { font-size: 1rem; }
 
         .tabs {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 10px;
-        }
-
-        .tab-button {
-            background-color: var(--lcd-bg);
-            color: var(--lcd-dark);
-            border: 3px solid var(--lcd-dark);
-            padding: 10px 20px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            transition: all 0.1s;
-        }
-
-        .tab-button:hover {
-            background-color: var(--lcd-light);
-        }
-
-        .tab-button.active {
-            background-color: var(--lcd-dark);
-            color: var(--lcd-bg);
-        }
-
-        .search-container {
             margin-bottom: 20px;
         }
 
-        .search-box {
-            width: 100%;
-            padding: 12px;
-            box-sizing: border-box;
-            font-family: inherit;
-            font-size: 1.5rem;
-            background: var(--lcd-light);
-            border: 3px solid var(--lcd-dark);
-            color: var(--lcd-dark);
-            text-transform: uppercase;
+        .tab-btn {
+            background-color: var(--lcd-highlight);
+            color: var(--lcd-text);
+            border: 4px solid var(--lcd-text);
+            padding: 10px 15px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px var(--lcd-text);
+            transition: transform 0.1s, box-shadow 0.1s;
         }
 
-        .search-box:focus {
-            outline: none;
-            background: var(--lcd-bg);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 1.3rem;
-        }
-
-        th, td {
-            border: 2px solid var(--lcd-dark);
-            padding: 8px 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: var(--lcd-dark);
+        .tab-btn:hover, .tab-btn.active {
+            background-color: var(--lcd-text);
             color: var(--lcd-bg);
-            position: sticky;
-            top: 0;
-        }
-
-        tr:nth-child(even) {
-            background-color: var(--lcd-light);
+            box-shadow: 0px 0px 0px var(--lcd-text);
+            transform: translate(3px, 3px);
         }
 
         .tab-content {
             display: none;
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        /* Decorative Digivice Buttons */
-        .btn-decorative {
-            width: 40px;
-            height: 20px;
-            background-color: #ff4757;
-            border-radius: 10px;
-            position: absolute;
-            bottom: 20px;
-            box-shadow: inset -2px -2px 5px rgba(0,0,0,0.5);
-        }
-        .btn-left { left: 40px; }
-        .btn-right { right: 40px; }
-        .btn-center { left: 50%; transform: translateX(-50%); width: 60px; height: 30px; border-radius: 15px; bottom: 15px;}
+        /* Pixel Scrollbar */
+        ::-webkit-scrollbar { width: 14px; }
+        ::-webkit-scrollbar-track { background: var(--lcd-highlight); border: 2px solid var(--lcd-text); }
+        ::-webkit-scrollbar-thumb { background: var(--lcd-text); border: 2px solid var(--lcd-highlight); }
 
+        .search-bar {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--lcd-bg);
+            border: 4px solid var(--lcd-text);
+            color: var(--lcd-text);
+            font-family: 'DotGothic16', sans-serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        .search-bar::placeholder {
+            color: var(--lcd-text);
+            opacity: 0.6;
+        }
+
+        .overview-box {
+            border: 4px dashed var(--lcd-text);
+            background-color: var(--lcd-highlight);
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .overview-box a {
+            color: var(--lcd-text);
+            text-decoration: none;
+            border-bottom: 2px solid var(--lcd-text);
+            font-weight: bold;
+        }
+        .overview-box a:hover {
+            background-color: var(--lcd-text);
+            color: var(--lcd-bg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 2px solid var(--lcd-text);
+            padding: 8px 10px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        th {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            background-color: var(--lcd-text);
+            color: var(--lcd-bg);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--lcd-highlight);
+        }
     </style>
 </head>
 <body>
 
-    <div class="device-shell">
-        <div class="screen-bezel">
-            <div class="lcd-screen">
-                
-                <h1>US D-Terminal & D-Gather</h1>
-                
-                <div class="meta-info">
-                    Author: DigiKidult (被選中嘅大細路)<br>
-                    Last Update: 2026.06.07<br>
-                    <a href="#" onclick="alert('Join Facebook / WhatsApp / Line Communities!')">[ Community Links ]</a>
-                </div>
+<div class="digivice-shell">
+    <div class="lcd-screen">
+        <h1>D-Terminal Database</h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'Overview')">Overview</button>
+            <button class="tab-btn" onclick="openTab(event, 'DrLee')">DR.LEE (351)</button>
+            <button class="tab-btn" onclick="openTab(event, 'ND')">ND (431)</button>
+        </div>
 
-                <div class="tabs">
-                    <button class="tab-button active" onclick="switchTab('listC')">List C (ND - 431)</button>
-                    <button class="tab-button" onclick="switchTab('listA')">List A (DR.LEE - 351)</button>
-                </div>
-
-                <div class="search-container">
-                    <input type="text" id="searchInput" class="search-box" placeholder="> SCAN DIGIMON NAME OR NO..." onkeyup="filterTable()">
-                </div>
-
-                <!-- List C (ND Version) -->
-                <div id="listC" class="tab-content active">
-                    <h3>Database: ND (431 Entities)</h3>
-                    <table id="tableC">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>中文名</th>
-                                <th>ENG</th>
-                                <th>Passcode</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>001</td><td>滾球獸</td><td>Boromon</td><td>CBAZY</td></tr>
-                            <tr><td>002</td><td>獨角獸</td><td>Tsunomon</td><td>QAQAQ</td></tr>
-                            <tr><td>008</td><td>亞古獸</td><td>Agumon</td><td>HRUXZ</td></tr>
-                            <tr><td>370</td><td>墮天地獄獸</td><td>Belzemon</td><td>PEPSI</td></tr>
-                            <tr><td>394</td><td>終末千年獸</td><td>ZeedMillenniummon</td><td>ODEWS</td></tr>
-                            <tr><td>431</td><td>寄生蟲獸</td><td>Parasimon</td><td>ABCDA</td></tr>
-                            <!-- More data can be dynamically added or pasted here -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- List A (DR.LEE Version) -->
-                <div id="listA" class="tab-content">
-                    <h3>Database: DR.LEE (351 Entities)</h3>
-                    <table id="tableA">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>中文名</th>
-                                <th>ENG</th>
-                                <th>Passcode</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>001</td><td>滾球獸</td><td>Boromon</td><td>NUNUS</td></tr>
-                            <tr><td>002</td><td>獨角獸</td><td>Tsunomon</td><td>SOLID</td></tr>
-                            <tr><td>008</td><td>亞古獸</td><td>Agumon</td><td>CIVIL</td></tr>
-                            <tr><td>351</td><td>果凍獸</td><td>Zerimon</td><td>-</td></tr>
-                            <!-- More data can be dynamically added or pasted here -->
-                        </tbody>
-                    </table>
-                </div>
-
+        <!-- OVERVIEW TAB -->
+        <div id="Overview" class="tab-content active">
+            <div class="overview-box">
+                <h2>System Info</h2>
+                <p><strong>Database:</strong> US D-Terminal & D-Gather Passcode</p>
+                <p><strong>Last Update:</strong> 2026.06.07</p>
+                <p><strong>Consolidated by:</strong> DigiKidult 被選中嘅大細路</p>
+            </div>
+            <div class="overview-box">
+                <h2>Network Connections</h2>
+                <p><strong>Brand Socials:</strong> Facebook | IG | X (Twitter) | Threads</p>
+                <p><strong>HK Comm:</strong> 數碼暴龍研究關注組 | FACEBOOK社群連結 | Whatsapp群組 | Whatsapp頻道</p>
+                <p><strong>TW Comm:</strong> 數碼寶貝綜合交流空間<br>
+                🔗 <a href="https://line.me/ti/g2/eYIajLtHCn12hIQ8ilKif0i5A6GSAQDxvmDD2Q" target="_blank">Line Exchange Group</a></p>
             </div>
         </div>
-        
-        <!-- Decorative Elements -->
-        <div class="btn-decorative btn-left"></div>
-        <div class="btn-decorative btn-center"></div>
-        <div class="btn-decorative btn-right"></div>
+
+        <!-- DR LEE TAB -->
+        <div id="DrLee" class="tab-content">
+            <input type="text" class="search-bar" placeholder="SEARCH DATABASE (DR.LEE)..." onkeyup="filterTable('drLeeTable', this.value)">
+            <table id="drLeeTable">
+                <thead>
+                    <tr><th>No.</th><th>中文名</th><th>ENG</th><th>Passcode</th></tr>
+                </thead>
+                <tbody id="drLeeBody"></tbody>
+            </table>
+        </div>
+
+        <!-- ND TAB -->
+        <div id="ND" class="tab-content">
+            <input type="text" class="search-bar" placeholder="SEARCH DATABASE (ND)..." onkeyup="filterTable('ndTable', this.value)">
+            <table id="ndTable">
+                <thead>
+                    <tr><th>No.</th><th>中文名</th><th>ENG</th><th>Passcode</th></tr>
+                </thead>
+                <tbody id="ndBody"></tbody>
+            </table>
+        </div>
     </div>
+</div>
 
-    <script>
-        // Tab Switching Logic
-        function switchTab(tabId) {
-            // Remove active class from all buttons and contents
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+<script>
+    // System Data Injection: Compressed format to retain 100% original content within single payload
+    const drLeeData = `001|滾球獸|Boromon|NUNUS
+002|獨角獸|Tsunomon|SOLID
+003|比高獸|Yokomon|TUNES
+004|年糕獸|Mochimon|EENNY
+005|種子獸|Tanemon|EENNY
+006|布加獸|Pukamon|SLIVE
+007|迪歌獸|Tokomon|FAFAS
+008|亞古獸|Agumon|CIVIL
+009|加布獸|Gabumon|ZCXAA
+010|比丘獸|Piyomon|WHICH
+011|甲蟲獸|Tentomon|KEDGE
+012|巴魯獸|Palmon|JMPWZ
+013|哥瑪獸|Gomamon|DFHJK
+014|巴達獸|Patamon|RIDER
+015|古加獸|Kuwagamon|CCDCC
+016|暴龍獸|Greymon|GJLNP
+017|貝殼獸|Shellmon|KYLOE
+018|加魯魯獸|Garurumon|CLEAN
+019|海龍獸|Seadramon|KUDOS
+020|角龍獸|Monochromon|SALON
+021|巴多拉獸|Birdramon|RIRIS
+022|火焰獸|Meramon|FJNSX
+023|比多獸|Kabuterimon|LONGE
+024|安杜魯獸|Andromon|OFFIC
+025|仙人掌獸|Togemon|ENTRY
+026|鼻涕獸|Numemon|EHLOS
+027|熊仔獸|Monzaemon|HONSK
+028|海獅獸|Ikkakumon|GUARD
+029|獨角馬獸|Yunimon|TOPIC
+030|獅子獸|Leomon|JAPAN
+031|奧加獸|Orgemon|MEDIE
+032|惡魔獸|Devimon|FRAME
+033|雪人獸|Yukidarumon|YAHOO
+034|毛人獸|Mojyamon|ALMON
+035|大便獸|Scumon|IGLOO
+036|人馬獸|Centalmon|POLAR
+037|猛鬼獸|Bakemon|MAXIM
+038|艾力獸|Elecmon|PETER
+039|黑球獸|Botamon|THEIR
+040|布尼獸|Punimon|VALKY
+041|浮游獸|Poyomon|BRUSH
+042|浮球獸|Yuramon|AAAAA
+043|天使獸|Angemon|ZWTQM
+044|巨鯨獸|Whamon|FUR
+045|鑽地獸|Drimogemon|BCDEE
+046|悟空獸|Etemon|MQVZE
+047|加支獸|Gazimon|PARIS
+048|柏古獸|Pagumon|GOWZH
+049|喪屍暴龍獸|Skullgreymon|APPLE
+050|巨雞獸|Cockatrimon|FIRER
+051|巨龍獸|Tyranomon|EARTH
+052|妖精獸|Picklemon|DHIJK / CLUE
+053|分子獸|Nanomon|WEIGH
+054|機械暴龍獸|Metalgreymon|REFER
+055|小惡魔獸|Picodevimon|TEEN
+056|獸人加魯魯|Weregarrumon|TRADE
+057|蛋蛋獸|Digitamamon|GKOZW
+058|鼻屎獸|Vegimon|SPOON
+059|吸血魔獸|Vamdemon|HEATH
+060|腦魔獸|Vademon|PET
+061|泡沬獸|Bubbmon|D
+062|怪蛙獸|Gekomon|SLOPE
+063|蝌蚪獸|Otamamon|SHOSE
+064|怪蛙王|Tonosamagekomon|SEPER
+065|伽樓達獸|Garudamon|SPICE
+066|黃蜂獸|Flymon|KONG
+067|迪路獸|Tailmon|BEHIK
+068|亞伯獸|Nanimon|WALK
+069|邪龍獸|Devidramon|FOCK
+070|蜘蛛獸|Dokugumon|VOICE
+071|長毛象獸|Mammon|CALL
+072|墨魚獸|Gesomon|HING
+073|爛泥獸|Raremon|IPUZX
+074|死亡火炎獸|Deathmeramon|JUICE
+075|巫師獸|Wizarmon|KMB
+076|南瓜獸|Pumpmon|BLOCK
+077|礦石獸|Gottsumon|BEAR
+078|花仙獸|Lilimon|ANGEL
+079|死神獸|Fantomon|DEIVL
+080|黑暗巨龍獸|Darktyranomon|COWRT
+081|基剎獸|Gizamon|POWER
+082|祖頓獸|Zudomon|SIZE
+083|超海龍獸|Megaseadramon|BLOOD
+084|天女獸|Angewomon|SHORE
+085|大角獸|Tuskmon|VDAR
+086|螳螂獸|Snimon|MEAT
+087|超比多獸|Atlurkabuterimon|LEMON
+088|神聖天使獸|Holyangemon|EARTE
+089|究極吸血魔獸|Venomvamdemon|HTML
+090|戰鬥暴龍獸|Wargreymon|BETUH
+091|鋼鐵加魯魯|Metalgarurumon|SHELF
+092|貓貓獸|Nyaromon|THANK
+093|小狗獸|Plotmon|WORLD
+094|鸚鵡獸|Parrotmon|GROUP
+095|芝蒙獸|Tyumon|WOMAN
+096|鋼鐵海龍獸|Metaseadramon|HITEN
+097|機械邪龍獸|Mugendramon|EAGLE / GIGA
+098|小丑皇|Piemon|BRUCE
+099|木偶獸|Pinochimon|VMON / TERRA
+100|亞路加獸|Anomalocarimon|PULL
+101|奇蛙獸|Hangyomon|JOKE
+102|奇鳥獸|Kiwimon|MNORQ
+103|蘑菇獸|Mushroomon|JASON
+104|花妖獸|Blossomon|ABOVE
+105|花拉獸|Floramon|HUGE
+106|華麗獸|Delumon|UYCGK
+107|祖利獸|Jyureimon|HRKZX
+108|垃圾筒獸|Gerbemon|CBCZA
+109|鋼鐵悟空獸|Metaletemon|JESS
+110|黃金劍獅獸|Tankmon|TRELO
+111|紅鼻屎獸|Redvagimon|MTAZB
+112|機械裝甲獸|Mechanorimon|LUCKY
+113|坦克獸|Tankmon|POOH
+114|齒輪獸|Hagurumon|NICOO
+115|邪惡熊仔獸|Warumonzaemon|EEAAD / MAGNC
+116|女惡魔獸|Ladydevimon|DRITY
+117|邪魔獸|Evilmon|GAMUT
+118|亞寶加利獸|Apoclymon|PHOTO
+119|古尼獸|Kunemon|UMJDB
+120|武士獸|Musyamon|MAGMA
+121|基米拉獸|Kimeramon|ZKSZD
+122|岩石獸|Golemon|OQSUW
+123|多達獸|Tortamon|PRUWZ
+124|流星獸|Starmon|AFKPU
+125|三角龍獸|Triceramon|DAGEN
+126|大古加獸|Okuwamon|SMOKE
+127|究極古加獸|Grankuwagamon|DEMON/STEPS
+128|海豚獸|Rukamon|ANGLY
+129|西拉獸|Coelamon|VISA
+130|八爪魚獸|Octmon|THINK
+131|海魔獸|Marindevimon|CWPRV
+132|河豚獸|Pukumon|PHARO
+133|蠟燭獸|Candmon|COAST
+134|猿人獸|Hanumon|ROAKE
+135|小古加獸|Kokuwamon|BELLS
+136|冰惡魔獸|Icedevimon|NAMES
+137|左輪獸|Revolmon|CACLE
+138|蛇頸龍獸|Plesiomon|BOGUS
+139|巨大豆豆獸|Bigmamemon|MPAZV
+140|機械飛龍獸|Megadramon|WHOLE
+141|邦加獸|Panjyamon|BLUSH
+142|藍色火焰獸|Bluemeramon|STORY
+143|聖龍獸|Holydramon|BRUSH
+144|龍蝦獸|Ebidramon|EIOQS
+145|金剛獸|Gorimon|CHWOM
+146|牛人獸|Minotaurmon|STONE
+147|曱甴獸|Gokimon|LOSER
+148|阿修羅獸|Asuramon|MICKY
+149|薯仔獸|Jyagamon|NOSE
+150|螃蟹獸|Ganimon|EXCEL
+151|蜆殼獸|Shakomon|ZEBRA
+152|達貢獸|Dagomon|CHEER
+153|海天使獸|Marinangemon|MARIO
+154|食夢獸|Tapirmon|TANK
+155|喪屍長毛象獸|Skullmammon|EAT / IZZY
+156|科學怪人獸|Boltmon|RUBIX
+157|豆豆獸|Mamemon|MONTH
+158|鋼鐵豆豆獸|Metalmamemon|SPEED
+159|砲彈獸|Giromon|CLOTH
+160|巨龍獸EX|Ex-tyranomon|DGILO
+161|三頭龍獸|Deltamon|TAKE
+162|獨眼龍獸|Cyclomon|FATAN
+163|V龍獸|V-dramon|NURSE
+164|巧木獸|Woodmon|FIT
+165|飛龍V獸|Aeroveedramon|CROSS
+166|庫加獸|Fugamon|DHPUX
+167|森林毛人獸|Jungle Mojyamon|BREAD
+168|鳳凰獸|Hououmon|CLONE
+169|獅鳩獸|Griffomon|ELISE
+170|積木亞古獸|Toyagumon|DEVIL
+171|比特獸|Betamon|BPZNO
+172|時鐘獸|Clockmon|TIKKA
+173|守衛獸|Guardromon|GOKU
+174|騎士獸|Knightmon|BODY
+175|企鵝獸|Penguinmon|GOLD/BOOT
+176|毒古尼獸|Dokunemmon|BOWIE
+177|白金大便獸|Platinumsukamon|BATTY
+178|紅加布獸|Psychemon|LUNA
+179|古魯魯獸|Gururumon|SILVR
+180|森林貝殼獸|Morishellmon|HORN
+181|使魔獸|Tsukaimon|RUKI
+182|伊賀獸|Ninjamon|MEG
+183|擬比特獸|Modokobetamon|CHICK
+184|劍刃鳥獸|Saberframon|SABAN
+185|雪亞古獸|Snowagumon|SLPHI
+186|曼陀羅獸|Aruraumon|CONI
+187|冰石獸|Icemon|RINOA
+188|偽鑽地獸|Nisedrimogemon|PAL
+189|飛龍獸|Airdramon|HONEY
+190|鋼鐵巨龍獸|Metaltyannomon|HARM
+191|紅雞獸|Akatorimon|ALEX
+192|泥人獸|MudFrigimon|SHOE
+193|庸俗獸|Geremon|NOEL
+194|朱紅獸|Vermilimon|TAIYO
+195|隕石獸|Meteormon|DTHRE
+196|惡海龍獸|Waruseadramon|ARMAD
+197|長老獸|Jilimon|DIABL
+198|婆婆獸|Babamon|BURST
+199|透明亞古獸|Clearagumon|DEEP
+200|烈焰蜥蜴獸|Flarerizamon|CAJUN
+201|野人獸|Goburimon|EHNJQ
+202|閃電球獸|Thundermon|DIODE
+203|貝殼鼻涕獸|ShellNumemon|ABZDA
+204|焰彩獸|Muchomon|YES
+205|冰雪野人獸|SnowGoburimon|-
+206|哈哈獸|Keramon|MAJOR
+207|雜草獸|Zassomon|NEXUS
+208|蜻蜓獸|Yanmamon|JOHN
+209|笨蛋獸|Sharmamon|TITUS
+210|神龍獸|Goldramon|DRACO
+211|沙蜻蜓獸|Sandtanmamon|KENGO
+212|獨角斑馬獸|Shimaunimon|JERED
+213|亡魂獸|Soulmon|SONIC
+214|薔薇獸|Rosemon|LIFE
+215|王者巨龍獸|Master Tyranomon|CUBIC
+216|黑暗蜥蝪獸|DarkLizardmon|PONG
+217|冰河獸|Hyogamon|KAREM
+218|炎天使獸|Piddomon|ZERO
+219|腕龍獸|Brachiomon|KINGS
+220|千兆龍獸|Gigadramon|SALA
+221|鐵面獸|Tekkamon|-
+222|科學飛龍獸|Cyberdramon|BAT
+223|喪屍撒旦獸|Skullsatamon|PIPIS
+224|千年獸|Millenniummon|CANDY
+225|魔蛹獸|Kurisarimon|RELIA
+226|究極魔獸|Creepymon|CABLE
+227|大王悟空獸|Kingetemon|SPRTY
+228|芝高獸|Chicomon|CDROM
+229|震震獸|Pururumon|LARGE
+230|粒粒獸|Tsubumon|NO
+231|豆丁獸|DemiVeemon|WINGS
+232|鈍鈍獸|Poromon|LINE
+233|奧柏獸|Upamon|WARUS
+234|V仔獸|Veemon|RIVAL
+235|麻鷹獸|Hawkmon|GENKI
+236|穿山獸|Armadillomon|CRUMB
+237|蟲蟲獸|Wormmon|MONKE
+238|烈焰獸|Flamedramon|HERO
+239|雷龍獸|Lighdramon|MOVIE
+240|金甲龍獸|Magnamon|DARTH
+241|沙度獸|Sethmon|BITEM
+242|夜叉獸|Yasyamon|SORA
+243|蜜蜂獸|Honeybeemon|TURKE
+244|海人獸|Depthmon|KURO
+245|射手獸|Sagittarimon|PATAM
+246|石像鬼獸|Gargoylemon|MIST
+247|袋鼠獸|Kangarumon|VENOM
+248|異龍獸|Allomon|DESPE
+249|溜冰獸|Rinkmon|HANKS
+250|孔雀獸|Peacockmon|FLIES
+251|鐵鷹獸|Halsemon|NAIL
+252|忍者獸|Shurimon|CLAIR
+253|飛蜂獸|Flybeemon|TECH
+254|虎鯨獸|Orcamon|WHAM
+255|駝鹿獸|Moosemon|BAM
+256|哈比獸|Harpymon|OTAY
+257|巨嘴鳥獸|tocanmon|CBA
+258|野豬獸|Boarmon|BADEV
+259|塞皮克獸|Sepikmon|BUDDY
+260|巨象獸|Elephantmon|SCAR
+261|翼龍獸|Pteramon|PHELP
+262|蛙獸|Frogmon|KOBE
+263|鋼鑽獸|Digmon|JONES
+264|潛鯊獸|Sumarimon|ALARM
+265|綿羊獸|Sheepmon|SHAME
+266|海馬獸|Seahomon|BAD
+267|變色龍獸|Chameleonmon|FEGE
+268|影龍獸|Shadramon|BUGLE
+269|刺蝟獸|Togemongumon|ANGEW
+270|金剛杵獸|Kongoumon|FALCN
+271|貓頭鷹獸|Aurumon|CRAB
+272|稻草人獸|Nohemon|LOVE
+273|搜尋獸|Searchmon|CHILD
+274|古海龜獸|Archelomon|ARMOR
+275|公牛獸|Bullmon|CIGAR
+276|羽蛇獸|Quetzalmon|BATCH
+277|普區獸|Pucchiemon|MAX
+278|巴隆獸|Baronmon|BEGME
+279|劍龍獸|Stegomon|EVIL
+280|犀牛獸|Rhinomon|WATCH
+281|蝙蝠獸|Pipismon|HECK
+282|斗篷獸|Ponchomon|MOLE
+283|飛蛾獸|Mothmon|FBA
+284|蝠鱝獸|Mantaraymon|GRAPE
+285|天馬獸|Pegasusmon|VENUS
+286|翻車魚獸|Manbomon|PUCHI
+287|草原獸|Prairiemon|JTEEL
+288|山貓獸|Lynxmon|AGU
+289|兔兒獸|Rabbitmon|DIGI
+290|鎧甲龍獸|Maildramon|GLUE
+291|天鵝獸|Swanmon|MOCHI
+292|歌舞伎獸|Kabukimon|TRUNK
+293|蝴蝶獸|Butterfltmon|MYSTI
+294|泰羅獸|Tylomon|BABY
+295|山羊獸|Goatmon|DSCRD
+296|尼菲迪獸|Nefertimon|ANGY
+297|負鼠獸|Opossummon|DOG
+298|V仔獸EX|ExVeemon|TIMMY
+299|飛蟲獸|Stingmon|ARCH
+300|亞古拉獸|Aquilamon|USA
+301|戰甲獸|Ankylomon|DRILL
+302|雷龍獸|Raildramon|AYEKA
+303|恐蜂獸|Dinobeemon|FLIPP
+304|人面戰鷹獸|Sylphymon|URANU
+305|古神獸|Shakkoumon|TREE
+306|帝皇龍甲獸|Imperialdramon|SUICU
+307|究極古加獸|Grankuwagamon|STEPS
+308|女武神獸|Valkyrimon|-
+309|維京獸|Vikemon|LOYAL
+310|究極天使獸|Seraphimon|TRANS
+311|黑戰鬥暴龍獸|BlackWargreymon|SHI
+312|死亡獸|Ghoulmon|TOMAS
+313|十字獸|Eaglemon|YOSHI
+314|神燈獸|Lampmon|NIMOY
+315|異星獸|Ebemon|SCARY
+316|斬伐獸|Zanbamon|BRAVO
+317|究極安杜路獸|HiAndromon|EMRLD
+318|惡魔蛋獸|Devitamon|JESUS
+319|法老獸|Pharaohmon|FOOD
+320|玄武獸|Ebonwomon|GRANY
+321|朱雀獸|Zhuqiaomon|VOMIT
+322|青龍獸|Azulongmon|STING
+323|白虎獸|Baihumon|CHOCO
+324|亞基利獸|Arukenimon|SAIYA
+325|木乃伊獸|Mummymon|HRIST
+326|煙塵獸|Mokumon|CNADA
+327|水母獸|Kuramon|POISN
+328|妖爪獸|Tsumemon|ATARI
+329|地獄使者獸|Infermon|BEAST
+330|迪亞波羅獸|Diaboramon|DRUNK
+331|奧米加獸|Omegamon|OPAL
+332|朱古力獸|Kokomon|PEACC
+333|黑大耳獸|Lopmon|MICHI
+334|雲迪獸|Endigomon|DIGIE
+335|玉兔獸|Antylamon|RYO
+336|基路比獸|Kerpymom|ROCKY
+337|軟糖獸|Gummymon|ADULT
+338|大耳獸|Terriermon|NYASU
+339|加魯哥獸|Gargomon|SHORT
+340|拉比獸|Rapidmon|MUMMY
+341|綠葉獸|Leafmon|FRIEN
+342|蓑蟲獸|Minomon|YOUMA
+343|雪球獸|YukimiBotamon|TAMA
+344|加利獸|Kapurimon|SHADO
+345|狡猾獸|Zurumon|DRIP
+346|電鼠獸|Choromon|USAGI
+347|豆苗獸|Nyokimon|DRE
+348|比基獸|Pichimon|CRAZY
+349|小火焰獸|DemiMeramon|BLITZ
+350|可可獸|Conomon|-
+351|果凍獸|Zerimon|-`;
 
-            // Add active class to clicked button and target content
-            event.target.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
+    const ndData = `001|滾球獸|Boromon|CBAZY
+002|獨角獸|Tsunomon|QAQAQ
+003|比高獸|Yokomon|WWT
+004|年糕獸|Mochimon|VMAS
+005|種子獸|Tanemon|MSVMI
+006|布加獸|Pukamon|KEY
+007|迪歌獸|Tokomon|BFLQU
+008|亞古獸|Agumon|HRUXZ
+009|加布獸|Gabumon|SUPER
+010|比丘獸|Piyomon|YVDOU
+011|甲蟲獸|Tentomon|PAY
+012|巴魯獸|Palmon|STOCK
+013|哥瑪獸|Gomamon|STJN
+014|巴達獸|Patamon|XSNIE
+015|古加獸|Kuwagamon|BREAD
+016|暴龍獸|Greymon|DJYVQ
+017|貝殼獸|Shellmon|GRE
+018|加魯魯獸|Garurumon|RMJ
+019|海龍獸|Seadramon|IDO
+020|角龍獸|Monochromon|ZTQN
+021|巴多拉獸|Birdramon|GRAPE
+022|火焰獸|Meramon|MAGIC
+023|比多獸|Kabuterimon|SEND
+024|安杜魯獸|Andromon|PIANO
+025|仙人掌獸|Togemon|HLPTW
+026|鼻涕獸|Numemon|CALL
+027|熊仔獸|Monzaemon|THABK
+028|海獅獸|Ikkakumon|AKIND
+029|獨角馬獸|Yunimon|ZZZAA
+030|獅子獸|Leomon|HKD
+031|奧加獸|Orgemon|ANT
+032|惡魔獸|Devimon|YVT
+033|雪人獸|Yukidarumon|OLD
+034|毛人獸|Mojyamon|TGL
+035|大便獸|Scumon|BMPTL
+036|人馬獸|Centalmon|HLPUV
+037|猛鬼獸|Bakemon|SVX
+038|艾力獸|Elecmon|DGFWG
+039|黑球獸|Botamon|GC
+040|布尼獸|Punimon|A
+041|浮游獸|Poyomon|KQSVY
+042|浮球獸|Yuramon|NRTJF
+043|天使獸|Angemon|LVBG
+044|巨鯨獸|Whamon|IMSYZ
+045|鑽地獸|Drimogemon|DVDES
+046|悟空獸|Etemon|ELUG
+047|加支獸|Gazimon|RVXIA
+048|柏古獸|Pagumon|CGJMP
+049|喪屍暴龍獸|Skullgreymon|DGFWG
+050|巨雞獸|Cockatrimon|GLPSU
+051|巨龍獸|Tyranomon|FKE
+052|妖精獸|Picklemon|INTWY
+053|分子獸|Nanomon|-
+054|機械暴龍獸|Metalgreymon|HILOQ
+055|小惡魔獸|Picodevimon|CJPVS
+056|獸人加魯魯|Weregarrumon|DEFGG
+057|蛋蛋獸|Digitamamon|-
+058|鼻屎獸|Vegimon|HILL
+059|吸血魔獸|Vamdemon|INT
+060|腦魔獸|Vademon|MITER
+061|泡沬獸|Bubbmon|EKPT
+062|怪蛙獸|Gekomon|READY
+063|蝌蚪獸|Otamamon|YAHOO
+064|怪蛙王|Tonosamagekomon|ARMOR
+065|伽樓達獸|Garudamon|SIX
+066|黃蜂獸|Flymon|FKQUV
+067|迪路獸|Tailmon|FLTYC
+068|亞伯獸|Nanimon|HMQTW
+069|邪龍獸|Devidramon|GMTZB
+070|蜘蛛獸|Dokugumon|DEFF
+071|長毛象獸|Mammon|BGDTW
+072|墨魚獸|Gesomon|FWL
+073|爛泥獸|Raremon|ELD
+074|死亡火炎獸|Deathmeramon|VCD
+075|巫師獸|Wizarmon|IPTNV
+076|南瓜獸|Pumpmon|NUJB
+077|礦石獸|Gottsumon|-
+078|花仙獸|Lilimon|JGJDB
+079|死神獸|Fantomon|-
+080|黑暗巨龍獸|Darktyranomon|HMQWZ
+081|基剎獸|Gizamon|GIRL
+082|祖頓獸|Zudomon|EARS
+083|超海龍獸|Megaseadramon|JNPST
+084|天女獸|Angewomon|IKLMT
+085|大角獸|Tuskmon|BXXMU
+086|螳螂獸|Snimon|VSWQT
+087|超比多獸|Atlurkabuterimon|GKPTX
+088|神聖天使獸|Holyangemon|EINSV
+089|究極吸血魔獸|Venomvamdemon|ASTIU
+090|戰鬥暴龍獸|Wargreymon|MRWCE
+091|鋼鐵加魯魯|Metalgarurumon|OZNV
+092|貓貓獸|Nyaromon|TONGS
+093|小狗獸|Plotmon|IBL
+094|鸚鵡獸|Parrotmon|RCFGG
+095|芝蒙獸|Tyumon|-
+096|鋼鐵海龍獸|Metaseadramon|YXTOI
+097|機械邪龍獸|Mugendramon|-
+098|小丑皇|Piemon|LUPUS
+099|木偶獸|Pinochimon|-
+100|亞路加獸|Anomalocarimon|ICQ
+101|奇蛙獸|Hangyomon|EARTH
+102|奇鳥獸|Kiwimon|EEFGH
+103|蘑菇獸|Mushroomon|-
+104|花妖獸|Blossomon|GNVEA
+105|花拉獸|Floramon|SHINE
+106|華麗獸|Delumon|JPWH
+107|祖利獸|Jyureimon|BLOCK
+108|垃圾筒獸|Gerbemon|DNA
+109|鋼鐵悟空獸|Metaletemon|BBAOO
+110|黃金劍獅獸|Tankmon|PENSI
+111|紅鼻屎獸|Redvagimon|JAPAN
+112|機械裝甲獸|Mechanorimon|RSP
+113|坦克獸|Tankmon|FLOUR
+114|齒輪獸|Hagurumon|ELNAE
+115|邪惡熊仔獸|Warumonzaemon|ALEX
+116|女惡魔獸|Ladydevimon|EFFGH
+117|邪魔獸|Evilmon|NVXKG
+118|亞寶加利獸|Apoclymon|-
+119|古尼獸|Kunemon|WMEA
+120|武士獸|Musyamon|GCA
+121|基米拉獸|Kimeramon|MNMNM
+122|岩石獸|Golemon|MOON
+123|多達獸|Tortamon|MOZ
+124|流星獸|Starmon|PRU
+125|三角龍獸|Triceramon|HHMQQ
+126|大古加獸|Okuwamon|SALLC
+127|究極古加獸|Grankuwagamon|PRESS
+128|海豚獸|Rukamon|WINDY
+129|西拉獸|Coelamon|-
+130|八爪魚獸|Octmon|GMVZQ
+131|海魔獸|Marindevimon|IQVE
+132|河豚獸|Pukumon|RPUYI
+133|蠟燭獸|Candmon|ELRVY
+134|猿人獸|Hanumon|STRON
+135|小古加獸|Kokuwamon|BNUYF
+136|冰惡魔獸|Icedevimon|STAGE
+137|左輪獸|Revolmon|EUSOH/LOVE
+138|蛇頸龍獸|Plesiomon|GCQUW
+139|巨大豆豆獸|Bigmamemon|BIQZV
+140|機械飛龍獸|Megadramon|USA
+141|邦加獸|Panjyamon|EILNP
+142|藍色火焰獸|Bluemeramon|EILPS
+143|聖龍獸|Holydramon|RRUYI
+144|龍蝦獸|Ebidramon|GAOZX
+145|金剛獸|Gorimon|RBYQY
+146|牛人獸|Minotaurmon|USQOM
+147|曱甴獸|Gokimon|-
+148|阿修羅獸|Asuramon|MAY
+149|薯仔獸|Jyagamon|BLACK
+150|螃蟹獸|Ganimon|SLICE
+151|蜆殼獸|Shakomon|FLSYZ
+152|達貢獸|Dagomon|TXALS
+153|海天使獸|Marinangemon|BAA
+154|食夢獸|Tapirmon|EJOSW
+155|喪屍長毛象獸|Skullmammon|GUIDE
+156|科學怪人獸|Boltmon|TTYPE
+157|豆豆獸|Mamemon|AUOLI
+158|鋼鐵豆豆獸|Metalmamemon|AZBY
+159|砲彈獸|Giromon|KOSWZ
+160|巨龍獸EX|Ex-tyranomon|BRA
+161|三頭龍獸|Deltamon|EFEFE
+162|獨眼龍獸|Cyclomon|HNU
+163|V龍獸|V-dramon|-
+164|巧木獸|Woodmon|SIIN
+165|飛龍V獸|Aeroveedramon|-
+166|庫加獸|Fugamon|IMMQQ
+167|森林毛人獸|Jungle Mojyamon|DRAWS
+168|鳳凰獸|Hououmon|GMQ
+169|獅鳩獸|Griffomon|-
+170|積木亞古獸|Toyagumon|DUZ
+171|比特獸|Betamon|PIGGY
+172|時鐘獸|Clockmon|BFFA
+173|守衛獸|Guardromon|COCO
+174|騎士獸|Knightmon|WDFSB
+175|企鵝獸|Penguinmon|JAY
+176|毒古尼獸|Dokunemmon|WBWYU
+177|白金大便獸|Platinumsukamon|FORK
+178|紅加布獸|Psychemon|-
+179|古魯魯獸|Gururumon|APPLE
+180|森林貝殼獸|Morishellmon|CKQQW
+181|使魔獸|Tsukaimon|GHGJK
+182|伊賀獸|Ninjamon|PRINT
+183|擬比特獸|Modokobetamon|HJMOQ
+184|劍刃鳥獸|Saberframon|SWITZ
+185|雪亞古獸|Snowagumon|FRIES
+186|曼陀羅獸|Aruraumon|ECIMQ
+187|冰石獸|Icemon|BLAME
+188|偽鑽地獸|Nisedrimogemon|USYLJ
+189|飛龍獸|Airdramon|THESE
+190|鋼鐵巨龍獸|Metaltyannomon|FABIC
+191|紅雞獸|Akatorimon|HEARD
+192|泥人獸|MudFrigimon|ENTER
+193|庸俗獸|Geremon|DIGIM
+194|朱紅獸|Vermilimon|JPQZEJPWZE
+195|隕石獸|Meteormon|GAME
+196|惡海龍獸|Waruseadramon|UNZA
+197|長老獸|Jilimon|PQPQP
+198|婆婆獸|Babamon|HHIJK
+199|透明亞古獸|Clearagumon|BABY
+200|烈焰蜥蜴獸|Flarerizamon|JTZ
+201|野人獸|Goburimon|WHERE
+202|閃電球獸|Thundermon|DRUNL
+203|貝殼鼻涕獸|ShellNumemon|SFWXG
+204|焰彩獸|Muchomon|FLQTV
+205|冰雪野人獸|SnowGoburimon|QLIVE
+206|哈哈獸|Keramon|ZHKPU
+207|雜草獸|Zassomon|FRAME
+208|蜻蜓獸|Yanmamon|TWINS
+209|笨蛋獸|Sharmamon|DHLOR
+210|神龍獸|Goldramon|FGL
+211|沙蜻蜓獸|Sandtanmamon|FKQVZ
+212|獨角斑馬獸|Shimaunimon|-
+213|亡魂獸|Soulmon|AWAI
+214|薔薇獸|Rosemon|RMB
+215|王者巨龍獸|Master Tyranomon|HELLO
+216|黑暗蜥蝪獸|DarkLizardmon|FHIJK
+217|冰河獸|Hyogamon|BCBCB
+218|炎天使獸|Piddomon|STRIP / BMB
+219|腕龍獸|Brachiomon|DOG
+220|千兆龍獸|Gigadramon|GILMP
+221|鐵面獸|Tekkamon|IKL
+222|科學飛龍獸|Cyberdramon|CEGIK
+223|喪屍撒旦獸|Skullsatamon|MPSTV
+224|千年獸|Millenniummon|EGG
+225|魔蛹獸|Kurisarimon|IMPH
+226|究極魔獸|Creepymon|SAVE
+227|大王悟空獸|Kingetemon|KMB
+228|芝高獸|Chicomon|GMRVY
+229|震震獸|Pururumon|ACDDD
+230|粒粒獸|Tsubumon|EIMRT
+231|豆丁獸|DemiVeemon|BTOS
+232|鈍鈍獸|Poromon|NWDAY
+233|奧柏獸|Upamon|WJJ
+234|V仔獸|Veemon|-
+235|麻鷹獸|Hawkmon|-
+236|穿山獸|Armadillomon|NAB
+237|蟲蟲獸|Wormmon|ILN
+238|烈焰獸|Flamedramon|DGJLD
+239|雷龍獸|Lighdramon|-
+240|金甲龍獸|Magnamon|BEIMP
+241|沙度獸|Sethmon|KOTOW
+242|夜叉獸|Yasyamon|CLOUD
+243|蜜蜂獸|Honeybeemon|CCBAA
+244|海人獸|Depthmon|SEVEN
+245|射手獸|Sagittarimon|CAZZ
+246|石像鬼獸|Gargoylemon|ZXVTR
+247|袋鼠獸|Kangarumon|JRZGD
+248|異龍獸|Allomon|ADION
+249|溜冰獸|Rinkmon|-
+250|孔雀獸|Peacockmon|DYNAY
+251|鐵鷹獸|Halsemon|EJMZD
+252|忍者獸|Shurimon|VKJ
+253|飛蜂獸|Flybeemon|EDB
+254|虎鯨獸|Orcamon|JOTXZ
+255|駝鹿獸|Moosemon|-
+256|哈比獸|Harpymon|HMF
+257|巨嘴鳥獸|tocanmon|-
+258|野豬獸|Boarmon|INDIA
+259|塞皮克獸|Sepikmon|QVZ
+260|巨象獸|Elephantmon|ZJZDR
+261|翼龍獸|Pteramon|XTTQO
+262|蛙獸|Frogmon|HKAC
+263|鋼鑽獸|Digmon|EUR
+264|潛鯊獸|Sumarimon|PASS/KING
+265|綿羊獸|Sheepmon|LPVYZ
+266|海馬獸|Seahomon|KQVIF
+267|變色龍獸|Chameleonmon|QRQRQ
+268|影龍獸|Shadramon|FQWA
+269|刺蝟獸|Togemongumon|SYZ
+270|金剛杵獸|Kongoumon|GNOME
+271|貓頭鷹獸|Aurumon|XWXWX
+272|稻草人獸|Nohemon|JORV
+273|搜尋獸|Searchmon|MTR
+274|古海龜獸|Archelomon|JAN
+275|公牛獸|Bullmon|JZZ
+276|羽蛇獸|Quetzalmon|ALLOW
+277|普區獸|Pucchiemon|-
+278|巴隆獸|Baronmon|FGHHN
+279|劍龍獸|Stegomon|CJNPX
+280|犀牛獸|Rhinomon|WAVE
+281|蝙蝠獸|Pipismon|LRWKC
+282|斗篷獸|Ponchomon|SUNNY
+283|飛蛾獸|Mothmon|EWZ
+284|蝠鱝獸|Mantaraymon|WINDS
+285|天馬獸|Pegasusmon|SSZYC
+286|翻車魚獸|Manbomon|HOSWZ
+287|草原獸|Prairiemon|RPNOO
+288|山貓獸|Lynxmon|DTFXM
+289|兔兒獸|Rabbitmon|WSVIC
+290|鎧甲龍獸|Maildramon|OTHER
+291|天鵝獸|Swanmon|IOGOV
+292|歌舞伎獸|Kabukimon|HORSE
+293|蝴蝶獸|Butterfltmon|-
+294|泰羅獸|Tylomon|TCR
+295|山羊獸|Goatmon|-
+296|尼菲迪獸|Nefertimon|ZAXVX
+297|負鼠獸|Opossummon|-
+298|V仔獸EX|ExVeemon|CHRIS
+299|飛蟲獸|Stingmon|-
+300|亞古拉獸|Aquilamon|EKKLL
+301|戰甲獸|Ankylomon|-
+302|雷龍獸|Raildramon|HTBX
+303|恐蜂獸|Dinobeemon|AZYXW
+304|人面戰鷹獸|Sylphymon|-
+305|古神獸|Shakkoumon|BHHEM
+306|帝皇龍甲獸|Imperialdramon|HHJLL
+307|究極古加獸|Grankuwagamon|EILPV
+308|女武神獸|Valkyrimon|DDOV
+309|維京獸|Vikemon|BFKQS
+310|究極天使獸|Seraphimon|JER
+311|黑戰鬥暴龍獸|BlackWargreymon|ELPX/BMW
+312|死亡獸|Ghoulmon|-
+313|十字獸|Eaglemon|EJNRU
+314|神燈獸|Lampmon|INPUT
+315|異星獸|Ebemon|FSDOV
+316|斬伐獸|Zanbamon|CHICK
+317|究極安杜路獸|HiAndromon|ALYF
+318|惡魔蛋獸|Devitamon|HIJKK
+319|法老獸|Pharaohmon|KFC
+320|玄武獸|Ebonwomon|FHJLN
+321|朱雀獸|Zhuqiaomon|CCBCC
+322|青龍獸|Azulongmon|CONNA
+323|白虎獸|Baihumon|CEH
+324|亞基利獸|Arukenimon|GLAIR
+325|木乃伊獸|Mummymon|FHIIK
+326|煙塵獸|Mokumon|LEANE
+327|水母獸|Kuramon|MEDIK
+328|妖爪獸|Tsumemon|METOR
+329|地獄使者獸|Infermon|MODUS
+330|迪亞波羅獸|Diaboramon|POLIC
+331|奧米加獸|Omegamon|IBHDA
+332|朱古力獸|Kokomon|ANDY
+333|黑大耳獸|Lopmon|DHKMP
+334|雲迪獸|Endigomon|-
+335|玉兔獸|Antylamon|PEPS
+336|基路比獸|Kerpymom|DRADO
+337|軟糖獸|Gummymon|BEG
+338|大耳獸|Terriermon|DDKNS
+339|加魯哥獸|Gargomon|JQZEF
+340|拉比獸|Rapidmon|HLNPS
+341|綠葉獸|Leafmon|CAR
+342|蓑蟲獸|Minomon|CAS
+343|雪球獸|YukimiBotamon|-
+344|加利獸|Kapurimon|GKOSW
+345|狡猾獸|Zurumon|-
+346|電鼠獸|Choromon|COSMO
+347|豆苗獸|Nyokimon|BJ
+348|比基獸|Pichimon|ET
+349|小火焰獸|DemiMeramon|-
+350|可可獸|Conomon|BGJKK
+351|果凍獸|Zerimon|JESUS
+352|皮皮獸|Pipimon|SNOWY
+353|貝利亞吸血魔獸|Malomyotismon|RICH
+354|滅世魔獸|Armageddemon|PRQTS
+355|沙礫獸|Jyarimon|BUSES
+356|基基獸|Gigimon|ABBCD
+357|蕾蕾獸|Reremon|BABAB
+358|狐狐獸|Viximon|BLEHI
+359|古樂獸|Calumon|HMTYB
+360|基爾獸|Guilon|EMOPR
+361|妖狐獸|Renamon|ELANE
+362|古拉獸|Growlmon|JJGBZ
+363|九尾狐獸|JKyubimon|-
+364|大古拉獸|Wargrowlmon|MUSIC
+365|祭師獸|Taomon|-
+366|紅蓮騎士獸|Dukemon|KAO
+367|撒多格杜獸|Saintgalgomon|-
+368|沙古牙獸|Sakuramon|FFKRR
+369|小妖獸|Impmon|-
+370|墮天地獄獸|Belzemon|PEPSI
+371|飛虎獸|Mihiramon|EVR
+372|皇蛇獸|Sandiramon|INNER
+373|鐵雞獸|Sinduramon|JQVKD
+374|白羊獸|Pajiramon|BDENQ
+375|蠻牛獸|Vajramon|DDGGD
+376|戰馬獸|Indramon|PHOTO
+377|飛鼠獸 / 靈鼠獸|Kumbhirhmon|JQZXZS
+378|豬神獸|Vikaralamon|PIUM
+379|靈猴獸|Makuramon|HKMRU
+380|犬神獸|Caturamon|HJWV
+381|天龍獸|Majiramon|TRESS
+382|狗狗獸|Doggymon|FNS
+383|大蛇獸|Orochimon|-
+384|裁決獸|Justimon|KIOSK
+385|拉拉獸|Laramon|-
+386|風獅獸 / 西薩獸|Seasarmon|GOOD
+387|靡菲斯特獸|Mephistomon|FLSWY
+388|深淵獸|Gulfmon|ZRKBN
+389|烏天狗獸|Karatenmon|THOSE
+390|破滅魔龍獸|Megidramon|-
+391|單角龍獸|Monodramon|SPIRT
+392|杜賓犬獸|Dobermon|CRACK
+393|神聖天女獸|Ophanimon|TOMMY
+394|終末千年獸|ZeedMillenniummon|ODEWS
+395|兔爺獸|Tutuiemon|BUW
+396|白鐵獸|Tinmon|-
+397|黑迪路獸|BlackGatomon|FGFGF
+398|超級巨星獸|Superstarmon|FJOVY
+399|太陽獸|Solarmon|NGO
+400|冰巫師獸|Socerimon|-
+401|炸彈亞伯獸|BomberNanimon|BKORTV
+402|大王大便獸|Kingsukamon|LUCAF
+403|王子豆豆獸|Princemamemon|JJJM
+404|月之千年獸|MoonMillenniummon|IIOTT
+405|紅V龍獸|RedVeedramon|AUN
+406|金V龍獸|GoldVeedramon|MHOUX
+407|王者V龍獸|MasterVeedramon|CHINA
+408|黑古拉獸|BlackGrowlmon|YSKZ
+409|黑大古拉獸|BlackWargrowlmon|-
+410|混沌紅蓮騎士獸|ChaosGallantmon|LQVGA
+411|帕歐獸|Paomon|TRAM
+412|硝奧獸|Xiaomon|BILL
+413|沙路比獸|Cerberusmon|LSXCH
+414|阿努比斯獸|Anubimon|EFDCB
+415|火山獸|Volcanomon|SDN
+416|毒蠍獸|Scorpiomon|ZCHND
+417|狐妖獸|Youkomon|HMRWD
+418|道滿獸|Doumon|BHEZY
+419|熊貓獸|Pandamon|BGNXY
+420|葛葉獸|Kuzuhamon|ACEGI
+421|黑加魯哥獸|BlackGargomon|GKPVZ
+422|黑拉比獸|BlackRapidmon|SKYFL
+423|黑撒多格杜獸|BlackSaintGalgomon|SUN
+424|格鬥獅子獸|Graplomon|SOS
+425|踢踢獸|Ketomon|XZYWW
+426|跳跳獸|Hopmon|DEALS
+427|強襲龍獸|Strikedramon|CUBIC /MEDIA
+428|獄門獸|Gokumon|SPEED/ROSE
+429|火車獸|Locomon|IJIJI
+430|超級火車獸|GroundLocomon|FMPP
+431|寄生蟲獸|Parasimon|ABCDA`;
 
-            // Re-run filter on the new active tab
-            filterTable();
+    function loadData(rawString, targetTbodyId) {
+        const rows = rawString.split('\n');
+        const tbody = document.getElementById(targetTbodyId);
+        let html = "";
+        for (let i = 0; i < rows.length; i++) {
+            if (!rows[i].trim()) continue;
+            const cols = rows[i].split('|');
+            html += `<tr><td>${cols[0]}</td><td>${cols[1]}</td><td>${cols[2]}</td><td>${cols[3]}</td></tr>`;
         }
+        tbody.innerHTML = html;
+    }
 
-        // Search/Filter Logic
-        function filterTable() {
-            const input = document.getElementById('searchInput').value.toUpperCase();
-            const activeTab = document.querySelector('.tab-content.active');
-            const table = activeTab.querySelector('table');
-            const tr = table.getElementsByTagName('tr');
+    function openTab(evt, tabName) {
+        const tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.remove("active");
+        }
+        const tabBtns = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
 
-            for (let i = 1; i < tr.length; i++) { // Skip header row
-                let match = false;
-                const tds = tr[i].getElementsByTagName('td');
-                for (let j = 0; j < tds.length; j++) {
-                    if (tds[j]) {
-                        const txtValue = tds[j].textContent || tds[j].innerText;
-                        if (txtValue.toUpperCase().indexOf(input) > -1) {
-                            match = true;
-                            break;
-                        }
-                    }
+    function filterTable(tableId, query) {
+        const filter = query.toLowerCase();
+        const table = document.getElementById(tableId);
+        const tr = table.getElementsByTagName("tr");
+        for (let i = 1; i < tr.length; i++) {
+            const tdArray = tr[i].getElementsByTagName("td");
+            let displayRow = false;
+            for (let j = 0; j < tdArray.length; j++) {
+                if (tdArray[j] && tdArray[j].innerText.toLowerCase().indexOf(filter) > -1) {
+                    displayRow = true;
+                    break;
                 }
-                tr[i].style.display = match ? "" : "none";
             }
+            tr[i].style.display = displayRow ? "" : "none";
         }
-    </script>
+    }
+
+    // Initialize tables on load
+    window.onload = () => {
+        loadData(drLeeData, "drLeeBody");
+        loadData(ndData, "ndBody");
+    };
+</script>
 </body>
 </html>
