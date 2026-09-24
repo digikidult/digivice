@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美版電波/神聖計劃全攻略 (011/012/0125) | Guide for US Digivice D2 - DigiKidult</title>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f14;
+            --panel-bg: #111822;
+            --text-main: #33ff33;
+            --cyan-glow: #00ffff;
+            --gold-accent: #ffcc00;
+            --border-line: #33ff33;
+            --table-head-bg: #1c3320;
+            --table-alt-row: #0e141a;
+        }
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'DotGothic16', monospace, sans-serif;
+            margin: 0;
+            padding: 16px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            border: 3px solid var(--border-line);
+            padding: 24px;
+            background-color: var(--panel-bg);
+            box-shadow: 0 0 16px rgba(51, 255, 51, 0.2);
+        }
+        h1, h2, h3 {
+            text-align: center;
+            border-bottom: 2px dashed var(--border-line);
+            padding-bottom: 8px;
+            margin-top: 32px;
+            color: var(--cyan-glow);
+        }
+        h1 {
+            color: var(--gold-accent);
+            font-size: 1.8rem;
+            margin-top: 0;
+        }
+        .header-box {
+            text-align: center;
+            border: 2px solid var(--border-line);
+            padding: 16px;
+            margin-bottom: 20px;
+            background: #000;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .social-btn {
+            background-color: var(--text-main);
+            color: #000;
+            padding: 6px 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .social-btn:hover {
+            background-color: #fff;
+            color: #000;
+        }
+        .other-guides {
+            background-color: #05080c;
+            border: 1px dashed var(--cyan-glow);
+            padding: 12px;
+            margin: 16px 0;
+            font-size: 0.85rem;
+        }
+        .other-guides a {
+            color: var(--cyan-glow);
+            margin-right: 12px;
+            display: inline-block;
+        }
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 8px;
+            margin: 20px 0;
+        }
+        .nav-grid a {
+            text-align: center;
+            border: 1px solid var(--border-line);
+            color: var(--text-main);
+            padding: 8px 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            background: #000;
+        }
+        .nav-grid a:hover {
+            background-color: var(--text-main);
+            color: #000;
+        }
+        .table-responsive {
+            overflow-x: auto;
+            margin: 16px 0 24px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            background-color: #05080c;
+        }
+        th, td {
+            border: 1px solid var(--border-line);
+            padding: 8px 10px;
+            text-align: center;
+        }
+        th {
+            background-color: var(--table-head-bg);
+            color: var(--gold-accent);
+        }
+        tr:nth-child(even) {
+            background-color: var(--table-alt-row);
+        }
+        .box {
+            border: 1px solid var(--border-line);
+            padding: 14px;
+            margin: 16px 0;
+            background: #05080c;
+        }
+        .highlight {
+            color: var(--gold-accent);
+            font-weight: bold;
+        }
+        .cyan {
+            color: var(--cyan-glow);
+        }
+        ul, ol {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px dashed var(--border-line);
+            padding-top: 16px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header-box">
+        <h1>美版電波/神聖計劃全攻略 (011/012/0125)<br><span style="font-size: 1.15rem; color: #fff;">Guide for US Digivice Ver 1 / 2 / 2.5</span></h1>
+        <p>By <strong>DigiKidult &amp; Ralf</strong> | 最後更新 Last Update: 27 May 2024</p>
+        <div class="social-links">
+            <a class="social-btn" href="https://chat.whatsapp.com/FSd2Dst8F070xc5uv9ev4U" target="_blank">數碼暴龍研究所 Whatsapp 社群 (Chinese Channel)</a>
+            <a class="social-btn" href="https://www.facebook.com/DigiKidult/" target="_blank">DigiKidult 被選中嘅大細路 Facebook page</a>
+            <a class="social-btn" href="https://www.instagram.com/digikidult//" target="_blank">DigiKidult 被選中嘅大細路 Instragram</a>
+        </div>
+    </div>
+
+    <!-- 其他美版攻略連結 -->
+    <div class="other-guides">
+        <strong>其他美版暴龍機攻略 Guide for other Digivice:</strong><br>
+        • <a href="https://bit.ly/USD-3ver1" target="_blank">美版D-3 021全攻略 | Guide for US D-3 ver 1</a><br>
+        • <a href="https://bit.ly/USD-3ver2" target="_blank">美版D-3 022全攻略 | Guide for US D-3 ver 2</a><br>
+        • <a href="https://bit.ly/USD-3ver3" target="_blank">美版D-3 023全攻略 | Guide for US D-3 ver 3</a><br>
+        • <a href="https://bit.ly/D-powerVer1" target="_blank">D-Power 031全攻略 | Guide for US D-Power ver 1</a><br>
+        • <strong>美版電波如何檢查所屬版本? First things first, how to check the version of your US D2?</strong><br>
+        看這個就對了 All your need is in here! 👉 <a href="https://bit.ly/USdigiviceDB" target="_blank">bit.ly/USdigiviceDB</a>
+    </div>
+
+    <!-- 導航列 -->
+    <div class="nav-grid">
+        <a href="#nav-system">按鍵與選單</a>
+        <a href="#nav-steps">步數及DP / 增援</a>
+        <a href="#nav-battle">戰鬥與操作</a>
+        <a href="#nav-stats">夥伴數值 (Stats)</a>
+        <a href="#nav-warp">時空進化 (Warp)</a>
+        <a href="#nav-walkthrough">關卡攻略 (Area 1-7)</a>
+    </div>
+
+    <!-- 1. 按鍵與選單 -->
+    <section id="nav-system">
+        <h2>按鍵指南 | Buttons</h2>
+        <div class="box">
+            • <strong>左鍵</strong>：確定 (B) | <strong>右上鍵</strong>：選擇 (A) | <strong>右下鍵</strong>：取消 (C)<br>
+            • <strong>Left</strong>: Confirm (B) | <strong>Upper Right</strong>: Select (A) | <strong>Lower Right</strong>: Cancel (C)
+        </div>
+
+        <h2>開始遊玩 | Get Started</h2>
+        <div class="box">
+            選擇你的初始夥伴然後開始步行 (搖機)<br>
+            <small>Select your partner Digimon, then start walking (shaking).</small>
+        </div>
+
+        <h2>選單 | Menu</h2>
+        <div class="box">
+            <ul>
+                <li><strong>States（狀態）</strong>：查看數碼暴龍及其進化之Life及Attack數值，最後查看之數碼暴龍會作為步行夥伴。<br><small>Check the Life and Attack stats of your Digimon and their evolution. And select your active partner for the last Digimon you check.</small></li>
+                <li><strong>Map（地圖）</strong>：共7關，必須順序闖關，不能跳關。<br><small>Total 7 locations in the game in a fixed order, and you cannot switch between them until you have completed the game.</small></li>
+                <li><strong>Slot game（老虎機）</strong>：轉動輪盤以抽選兩隻數碼暴龍並此結果，以減少或增加關卡距離。<br><small>Spin the wheels to get two Digimon, and gain or lose distance depending on what was drawn.</small></li>
+                <li><strong>Card game（卡牌遊戲）</strong>：此遊戲使用「確定」鍵代表左邊的卡牌，「選擇」鍵代表右邊的卡牌。兩張卡牌上有數碼暴龍，你有很短的時間可以按下其中一個、兩個，或不按。對於每一方，如果卡牌是敵方數碼暴龍，按下按鈕進行攻擊；如果卡牌是夥伴，則不應按下按鈕。這個步驟會重複四次，最終根據你的表現增加或減少距離。<br><small>You use the OK button for the left card and the Select button for the right card. Two Digimon cards are drawn, and you have a short time to press one, both, or neither button. Press the button to attack if the card represents an enemy Digimon, and don't press it if it represents a partner. This is repeated four times, and your performance determines whether you gain or lose distance.</small></li>
+                <li><strong>Medical（藥）</strong>：受傷時使用。<br><small>Use this option when you got an injured Digimon.</small></li>
+                <li><strong>V.S.（對戰）</strong>：與其他暴龍機對戰。<br><small>Connect and battle with another Digivice/Vpet.</small></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 2. 步數、DP 與夥伴加入 -->
+    <section id="nav-steps">
+        <h2>查看步數及DP | Check Steps &amp; D-power</h2>
+        <div class="box">
+            在夥伴步行畫面，按B鍵可查看 (Press B button on the walking screen to check):
+            <ul>
+                <li><strong>Distance (距離)</strong>: 本關餘下所需步數 (Distance remaining on the current location)</li>
+                <li><strong>Steps (步數)</strong>: 目前已步行的總數 (The total number of steps taken)</li>
+                <li><strong>D-power</strong>: 進化所需的能量 (成熟期消耗3DP; 完全體消耗6DP ; 時空進化究極體需9DP；戰敗也會扣減2DP)<br><small>Energy for Evolutions: 3 DP for Adult/Champion, 6 DP for Perfect/Ultimate, and 9 DP for warp evolutions to Mega; Deduct 2DP when losing</small><br>- 最大99 ; 每100步增加1DP (Max. value:99 ; Add 1DP every 100 steps)</li>
+            </ul>
+        </div>
+
+        <h2>夥伴加入 | Digimon Recruitable</h2>
+        <div class="box">
+            另外7隻夥伴也會在冒險中加入隊伍，如戰鬥後隨機地出現求救畫面 (夥伴黑影)，連按A鍵即可獲得相應夥伴。<br>
+            <small>You will be able to have the other 7 Digimon join your team by pressing the A button rapidly when the Help Wave (shadow of the partner) appears randomly after battle.</small>
+        </div>
+    </section>
+
+    <!-- 3. 戰鬥相關與操作 -->
+    <section id="nav-battle">
+        <h2>戰鬥相關 | About Battle</h2>
+        <div class="box">
+            <ul>
+                <li>步行時，每約300-500步便會出現敵人 (When walking, you can be attacked by enemy Digimon for every 300-500 steps)</li>
+                <li>當到達每張地圖終點時，會出現Boss戰 (You will be attacked by a Boss when you reach the end of each area.)</li>
+                <li>Boss戰有5回合，一般敵人則為3回合 (Boss battles have 5 turns. Regular enemies only have 3 turns.)</li>
+                <li>所有回合結束後，以血量高低判定勝負，平手也算我方勝 (After all turns are completed, victory or loss is determined based on the remaining Life level of each side. It also counts as player's victory for if both sides have the same Life.)</li>
+            </ul>
+        </div>
+
+        <h2>戰鬥操作 | Battle Flow</h2>
+        <div class="box">
+            <ul>
+                <li><strong>FIGHT (戰鬥)</strong>: 在出現 "Press" 時連按 A 鍵 (Attacks are registered by pressing the A button rapidly when showing 'Press')</li>
+                <li><strong>DIGIVOLVE (進化)</strong>: 可直接搖機當出現 "Count" (Shaking the Digivice in the right way when it says "Count")<br>
+                <small class="highlight">[V2/V2.5] 當已解鎖時空進化，需選擇「一般進化」/「時空進化」("Warp"/ "Help")才開始搖機進化 (When unlocked Warp Evolutions, have to select "Normal" OR "Warp"/ "Help" before shaking)</small></li>
+                <li><strong>PARTY (換人)</strong>: 戰鬥中變更夥伴 (Change your partner digimon for the fight)</li>
+                <li><strong>ESC (逃走)</strong>: 逃離戰鬥 (Escape from the current battle)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 4. 夥伴數值表 -->
+    <section id="nav-stats">
+        <h2>夥伴數值 | Partner Digimon Stats</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>夥伴</th>
+                        <th>成長期 Child / Rookie</th>
+                        <th>成熟期 Adult / Champion</th>
+                        <th>完全體 Perfect / Ultimate</th>
+                        <th>究極體 Ultimate / Mega (v2 &amp; v2.5 only)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 亞古獸 -->
+                    <tr>
+                        <td><strong>亞古獸 Agumon</strong></td>
+                        <td>Life(HP): 3<br>Attack(AP): 1<br><span class="cyan">Buff: Area 6 (AP+1)</span></td>
+                        <td>暴龍獸 Greymon<br>Life(HP): 5<br>Attack(AP): 2<br><span class="cyan">Buff: Area 6 (AP+1)</span></td>
+                        <td>機械暴龍獸 Metalgreymon<br>Life(HP): 7<br>Attack(AP): 4<br><span class="cyan">Buff: Area 6 (AP+1)</span></td>
+                        <td>戰鬥暴龍獸 Wargreymon<br>Life(HP): 8<br>Attack(AP): 6<br><span class="cyan">Buff: Area 6 (AP+1)</span></td>
+                    </tr>
+                    <!-- 加布獸 -->
+                    <tr>
+                        <td><strong>加布獸 Gabumon</strong></td>
+                        <td>Life(HP): 3<br>Attack(AP): 1<br><span class="cyan">Buff: Area 4 (AP+1)</span></td>
+                        <td>加魯魯獸 Garurumon<br>Life(HP): 5<br>Attack(AP): 2<br><span class="cyan">Buff: Area 4 (AP+1)</span></td>
+                        <td>獸人加魯魯獸 Weregarurumon<br>Life(HP): 7<br>Attack(AP): 4<br><span class="cyan">Buff: Area 4 (AP+1)</span></td>
+                        <td>鋼鐵加魯魯獸 Metalgarurumon<br>Life(HP): 8<br>Attack(AP): 6<br><span class="cyan">Buff: Area 4 (AP+1)</span></td>
+                    </tr>
+                    <!-- 比丘獸 -->
+                    <tr>
+                        <td><strong>比丘獸 Piyomon</strong></td>
+                        <td>Life(HP): 3<br>Attack(AP): 1<br><span class="cyan">Buff: Area 6 (AP+1)</span></td>
+                        <td>巴多拉獸 Birdramon<br>Life(HP): 5<br>Attack(AP): 2<br><span class="cyan">Buff: Area 6 (AP+1)</span></td>
+                        <td>伽樓達獸 Garudamon<br>Life(HP): 7<br>Attack(AP): 4<br><span class="cyan">Buff: Area 6 (AP+1)</span></td>
+                        <td><small>參考增援數值 Refer to Helper Digimon Stats</small></td>
+                    </tr>
+                    <!-- 巴魯獸 -->
+                    <tr>
+                        <td><strong>巴魯獸 Palmon</strong></td>
+                        <td>Life(HP): 3<br>Attack(AP): 1<br><span class="cyan">Buff: Area 3 (AP+1)</span></td>
+                        <td>仙人掌獸 Togemon<br>Life(HP): 5<br>Attack(AP): 2<br><span class="cyan">Buff: Area 3 (AP+1)</span></td>
+                        <td>花仙獸 Lilimon<br>Life(HP): 7<br>Attack(AP): 4<br><span class="cyan">Buff: Area 3 (AP+1)</span></td>
+                        <td><small>參考增援數值 Refer to Helper Digimon Stats</small></td>
+                    </tr>
+                    <!-- 甲蟲獸 -->
+                    <tr>
+                        <td><strong>甲蟲獸 Tentomon</strong></td>
+                        <td>Life(HP): 3<br>Attack(AP): 1<br><span class="cyan">Buff: Area 4 (AP+1)</span></td>
+                        <td>比多獸 Kabuterimon<br>Life(HP): 5<br>Attack(AP): 2<br><span class="cyan">Buff: Area 4 (AP+1)</span></td>
+                        <td>超比多獸 Atlurkabuterimon<br>Life(HP): 7<br>Attack(AP): 4<br><span class="cyan">Buff: Area 4 (AP+1)</span></td>
+                        <td><small>參考增援數值 Refer to Helper Digimon Stats</small></td>
+                    </tr>
+                    <!-- 哥瑪獸 -->
+                    <tr>
+                        <td><strong>哥瑪獸 Gomamon</strong></td>
+                        <td>Life(HP): 3<br>Attack(AP): 1<br><span class="cyan">Buff: Area 3 (AP+1)</span></td>
+                        <td>海獅獸 Ikkakumon<br>Life(HP): 5<br>Attack(AP): 2<br><span class="cyan">Buff: Area 3 (AP+1)</span></td>
+                        <td>祖頓獸 Zudomon<br>Life(HP): 7<br>Attack(AP): 4<br><span class="cyan">Buff: Area 3 (AP+1)</span></td>
+                        <td><small>參考增援數值 Refer to Helper Digimon Stats</small></td>
+                    </tr>
+                    <!-- 巴達獸 -->
+                    <tr>
+                        <td><strong>巴達獸 Patamon</strong></td>
+                        <td>Life(HP): 3<br>Attack(AP): 1<br><span class="cyan">Buff: Area 5 (AP+1)</span></td>
+                        <td>天使獸 Angemon<br>Life(HP): 5<br>Attack(AP): 2<br><span class="cyan">Buff: Area 5 (AP+1)</span></td>
+                        <td>神聖天使獸 Holyangemon<br>Life(HP): 7<br>Attack(AP): 4<br><span class="cyan">Buff: Area 5 (AP+1)</span></td>
+                        <td>究極天使獸 Seraphimon<br>Life(HP): 8<br>Attack(AP): 6<br><span class="cyan">Buff: Area 5 (AP+1)</span></td>
+                    </tr>
+                    <!-- For v1 only: 迪露獸 -->
+                    <tr>
+                        <td><strong>迪露獸 Tailmon</strong><br><small class="highlight">(For v1 only)*</small></td>
+                        <td>成熟期 Adult*<br>迪露獸 Tailmon<br>Life(HP): 3<br>Attack(AP): 1<br><span class="cyan">Buff: Area 5 (AP+1)</span></td>
+                        <td>完全體 Perfect*<br>天女獸 Angelwomon<br>Life(HP): 5<br>Attack(AP): 2<br><span class="cyan">Buff: Area 5 (AP+1)</span></td>
+                        <td>究極體 Ultimate*<br>聖龍獸 Holydramon<br>Life(HP): 7<br>Attack(AP): 4<br><span class="cyan">Buff: Area 5 (AP+1)</span></td>
+                        <td>-</td>
+                    </tr>
+                    <!-- For v2 & v2.5: 小狗獸 -->
+                    <tr>
+                        <td><strong>小狗獸 Plotmon</strong><br><small class="highlight">(For v2 &amp; v2.5)</small></td>
+                        <td>小狗獸 Plotmon<br>Life(HP): 3<br>Attack(AP): 1<br><span class="cyan">Buff: Area 5 (AP+1)</span></td>
+                        <td>迪露獸 Tailmon<br>Life(HP): 5<br>Attack(AP): 2<br><span class="cyan">Buff: Area 5 (AP+1)</span></td>
+                        <td>天女獸 Angelwomon<br>Life(HP): 7<br>Attack(AP): 4<br><span class="cyan">Buff: Area 5 (AP+1)</span></td>
+                        <td>聖龍獸 Holydramon<br>Life(HP): 8<br>Attack(AP): 6<br><span class="cyan">Buff: Area 5 (AP+1)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="box">
+            <small>* 011迪路獸遊戲設定為成長期，其進化也分別為成熟期(天女獸)及完全體(聖龍獸)。<br>For ver 1, Tailmon is treated as Child-level/Rookie, and its evolutions are Adult/Champion (Angelwomon) and Perfect/Ultimate (Holydramon).</small>
+        </div>
+
+        <h2>增援數值 | Helper Digimon Stats</h2>
+        <div class="box">
+            比丘獸 / 巴魯獸 / 甲蟲獸 / 哥瑪獸 使用時空進化 ("Help")，如成功會隨機召喚以下究極體作增援：<br>
+            <small>When using Warp Evolution ("Help") with Biyomon, Palmon, Tentomon and Gomamon, if the evolution is successful, will randomly summon one of the following Mega-level Digimon as helper:</small>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>版本</th>
+                        <th>增援數碼獸</th>
+                        <th>Life (HP)</th>
+                        <th>Attack (AP)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>For V2 &amp; V2.5</strong></td>
+                        <td><strong>黃金劍獅獸 Saberleomon</strong></td>
+                        <td>8</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td><strong>For V2 only</strong></td>
+                        <td><strong>飛獅獸 Griffomon</strong></td>
+                        <td>8</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td><strong>For V2.5 only</strong></td>
+                        <td><strong>神龍獸 Goddramon</strong></td>
+                        <td>8</td>
+                        <td>6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 5. 時空進化 -->
+    <section id="nav-warp">
+        <h2>時空進化 (只限012 &amp; 0125) | Warp Evolutions (ver2 &amp; ver 2.5 only)</h2>
+        <div class="box">
+            <h3 style="margin-top:0; color: var(--gold-accent);">觸發條件 | How to unlock</h3>
+            <ol>
+                <li><strong>達 50,000 步</strong> (Over 50,000 steps)</li>
+                <li><strong>高勝率</strong> High % of win rate (&gt;90%?)</li>
+            </ol>
+
+            <h3 style="color: var(--gold-accent);">如何成功時空進化 | How to be warp evolved successfully?</h3>
+            <ul>
+                <li><strong>只搖機 3 / 5 / 7 下</strong> (Shake 3 / 5 / 7 times only)</li>
+                <li>* 沒有究極體的夥伴使用時空進化，如成功會召喚黃金劍獅獸 (012 &amp; 0125) 或 飛獅獸 (012) / 神龍獸 (0125) 幫忙。<br><small>(Partners without ultimate form, will call Saberleomon(v2 &amp; v2.5) OR Griffomon(v2) / Goddramon(v2.5) as helper when the warp evolution is successful.)</small></li>
+            </ul>
+
+            <h3 style="color: var(--gold-accent);">成功時空進化後 | When warp evolution successfully</h3>
+            <ul>
+                <li>對戰一般敵人時將會自動攻擊 (During battles with normal enemies, automatic attacks will be initiated.)</li>
+                <li>此後 3 場戰鬥無需搖機自動進化究極體 (Boss戰不適用)<br><small>For the next three battles, it will automatically evolve to Mega (not applicable for Boss battles).</small></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 6. 關卡攻略 -->
+    <section id="nav-walkthrough">
+        <h2>關卡攻略 | Walkthrough</h2>
+        <div class="box">
+            <small class="highlight">* 成長期無法對關卡 Boss 造成傷害 (Bosses cannot be harmed by Child-level Digimon.)</small>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">關卡</th>
+                        <th rowspan="2">所需步數<br>Step Required</th>
+                        <th rowspan="2">有利夥伴<br>Partners with buff<br><small>(指定關獲 AP+1)</small></th>
+                        <th colspan="3">Boss*</th>
+                        <th colspan="3">敵人 Enemy</th>
+                    </tr>
+                    <tr>
+                        <th>011 (v1)</th>
+                        <th>012 (v2)</th>
+                        <th>0125 (v2.5)</th>
+                        <th>011 (v1)</th>
+                        <th>012 (v2)</th>
+                        <th>0125 (v2.5)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>第一關<br>Area 1</strong></td>
+                        <td>10,000</td>
+                        <td>NA</td>
+                        <td>惡魔獸 Devimon<br>(Life 4 | Attack 2)</td>
+                        <td>鋼鐵巨龍獸 Metaltyranomon<br>(Life 4 | Attack 2)</td>
+                        <td>騎士獸 Knightmon<br>(Life 4 | Attack 2)</td>
+                        <td>
+                            大便獸 (Life 3 | Attack 1)<br>
+                            鼻涕獸 (Life 2 | Attack 1)<br>
+                            貝殼獸 (Life 2 | Attack 1)
+                        </td>
+                        <td>
+                            齒輪獸 (Life 3 | Attack 1)<br>
+                            蠟燭獸 (Life 2 | Attack 1)<br>
+                            巨蟹獸 (Life 2 | Attack 1)
+                        </td>
+                        <td>
+                            貝殼獸 (Life 2 | Attack 1)<br>
+                            鼻涕獸 (Life 2 | Attack 1)<br>
+                            古加獸 (Life 3 | Attack 1)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>第二關<br>Area 2</strong></td>
+                        <td>12,000</td>
+                        <td>NA</td>
+                        <td>悟空獸 Etemon<br>(Life 5 | Attack 2)</td>
+                        <td>悟空獸 Etemon<br>(Life 5 | Attack 2)</td>
+                        <td>黑機械暴龍獸 BK Metalgreymon<br>(Life 5 | Attack 2)</td>
+                        <td>
+                            猛鬼獸 (Life 4 | Attack 1)<br>
+                            大便獸 (Life 3 | Attack 1)<br>
+                            鼻涕獸 (Life 2 | Attack 1)
+                        </td>
+                        <td>
+                            爛泥獸 (Life 4 | Attack 1)<br>
+                            齒輪獸 (Life 3 | Attack 1)<br>
+                            巨蟹獸 (Life 2 | Attack 1)
+                        </td>
+                        <td>
+                            鑽地獸 (Life 4 | Attack 1)<br>
+                            古加獸 (Life 3 | Attack 1)<br>
+                            鼻涕獸 (Life 2 | Attack 1)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>第三關<br>Area 3</strong></td>
+                        <td>14,000</td>
+                        <td>巴魯獸 Palmon<br>哥瑪獸 Gomamon</td>
+                        <td>吸血魔獸 Vamdemon<br>(Life 6 | Attack 3)</td>
+                        <td>女惡魔獸 Ladydevimon<br>(Life 6 | Attack 3)</td>
+                        <td>喪屍暴龍獸 Skull Greymon<br>(Life 6 | Attack 3)</td>
+                        <td>
+                            小惡魔獸 (Life 4 | Attack 2)<br>
+                            加支獸 (Life 4 | Attack 1)<br>
+                            猛鬼獸 (Life 4 | Attack 1)
+                        </td>
+                        <td>
+                            阿伯獸 (Life 4 | Attack 2)<br>
+                            奧加獸 (Life 4 | Attack 1)<br>
+                            爛泥獸 (Life 4 | Attack 1)
+                        </td>
+                        <td>
+                            火炎獸 (Life 4 | Attack 2)<br>
+                            奧加獸 (Life 4 | Attack 1)<br>
+                            鑽地獸 (Life 4 | Attack 1)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>第四關<br>Area 4</strong></td>
+                        <td>16,000</td>
+                        <td>加布獸 Gabumon<br>甲蟲獸 Tentomon</td>
+                        <td>鋼鐵海龍獸 Metalseadramon<br>(Life 6 | Attack 3)</td>
+                        <td>究極吸血魔獸 Venommyotismon<br>(Life 6 | Attack 3)</td>
+                        <td>喪屍長毛象獸 Skullmammothmon<br>(Life 6 | Attack 3)</td>
+                        <td>
+                            奇蛙獸 (Life 4 | Attack 2)<br>
+                            亞路加獸 (Life 4 | Attack 2)<br>
+                            加支獸 (Life 4 | Attack 1)
+                        </td>
+                        <td>
+                            分子獸 (Life 4 | Attack 2)<br>
+                            大角獸 (Life 4 | Attack 2)<br>
+                            奧加獸 (Life 4 | Attack 1)
+                        </td>
+                        <td>
+                            黑暗巨龍獸 (Life 4 | Attack 2)<br>
+                            阿伯獸 (Life 4 | Attack 2)<br>
+                            奧加獸 (Life 4 | Attack 1)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>第五關<br>Area 5</strong></td>
+                        <td>18,000</td>
+                        <td>巴達獸 Patamon<br>迪露獸/小狗獸 Tailmon/Plotmon</td>
+                        <td>木偶獸 Pinochimon<br>(Life 7 | Attack 3)</td>
+                        <td>小丑皇 Piedmon<br>(Life 7 | Attack 3)</td>
+                        <td>喪屍撤旦獸 Skullsatamon<br>(Life 7 | Attack 3)</td>
+                        <td>
+                            巨龍獸 (Life 5 | Attack 2)<br>
+                            奇蛙獸 (Life 4 | Attack 2)<br>
+                            小惡魔獸 (Life 4 | Attack 2)
+                        </td>
+                        <td>
+                            螳螂獸 (Life 5 | Attack 2)<br>
+                            大角獸 (Life 4 | Attack 2)<br>
+                            阿伯獸 (Life 4 | Attack 2)
+                        </td>
+                        <td>
+                            千兆龍獸 (Life 5 | Attack 2)<br>
+                            黑暗巨龍獸 (Life 4 | Attack 2)<br>
+                            火炎獸 (Life 4 | Attack 2)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>第六關<br>Area 6</strong></td>
+                        <td>20,000</td>
+                        <td>亞古獸 Agumon<br>比丘獸 Piyomon</td>
+                        <td>機械邪龍獸 Mugendramon<br>(Life 7 | Attack 4)</td>
+                        <td>阿寶加利獸 Apokarimon<br>(Life 7 | Attack 4)</td>
+                        <td>斬伐獸 Zanbamon<br>(Life 7 | Attack 4)</td>
+                        <td>
+                            死神獸 (Life 5 | Attack 3)<br>
+                            超蛇龍獸 (Life 5 | Attack 2)<br>
+                            巨龍獸 (Life 5 | Attack 2)
+                        </td>
+                        <td>
+                            蛋蛋獸 (Life 5 | Attack 3)<br>
+                            炮彈獸 (Life 5 | Attack 2)<br>
+                            螳螂獸 (Life 5 | Attack 2)
+                        </td>
+                        <td>
+                            死神獸 (Life 5 | Attack 3)<br>
+                            千兆龍獸 (Life 5 | Attack 2)<br>
+                            蛋蛋獸 (Life 5 | Attack 3)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>第七關<br>Area 7</strong></td>
+                        <td>22,000</td>
+                        <td>NA</td>
+                        <td>小丑皇 Piedmon<br>(Life 8 | Attack 5)</td>
+                        <td>究極魔獸 Creepymon<br>(Life 8 | Attack 5)</td>
+                        <td>大王悟空獸 Kingetemon<br>(Life 8 | Attack 5)</td>
+                        <td>
+                            極惡熊仔獸 (Life 6 | Attack 3)<br>
+                            死神獸 (Life 5 | Attack 3)<br>
+                            超蛇龍獸 (Life 5 | Attack 2)
+                        </td>
+                        <td>
+                            科學怪人獸 (Life 6 | Attack 3)<br>
+                            蛋蛋獸 (Life 5 | Attack 3)<br>
+                            炮彈獸 (Life 5 | Attack 2)
+                        </td>
+                        <td>
+                            大古加獸 (Life 6 | Attack 3)<br>
+                            死神獸 (Life 5 | Attack 3)<br>
+                            蛋蛋獸 (Life 5 | Attack 3)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© DigiKidult &amp; Ralf | 美版電波資料整合 (011/012/0125)</p>
+        <p>All data strictly sourced from DigiKidult US Digivice D2 database.</p>
+    </div>
+</div>
+
+</body>
+</html>
