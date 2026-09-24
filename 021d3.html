@@ -3,433 +3,573 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>美版 D-3 021 全攻略 | 被選中嘅大細路 DigiKidult</title>
-    <!-- 引入復古像素字體 -->
+    <title>美版D-3 021 全攻略 | Guide for US D-3 ver 1 - DigiKidult</title>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --text-color: #39ff14;
-            --accent-cyan: #00ffff;
-            --accent-gold: #ffd700;
-            --border-color: #39ff14;
-            --border-dim: #238636;
+            --bg-color: #0b0f14;
+            --panel-bg: #111822;
+            --text-main: #33ff33;
+            --cyan-glow: #00ffff;
+            --gold-accent: #ffcc00;
+            --border-line: #33ff33;
+            --table-head-bg: #1c3320;
+            --table-alt-row: #0e141a;
         }
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
         body {
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             font-family: 'DotGothic16', monospace, sans-serif;
             margin: 0;
-            padding: 15px;
-            line-height: 1.5;
+            padding: 16px;
+            line-height: 1.6;
         }
         .container {
             max-width: 1050px;
             margin: 0 auto;
-            border: 3px solid var(--border-color);
-            padding: 20px;
-            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
-            background-color: var(--card-bg);
+            border: 3px solid var(--border-line);
+            padding: 24px;
+            background-color: var(--panel-bg);
+            box-shadow: 0 0 16px rgba(51, 255, 51, 0.2);
         }
-        h1, h2, h3, h4 {
+        h1, h2, h3 {
             text-align: center;
-            text-transform: uppercase;
-            border-bottom: 2px dashed var(--border-color);
+            border-bottom: 2px dashed var(--border-line);
             padding-bottom: 8px;
-            margin-top: 30px;
-            color: var(--accent-cyan);
+            margin-top: 32px;
+            color: var(--cyan-glow);
         }
         h1 {
-            color: var(--accent-gold);
+            color: var(--gold-accent);
             font-size: 1.8rem;
-            margin-top: 10px;
+            margin-top: 0;
         }
-        .brand-header {
+        .header-box {
             text-align: center;
-            border: 2px solid var(--border-dim);
-            padding: 15px;
-            margin-bottom: 25px;
+            border: 2px solid var(--border-line);
+            padding: 16px;
+            margin-bottom: 24px;
             background: #000;
         }
-        .social-bar {
+        .social-links {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 10px;
+            gap: 10px;
+            margin-top: 12px;
             flex-wrap: wrap;
         }
         .social-btn {
-            background-color: var(--text-color);
+            background-color: var(--text-main);
             color: #000;
             padding: 6px 12px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 2px;
-            transition: 0.2s;
+            font-size: 0.9rem;
         }
         .social-btn:hover {
             background-color: #fff;
             color: #000;
-            box-shadow: 0 0 10px var(--text-color);
+        }
+        .other-guides {
+            background-color: #05080c;
+            border: 1px dashed var(--cyan-glow);
+            padding: 12px;
+            margin: 16px 0;
+            font-size: 0.85rem;
+        }
+        .other-guides a {
+            color: var(--cyan-glow);
+            margin-right: 12px;
+            display: inline-block;
         }
         .nav-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 8px;
             margin: 20px 0;
         }
         .nav-grid a {
             text-align: center;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 8px 5px;
+            border: 1px solid var(--border-line);
+            color: var(--text-main);
+            padding: 8px 4px;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             background: #000;
         }
         .nav-grid a:hover {
-            background-color: var(--text-color);
+            background-color: var(--text-main);
             color: #000;
         }
         .table-responsive {
             overflow-x: auto;
-            margin: 15px 0 25px 0;
+            margin: 16px 0 24px 0;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.85rem;
-            background-color: #050505;
+            background-color: #05080c;
         }
         th, td {
-            border: 1px solid var(--border-color);
-            padding: 8px;
+            border: 1px solid var(--border-line);
+            padding: 8px 10px;
             text-align: center;
         }
         th {
-            background-color: #1f3b20;
-            color: var(--accent-gold);
+            background-color: var(--table-head-bg);
+            color: var(--gold-accent);
+        }
+        tr:nth-child(even) {
+            background-color: var(--table-alt-row);
+        }
+        .box {
+            border: 1px solid var(--border-line);
+            padding: 14px;
+            margin: 16px 0;
+            background: #05080c;
         }
         .highlight {
-            color: var(--accent-gold);
+            color: var(--gold-accent);
             font-weight: bold;
         }
-        .badge {
-            display: inline-block;
-            padding: 2px 6px;
-            background: #222;
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            font-size: 0.8rem;
-            margin: 2px;
+        .cyan {
+            color: var(--cyan-glow);
         }
         ul {
             padding-left: 20px;
+            margin: 8px 0;
         }
         li {
             margin-bottom: 6px;
         }
-        .notice-box {
-            border: 1px solid var(--accent-gold);
-            background-color: rgba(255, 215, 0, 0.05);
-            padding: 12px;
-            margin: 15px 0;
-        }
         .footer {
             text-align: center;
             margin-top: 40px;
-            border-top: 1px dashed var(--border-color);
-            padding-top: 15px;
+            border-top: 1px dashed var(--border-line);
+            padding-top: 16px;
             font-size: 0.8rem;
-            color: #888;
+            color: #777;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Header -->
-    <div class="brand-header">
-        <h1>美版 D-3 021 全攻略 (US D-3 Ver 1)</h1>
-        <p>By <strong>DigiKidult 被選中嘅大細路</strong> | 最後更新：2024.06.07</p>
-        <div class="social-bar">
-            <a class="social-btn" href="https://chat.whatsapp.com/IIkyFlmj4IUJeGdZ0L3AG2" target="_blank">數碼暴龍研究所 WA 社群</a>
-            <a class="social-btn" href="https://www.facebook.com/DigiKidult/" target="_blank">FB: @DigiKidult</a>
-            <a class="social-btn" href="https://www.instagram.com/digikidult/" target="_blank">IG: @digikidult</a>
+    <!-- 頂部標題區 -->
+    <div class="header-box">
+        <h1>美版D-3 021 全攻略<br><span style="font-size: 1.2rem; color: #fff;">Guide for US D-3 ver 1</span></h1>
+        <p>By <strong>DigiKidult 被選中嘅大細路</strong> | 最後更新 Last Update: 7 June 2024</p>
+        <div class="social-links">
+            <a class="social-btn" href="https://chat.whatsapp.com/IIkyFlmj4IUJeGdZ0L3AG2" target="_blank">數碼暴龍研究所 Whatsapp 社群</a>
+            <a class="social-btn" href="https://www.facebook.com/DigiKidult/" target="_blank">DigiKidult Facebook</a>
+            <a class="social-btn" href="https://www.instagram.com/digikidult/" target="_blank">DigiKidult Instagram</a>
         </div>
     </div>
 
-    <!-- Quick Navigation -->
+    <!-- 其他美版暴龍機攻略連結 -->
+    <div class="other-guides">
+        <strong>其他美版暴龍機攻略 Guide for other Digivice:</strong><br>
+        • <a href="https://bit.ly/USdigiviceguide" target="_blank">美版電波資料整合 (011/012/0125)</a>
+        • <a href="https://bit.ly/USD-3ver2" target="_blank">美版D-3 022全攻略 (Ver 2)</a>
+        • <a href="https://bit.ly/USD-3ver3" target="_blank">美版D-3 023全攻略 (Ver 3)</a>
+        • <a href="https://bit.ly/D-powerVer1" target="_blank">D-Power 031全攻略 (Ver 1)</a><br>
+        • <strong>版本查詢：</strong>美版D-3如何檢查所屬版本？ <a href="https://bit.ly/USdigiviceDB" target="_blank">bit.ly/USdigiviceDB</a>
+    </div>
+
+    <!-- 導航列 -->
     <div class="nav-grid">
-        <a href="#system">按鍵與選單</a>
-        <a href="#pow">POW 攻擊判定</a>
-        <a href="#eggs">數碼裝甲一覽</a>
-        <a href="#stats02">02 主角夥伴數值</a>
-        <a href="#stats01">01 夥伴援軍數值</a>
-        <a href="#walkthrough">關卡全流程攻略</a>
-        <a href="#postgame">二週目與隱藏Boss</a>
+        <a href="#control">按鍵與選單</a>
+        <a href="#pow">攻擊組合 POW</a>
+        <a href="#stats">夥伴能力數值</a>
+        <a href="#armor-pow">POW 對裝甲影響</a>
+        <a href="#digiegg">數碼裝甲一覽</a>
+        <a href="#maps">3 大關卡地圖</a>
+        <a href="#postgame">通關後白虎獸</a>
     </div>
 
-    <!-- 1. 按鍵與系統操作 -->
-    <section id="system">
-        <h2>🕹️ 基本操作與選單系統</h2>
-        <div class="notice-box">
-            <strong>按鍵指南：</strong><br>
-            • <strong>►（左鍵 / A）</strong>：選擇<br>
-            • <strong>右上鍵（B）</strong>：確定 / 進入查看<br>
-            • <strong>右下鍵（C）</strong>：取消 / 返回<br>
-            • <strong>設置靜音</strong>：同時按 A + B
+    <!-- 1. 按鍵與選單 -->
+    <section id="control">
+        <h2>🕹️ 按鍵指南與選單系統 (Navigations & Menus)</h2>
+        <div class="box">
+            <strong>按鍵指南 | Navigations:</strong><br>
+            • <strong>►</strong>：選擇 (A)<br>
+            • <strong>右上鍵</strong>：確定 (B)<br>
+            • <strong>右下鍵</strong>：取消 (C)<br>
+            • <strong>設置靜音 Mute</strong>：同時按 A + B (Press A and B simultaneously.)
         </div>
-        <h3>非戰鬥選單 (NON-BATTLE MENU)</h3>
-        <ul>
-            <li><span class="highlight">States（狀態）</span>：查看數碼暴龍及其進化之 Life(HP) 與 Attack(AP) 數值。最後查看之數碼暴龍會直接設為當前步行的主要夥伴。</li>
-            <li><span class="highlight">Map（地圖）</span>：查看闖關進度。全關卡固定不可跳關，每關有指定距離。</li>
-            <li><span class="highlight">DigiEgg（數碼裝甲）</span>：查看當前持有的裝甲，裝甲進化無需消耗 DP。</li>
-            <li><span class="highlight">Slot game（老虎機）</span>：拉動輪盤抽選兩隻數碼暴龍，根據結果扣減或增加關卡剩餘步數。</li>
-            <li><span class="highlight">Medical（急救包）</span>：數碼獸受傷生病時進行治療。</li>
-            <li><span class="highlight">V.S.（對戰）</span>：與其他暴龍機連接連線對戰。</li>
-        </ul>
-        <div class="notice-box">
-            <strong>夥伴步行介面按 B 鍵速查：</strong><br>
-            • <strong>Distance</strong>：本關餘下所需步數。<br>
-            • <strong>Steps</strong>：目前已步行的總步數累計。<br>
-            • <strong>D-power (DP)</strong>：進化能量（成熟期=8 DP / 完全體=12 DP / 究極體=16 DP）。上限 99，每 100 步回調 1 DP。<br>
-            • <strong>勝率</strong>：對外連線對戰的勝利百分比。
+
+        <div class="box">
+            <strong>開始遊玩 | Get Started:</strong><br>
+            選擇你的初始夥伴（V仔獸 / 麻鷹獸 / 穿山獸 / 巴達獸 / 迪露獸），然後開始步行（搖機）。<br>
+            <small>Choose your initial partner (Veemon / Hawkmon / Armadillomon / Patamon / Tailmon), then start walking (shaking).</small>
+        </div>
+
+        <div class="box">
+            <strong>一般選單 | NON-BATTLE MENU:</strong>
+            <ul>
+                <li><span class="highlight">States（狀態）</span>：查看數碼暴龍及其進化之 Life 及 Attack 數值，最後查看之數碼暴龍會作為步行夥伴。</li>
+                <li><span class="highlight">Map（地圖）</span>：共 3 關，必須順序闖關，不能跳關（通關前無法任意切換）。</li>
+                <li><span class="highlight">DigiEgg（數碼裝甲）</span>：查看目前擁有的數碼裝甲。</li>
+                <li><span class="highlight">Slot game（老虎機）</span>：轉動輪盤以抽選兩隻數碼暴龍，依結果減少或增加關卡距離。</li>
+                <li><span class="highlight">Medical（藥）</span>：受傷時使用。</li>
+                <li><span class="highlight">V.S.（對戰）</span>：與其他暴龍機連接對戰。</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <strong>查看步數及 DP | Check Steps & D-power (在夥伴步行畫面按 B 鍵查看):</strong>
+            <ul>
+                <li><strong>Distance (距離)</strong>：本關餘下所需步數。</li>
+                <li><strong>Steps (步數)</strong>：目前已步行的總數。</li>
+                <li><strong>D-power (DP)</strong>：進化所需的能量。成熟期消耗 8 DP；完全體消耗 12 DP；究極體需 16 DP。最大值 99，每 100 步增加 1 DP。</li>
+                <li><strong>勝率 Winning ratios</strong>：對外連線對戰之勝率百分比。</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <strong>隨機事件 | Events while walking:</strong>
+            <ul>
+                <li><strong>1. 普通戰鬥 Normal Battle</strong>：步行時每約 400 - 600 步便會遭遇敵人。</li>
+                <li><strong>2. 數碼裝甲 DigiEgg</strong>：反覆按 B 鍵直到達到 4 格。成功的話將隨機獲得數碼裝甲或失散的夥伴。</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <strong>戰鬥機制與戰鬥選單 | BATTLE MENU:</strong>
+            <ul>
+                <li><strong>FIGHT (戰鬥)</strong>：在出現 "Count" 時搖機，以搖出之 POW 決定攻擊組合。</li>
+                <li><strong>DigiEgg (數碼裝甲)</strong>：裝甲進化用，無須使用 DP（但戰鬥結束時有一定機率出現裝甲損壞）。</li>
+                <li><strong>DIGIVOLVE (進化)</strong>：常規進化用（在擊敗所在地區的中 Boss 前此項會被隱藏）。成熟期 8 DP、完全體 12 DP、究極體 16 DP。</li>
+                <li><strong>PARTY (換人)</strong>：戰鬥中變更出戰夥伴。</li>
+                <li><strong>ESC (逃走)</strong>：逃離戰鬥。</li>
+                <li><strong>勝負機制</strong>：每回合 4 輪攻擊，攻擊力較高的一方命中對方；相同則相互抵消。任何一方陣亡即告負。戰勝有機會獲得額外 DP；戰敗時距離將額外增加 500 步懲罰。</li>
+            </ul>
         </div>
     </section>
 
-    <!-- 2. 戰鬥機制與 POW 搖機判定 -->
+    <!-- 2. POW 攻擊組合 -->
     <section id="pow">
-        <h2>⚔️ 戰鬥機制與 POW 命中組合</h2>
-        <p>每回合固定進行 4 輪攻防。出現「Count」提示時搖動機身，所得之 <strong>POW 點數</strong> 決定你 4 輪攻擊的<strong>有效攻擊 (Y)</strong> 或 <strong>空炮 (N)</strong>：</p>
+        <h2>⚔️ 攻擊組合 (Combination of Attacks)</h2>
+        <p>戰鬥中搖出之 POW 點數對應每回合 4 輪空炮 (N) 或有效攻擊 (Y)：</p>
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th>搖機 POW</th>
-                        <th>第 1 擊</th>
-                        <th>第 2 擊</th>
-                        <th>第 3 擊</th>
-                        <th>第 4 擊</th>
-                        <th>有效發動數</th>
+                        <th>POW</th>
+                        <th>1st</th>
+                        <th>2nd</th>
+                        <th>3rd</th>
+                        <th>4th</th>
+                        <th>有效命中次數</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>POW 0</td><td>N</td><td>N</td><td>N</td><td><span class="highlight">Y</span></td><td>1</td></tr>
-                    <tr><td>POW 10</td><td>N</td><td><span class="highlight">Y</span></td><td>N</td><td>N</td><td>1</td></tr>
-                    <tr><td>POW 20</td><td>N</td><td>N</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td>2</td></tr>
-                    <tr><td>POW 30</td><td><span class="highlight">Y</span></td><td>N</td><td>N</td><td><span class="highlight">Y</span></td><td>2</td></tr>
-                    <tr><td>POW 40</td><td>N</td><td><span class="highlight">Y</span></td><td>N</td><td><span class="highlight">Y</span></td><td>2</td></tr>
-                    <tr><td>POW 50</td><td>N</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td>N</td><td>2</td></tr>
-                    <tr><td>POW 60</td><td><span class="highlight">Y</span></td><td>N</td><td><span class="highlight">Y</span></td><td>N</td><td>2</td></tr>
-                    <tr><td>POW 70</td><td><span class="highlight">Y</span></td><td>N</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td>3</td></tr>
-                    <tr><td>POW 80</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td>N</td><td><span class="highlight">Y</span></td><td>3</td></tr>
-                    <tr><td><span class="highlight">POW 90</span></td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td><span class="highlight">4 (全中)</span></td></tr>
-                </tbody>
-            </table>
-        </div>
-        <p><em>*戰敗懲罰：當前關卡剩餘距離罰加 500 步！</em></p>
-    </section>
-
-    <!-- 3. 數碼裝甲一覽 -->
-    <section id="eggs">
-        <h2>🛡️ 數碼裝甲 (DigiEgg) 獲取與進化</h2>
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th>數碼裝甲</th>
-                        <th>進化路線 (基礎夥伴 &gt; 裝甲體)</th>
-                        <th>入手方式 / 備註</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>勇氣 (Courage)</td><td>V仔獸 &gt; 烈焰獸 (Flamedramon)</td><td>選擇/遇見 V仔獸時自帶</td></tr>
-                    <tr><td>友情 (Friendship)</td><td>V仔獸 &gt; 雷龍獸 (Lighdramon)</td><td>步行事件 / Digi-Village 隨機抽取</td></tr>
-                    <tr><td>愛情 (Love)</td><td>麻鷹獸 &gt; 鐵鷹獸 (Holsmon)</td><td>選擇/遇見 麻鷹獸時自帶</td></tr>
-                    <tr><td>純真 (Purity)</td><td>麻鷹獸 &gt; 忍者獸 (Shurimon)</td><td>步行事件 / Digi-Village 隨機抽取</td></tr>
-                    <tr><td>知識 (Knowledge)</td><td>穿山獸 &gt; 鋼鑽獸 (Digmon)</td><td>選擇/遇見 穿山獸時自帶</td></tr>
-                    <tr><td>誠實 (Sincerity)</td><td>穿山獸 &gt; 潛鯊獸 (Submarimon)</td><td>步行事件 / Digi-Village 隨機抽取</td></tr>
-                    <tr><td>希望 (Hope)</td><td>巴達獸 &gt; 天馬獸 (Pegasusmon)</td><td>選擇/遇見 巴達獸時自帶</td></tr>
-                    <tr><td>光明 (Light)</td><td>迪路獸 &gt; 尼菲迪獸 (Nefertimon)</td><td>選擇/遇見 迪路獸時自帶</td></tr>
-                    <tr><td><span class="highlight">奇蹟 (Miracles)</span></td><td>V仔獸 &gt; <span class="highlight">金甲龍獸 (Magnamon)</span></td><td>擊敗第 3 關白虎獸後自動獲得 (或村莊極稀有)</td></tr>
+                    <tr><td>0</td><td>N</td><td>N</td><td>N</td><td><span class="highlight">Y</span></td><td>1</td></tr>
+                    <tr><td>10</td><td>N</td><td><span class="highlight">Y</span></td><td>N</td><td>N</td><td>1</td></tr>
+                    <tr><td>20</td><td>N</td><td>N</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td>2</td></tr>
+                    <tr><td>30</td><td><span class="highlight">Y</span></td><td>N</td><td>N</td><td><span class="highlight">Y</span></td><td>2</td></tr>
+                    <tr><td>40</td><td>N</td><td><span class="highlight">Y</span></td><td>N</td><td><span class="highlight">Y</span></td><td>2</td></tr>
+                    <tr><td>50</td><td>N</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td>N</td><td>2</td></tr>
+                    <tr><td>60</td><td><span class="highlight">Y</span></td><td>N</td><td><span class="highlight">Y</span></td><td>N</td><td>2</td></tr>
+                    <tr><td>70</td><td><span class="highlight">Y</span></td><td>N</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td>3</td></tr>
+                    <tr><td>80</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td>N</td><td><span class="highlight">Y</span></td><td>3</td></tr>
+                    <tr><td>90</td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td><span class="highlight">Y</span></td><td><span class="highlight">4 (全有效)</span></td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- 4. 02 夥伴數值 -->
-    <section id="stats02">
-        <h2>📊 02 夥伴完整戰鬥數值表</h2>
+    <!-- 3. 夥伴數值 -->
+    <section id="stats">
+        <h2>📊 夥伴數值 (Partner Stats)</h2>
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
                         <th>夥伴</th>
-                        <th>成長期 (HP/AP)</th>
-                        <th>裝甲體 1 (HP/AP)</th>
-                        <th>裝甲體 2 (HP/AP)</th>
-                        <th>成熟期 (HP/AP)</th>
-                        <th>完全體 (HP/AP)</th>
-                        <th>究極體 (HP/AP)</th>
+                        <th>成長期 (HP / AP)</th>
+                        <th>裝甲體 1 (HP / AP)</th>
+                        <th>裝甲體 2 / 特殊 (HP / AP)</th>
+                        <th>成熟期 (HP / AP)</th>
+                        <th>完全體 (HP / AP)</th>
+                        <th>究極體 (HP / AP)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>V仔獸</strong></td>
-                        <td>8 / 1</td>
-                        <td>烈焰獸: 16 / 3</td>
-                        <td>雷龍獸: 20 / 2<br><span class="highlight">金甲龍: 45 / 5</span></td>
-                        <td>XV獸: 30 / 4</td>
-                        <td>機甲龍獸: 38 / 5</td>
-                        <td>帝皇龍甲獸: 52 / 6<br><small>(戰士型態: 77 / 8)</small></td>
+                        <td><strong>V仔獸 Veemon</strong></td>
+                        <td>Life: 3<br>Attack: 1</td>
+                        <td>烈焰獸 Flamedramon<br>Life: 5 / Attack: 2-4*</td>
+                        <td>雷龍獸 Lighdramon<br>Life: 7 / Attack: 2-4*<br><span class="highlight">金甲龍獸 Magnamon<br>Life: 14 / Attack: 5</span></td>
+                        <td>V仔獸EX XV-mon<br>Life: 8 / Attack: 3</td>
+                        <td>機甲龍獸 Paildramon<br>Life: 11 / Attack: 4</td>
+                        <td>帝皇龍甲獸 Imperialdramon<br>Life: 14 / Attack: 5</td>
                     </tr>
                     <tr>
-                        <td><strong>蟲蟲獸</strong></td>
-                        <td>8 / 1</td>
-                        <td>愛精靈獸: 18 / 3</td>
+                        <td><strong>蟲蟲獸 Wormmon</strong><br><small class="cyan">(Map 2 擊敗後加入)</small></td>
+                        <td>Life: 3<br>Attack: 1</td>
                         <td>-</td>
-                        <td>飛蟲獸: 29 / 4</td>
-                        <td>恐蜂獸: 40 / 5</td>
-                        <td>究極古加獸: 50 / 6</td>
-                    </tr>
-                    <tr>
-                        <td><strong>麻鷹獸</strong></td>
-                        <td>8 / 1</td>
-                        <td>鐵鷹獸: 15 / 3</td>
-                        <td>忍者獸: 21 / 2</td>
-                        <td>亞古拉獸: 28 / 4</td>
-                        <td>人面戰鷹獸: 44 / 5</td>
-                        <td>女戰神獸: 48 / 6</td>
-                    </tr>
-                    <tr>
-                        <td><strong>迪路獸</strong></td>
-                        <td>8 / 1</td>
-                        <td>尼菲迪獸: 17 / 3</td>
                         <td>-</td>
-                        <td>迪路獸: 31 / 4</td>
-                        <td>天女獸: 41 / 5</td>
-                        <td>聖龍獸: 49 / 6</td>
+                        <td>飛蟲獸 Stingmon<br>Life: 8 / Attack: 3</td>
+                        <td>恐蜂獸 Dinobeemon<br>Life: 11 / Attack: 4</td>
+                        <td>究極古加獸 Grankuwagamon<br>Life: 14 / Attack: 5</td>
                     </tr>
                     <tr>
-                        <td><strong>穿山獸</strong></td>
-                        <td>9 / 1</td>
-                        <td>鋼鑽獸: 20 / 3</td>
-                        <td>潛鯊獸: 23 / 2</td>
-                        <td>戰甲獸: 33 / 4</td>
-                        <td>古神獸: 41 / 5</td>
-                        <td>維京毛人獸: 55 / 6</td>
+                        <td><strong>麻鷹獸 Hawkmon</strong></td>
+                        <td>Life: 3<br>Attack: 1</td>
+                        <td>鐵鷹獸 Holsmon<br>Life: 5 / Attack: 2-4*</td>
+                        <td>忍者獸 Shurimon<br>Life: 7 / Attack: 2-4*</td>
+                        <td>亞古拉獸 Aquilamon<br>Life: 7 / Attack: 3</td>
+                        <td>人面戰鷹獸 Silphymon<br>Life: 11 / Attack: 4</td>
+                        <td>女戰神獸 Valkyrimon<br>Life: 14 / Attack: 5</td>
                     </tr>
                     <tr>
-                        <td><strong>巴達獸</strong></td>
-                        <td>8 / 1</td>
-                        <td>天馬獸: 17 / 3</td>
+                        <td><strong>迪露獸 Tailmon</strong><br><small>(神聖環丟失)</small></td>
+                        <td>Life: 3<br>Attack: 1</td>
+                        <td>尼菲迪獸 Nefertimon<br>Life: 7 / Attack: 2-4*</td>
                         <td>-</td>
-                        <td>天使獸: 30 / 4</td>
-                        <td>神聖天使獸: 40 / 5</td>
-                        <td>究極天使獸: 52 / 6</td>
+                        <td>迪露獸 Tailmon<br>Life: 7 / Attack: 3</td>
+                        <td>天女獸 Angelwomon<br>Life: 11 / Attack: 4</td>
+                        <td>聖龍獸 Holydramon<br>Life: 14 / Attack: 5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>穿山獸 Armadimon</strong></td>
+                        <td>Life: 3<br>Attack: 1</td>
+                        <td>鋼鑽獸 Digmon<br>Life: 6 / Attack: 2-4*</td>
+                        <td>潛鯊獸 Submarimon<br>Life: 8 / Attack: 2-4*</td>
+                        <td>戰甲獸 Ankylomon<br>Life: 9 / Attack: 3</td>
+                        <td>古神獸 Shakkoumon<br>Life: 11 / Attack: 4</td>
+                        <td>維京毛人獸 Vikemon<br>Life: 14 / Attack: 5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>巴達獸 Patamon</strong></td>
+                        <td>Life: 3<br>Attack: 1</td>
+                        <td>天馬獸 Pegasusmon<br>Life: 7 / Attack: 2-4*</td>
+                        <td>-</td>
+                        <td>天使獸 Angemon<br>Life: 7 / Attack: 3</td>
+                        <td>神聖天使獸 Holyangemon<br>Life: 11 / Attack: 4</td>
+                        <td>究極天使獸 Seraphimon<br>Life: 14 / Attack: 5</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <p>
+            * <strong>進化解鎖機制：</strong><br>
+            • <strong>完全體</strong>：初遇玄武獸後解鎖常規進化至完全體。<br>
+            • <strong>究極體</strong>：初遇白虎獸時，於戰鬥中解鎖常規進化至究極體。<br>
+            • <strong>金甲龍獸</strong>：擊敗白虎獸後解鎖「奇蹟」裝甲即可進化。<br>
+            • * 裝甲體 Attack 數值每回合隨機為 2 至 4。
+        </p>
     </section>
 
-    <!-- 5. 01 夥伴數值 -->
-    <section id="stats01">
-        <h2>🦖 01 夥伴援軍能力數值表</h2>
+    <!-- 4. POW 對裝甲體 AP 影響 -->
+    <section id="armor-pow">
+        <h2>🎲 POW 對裝甲體之 AP 影響 (測試紀錄)</h2>
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th>角色</th>
-                        <th>成長期 (HP/AP)</th>
-                        <th>成熟期 (HP/AP)</th>
-                        <th>完全體 (HP/AP)</th>
-                        <th>究極體 (HP/AP)</th>
+                        <th>POW</th>
+                        <th>烈焰獸</th>
+                        <th>雷龍獸</th>
+                        <th>忍者獸</th>
+                        <th>鋼鑽獸</th>
+                        <th>潛鯊獸</th>
+                        <th>天馬獸</th>
+                        <th>尼菲迪獸</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><strong>亞古獸</strong></td><td>8 / 1</td><td>暴龍獸: 30 / 3</td><td>機械暴龍獸: 38 / 4</td><td>戰鬥暴龍獸: 54 / 6</td></tr>
-                    <tr><td><strong>加布獸</strong></td><td>8 / 1</td><td>加魯魯獸: 28 / 3</td><td>獸人加魯魯獸: 40 / 4</td><td>鋼鐵加魯魯獸: 52 / 6</td></tr>
-                    <tr><td><strong>比丘獸</strong></td><td>8 / 1</td><td>巴多拉獸: 27 / 3</td><td>伽樓達獸: 40 / 4</td><td><span class="highlight">黑戰鬥暴龍獸: 55 / 6</span></td></tr>
-                    <tr><td><strong>巴魯獸</strong></td><td>8 / 1</td><td>仙人掌獸: 43 / 3</td><td>花仙獸: 37 / 4</td><td><span class="highlight">黑戰鬥暴龍獸: 55 / 6</span></td></tr>
-                    <tr><td><strong>甲蟲獸</strong></td><td>8 / 1</td><td>比多獸: 30 / 3</td><td>超比多獸: 40 / 4</td><td><span class="highlight">黑戰鬥暴龍獸: 55 / 6</span></td></tr>
-                    <tr><td><strong>哥瑪獸</strong></td><td>8 / 1</td><td>海獅獸: 30 / 3</td><td>祖頓獸: 40 / 4</td><td><span class="highlight">黑戰鬥暴龍獸: 55 / 6</span></td></tr>
-                    <tr><td colspan="4"><strong>合體究極體：奧米加獸 (Omegamon)</strong></td><td><span class="highlight">HP 77 / AP 8</span> (完成 Area 6 澳洲後解鎖)</td></tr>
+                    <tr><td>0</td><td>AP 3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>AP 4</td><td>-</td></tr>
+                    <tr><td>10</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>20</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>30</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>40</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>50</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>AP 3</td><td>-</td></tr>
+                    <tr><td>60</td><td>AP 4</td><td>-</td><td>-</td><td>-</td><td>-</td><td>AP 4</td><td>-</td></tr>
+                    <tr><td>70</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>80</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>AP 3</td><td>AP 4</td></tr>
+                    <tr><td>90</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>AP 3</td><td>AP 3</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- 6. 關卡全流程攻略 -->
-    <section id="walkthrough">
-        <h2>🗺️ 區域通關流程 (Walkthrough)</h2>
-        <p>一週目劇情背景：亞古獸、加布獸、巴達獸及迪路獸被吸血魔獸捉走，需依序踏破 7 大區域進行救援！</p>
-        
-        <div class="notice-box">
-            <h4>第 1 區：美國 (USA) — 距離：24,000 步</h4>
-            • <strong>分支路徑步數：</strong>左 (2,600步) / 中 (3,000步) / 右 (2,800步) / 隱藏 (3,400步)<br>
-            • <strong>中 Boss：</strong>喪屍暴龍獸 (HP 30 / AP 5) <em>*擊敗中Boss前僅能使用裝甲進化！</em><br>
-            • <strong>關卡 Boss：</strong>黑戰鬥暴龍獸 (HP 45 / AP 6)<br>
-            • <strong>通關獎勵：</strong>通關後可在對戰中累積進化點數達 6 點召喚黑戰鬥暴龍獸助陣。
-        </div>
-
-        <div class="notice-box">
-            <h4>第 2 至 5 區 (墨西哥 / 俄羅斯 / 法國 / 香港) — 隨機次序登場</h4>
-            • 每個地圖戰勝大 Boss 後可救回一名相應夥伴。<br>
-            • 於<strong>第 3 個區域</strong>迎戰大 Boss 時，將即場解鎖並自動強制進化為<strong>究極體</strong>！<br>
-            • <strong>墨西哥：</strong>中Boss 獸人加魯魯 (HP 33) ➔ 大Boss 鋼鐵加魯魯 (HP 50)<br>
-            • <strong>俄羅斯：</strong>中Boss 神聖天使獸 (HP 28) ➔ 大Boss 究極天使獸 (HP 54)<br>
-            • <strong>法國：</strong>中Boss 機械暴龍獸 (HP 35) ➔ 大Boss 戰鬥暴龍獸 (HP 54)<br>
-            • <strong>香港：</strong>中Boss 天女獸 (HP 25) ➔ 大Boss 聖龍獸 (HP 48)
-        </div>
-
-        <div class="notice-box">
-            <h4>第 6 區：澳洲 (Australia) — 距離：4,400+ 步</h4>
-            • <strong>三大中 Boss 連戰：</strong>女惡魔獸 (HP 48) ➔ 海魔獸 (HP 50) ➔ 喪屍撒旦獸 (HP 55)<br>
-            • <strong>大 Boss：</strong>究極魔獸 Demon (HP 60 / AP 10)<br>
-            • <strong>特別操作：</strong>戰勝究極魔獸後需連打 A 鍵將其推入黑暗之門！成功後解鎖<strong>帝皇龍甲獸戰士形態</strong>及<strong>奧米加獸</strong>。
-        </div>
-
-        <div class="notice-box">
-            <h4>第 7 區：日本 (Japan) — 決戰之地</h4>
-            • <strong>中 Boss：</strong>高級安杜路獸 (HP 45) / 惡魔蛋蛋獸 (HP 60) / 法老獸 (HP 55)<br>
-            • <strong>一週目終極 4 連戰：</strong><br>
-            1. 陰影吸血魔獸 (HP 40)<br>
-            2. 吸血魔獸 (HP 55)<br>
-            3. 究極吸血魔獸 (HP 66 / AP 10)<br>
-            4. <span class="highlight">貝利亞吸血魔獸 (HP 82 / AP 12)</span>
+    <!-- 5. 數碼裝甲一覽 -->
+    <section id="digiegg">
+        <h2>🛡️ 數碼裝甲 (DigiEgg) 一覽</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>數碼裝甲</th>
+                        <th>裝甲進化</th>
+                        <th>備註 Remark</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>勇氣 Courage</strong></td>
+                        <td>V仔獸 ＞ 烈焰獸</td>
+                        <td>開始遊戲選擇或步行尋找到 V仔獸時自動獲得</td>
+                    </tr>
+                    <tr>
+                        <td><strong>友情 Friendship</strong></td>
+                        <td>V仔獸 ＞ 雷龍獸</td>
+                        <td>步行隨機事件獲得</td>
+                    </tr>
+                    <tr>
+                        <td><strong>愛情 Love</strong></td>
+                        <td>麻鷹獸 ＞ 鐵鷹獸</td>
+                        <td>開始遊戲選擇或步行尋找到 麻鷹獸時自動獲得</td>
+                    </tr>
+                    <tr>
+                        <td><strong>純真 Purity</strong></td>
+                        <td>麻鷹獸 ＞ 忍者獸</td>
+                        <td>步行隨機事件獲得</td>
+                    </tr>
+                    <tr>
+                        <td><strong>知識 Knowledge</strong></td>
+                        <td>穿山獸 ＞ 鋼鑽獸</td>
+                        <td>開始遊戲選擇或步行尋找到 穿山獸時自動獲得</td>
+                    </tr>
+                    <tr>
+                        <td><strong>誠實 Sincerity</strong></td>
+                        <td>穿山獸 ＞ 潛鯊獸</td>
+                        <td>步行隨機事件獲得</td>
+                    </tr>
+                    <tr>
+                        <td><strong>希望 Hope</strong></td>
+                        <td>巴達獸 ＞ 天馬獸</td>
+                        <td>開始遊戲選擇或步行尋找到 巴達獸時自動獲得</td>
+                    </tr>
+                    <tr>
+                        <td><strong>光明 Light</strong></td>
+                        <td>迪路獸 ＞ 尼菲迪獸</td>
+                        <td>開始遊戲選擇或步行尋找到 迪路獸時自動獲得</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">奇蹟 Miracles</span></td>
+                        <td>V仔獸 ＞ 金甲龍獸</td>
+                        <td>在第三關擊敗白虎獸後自動獲得 (Get it after defeating Baihumon at Map 3)</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
-    <!-- 7. 二週目與隱藏要素 -->
+    <!-- 6. 關卡資料 -->
+    <section id="maps">
+        <h2>🗺️ 關卡資料 (Walkthrough)</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>關卡</th>
+                        <th>總步數</th>
+                        <th>中Boss (相遇步數)</th>
+                        <th>特別事件 (相遇步數)</th>
+                        <th>終點：大Boss</th>
+                        <th>出現敵人 Enemy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>第一關 Area 1</strong></td>
+                        <td>24,000</td>
+                        <td>
+                            <strong>黑戰鬥暴龍獸 BK Wargreymon</strong><br>(Life 8 | Attack 3)<br>
+                            <em>相遇點：14,000</em><br>
+                            <small class="highlight">擊敗此關中Boss前，只能使用裝甲進化</small>
+                        </td>
+                        <td>-</td>
+                        <td>
+                            <strong>朱雀獸 Zhuqiaomon</strong><br>
+                            (Life 10 | Attack 3)
+                        </td>
+                        <td>
+                            小火焰獸 (HP 1, AP 1)<br>
+                            玩具亞古獸 (HP 2, AP 1)<br>
+                            獨角馬獸 (HP 2, AP 2)<br>
+                            鼻屎獸 (HP 4, AP 2)<br>
+                            飛龍獸 (HP 5, AP 1)<br>
+                            大角獸 (HP 7, AP 3)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>第二關 Area 2</strong></td>
+                        <td>30,000</td>
+                        <td>
+                            <strong>外星獸 Ebemon</strong><br>(Life 7 | Attack 3)<br>
+                            <em>相遇點：16,000</em><br>
+                            <small class="highlight">擊敗此關中Boss前，只能使用裝甲進化</small>
+                        </td>
+                        <td>
+                            <strong>蟲蟲獸 Wormmon</strong><br>(Life 3 | Attack 1)<br>
+                            <em>相遇點：30,000</em><br>
+                            <small class="cyan">擊敗蟲蟲獸後會加入隊伍</small>
+                        </td>
+                        <td>
+                            <strong>玄武獸 Xuanwumon</strong><br>
+                            (Life 14 | Attack 4)<br>
+                            <small class="highlight">首次對戰：解鎖完全體並強制進化</small>
+                        </td>
+                        <td>
+                            玩具亞古獸 (HP 2, AP 1)<br>
+                            飛龍獸 (HP 5, AP 1)<br>
+                            巨龍獸 (HP 4, AP 2)<br>
+                            角龍獸 (HP 6, AP 2)<br>
+                            螳螂獸 (HP 6, AP 3)<br>
+                            獨眼龍獸 (HP 8, AP 3)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>第三關 Area 3</strong></td>
+                        <td>20,000</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>
+                            <strong>青龍獸 Qinglongmon</strong><br>
+                            (Life 8 | Attack 5)
+                        </td>
+                        <td>
+                            螳螂獸 (HP 6, AP 3)<br>
+                            獨眼龍獸 (HP 8, AP 3)<br>
+                            多達獸 (HP 9, AP 3)<br>
+                            三頭龍獸 (HP 6, AP 4)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 7. 通關後白虎獸 -->
     <section id="postgame">
-        <h2>👑 通關後與二週目 (New Game+)</h2>
-        <div class="notice-box">
-            <h4>白虎獸 (Baihumon) 挑戰條件 (Life 15 / AP 5)</h4>
-            1. 總步數累積 <strong>≥ 120,000 步</strong><br>
-            2. 擊敗青龍獸 2 次<br>
-            3. 收集並救回所有夥伴數碼獸<br>
-            4. 手頭持有全部 8 種數碼裝甲<br>
-            <em>*戰勝獎勵：正式入手「奇蹟之數碼裝甲」，解鎖金甲龍獸進化！</em>
-        </div>
-
-        <div class="notice-box">
-            <h4>二週目 (New Game+) 變更點：</h4>
-            • 夥伴再度被捉走，但全程保留究極體進化與黑戰暴召喚能力。<br>
-            • 第 7 區日本最終戰變為<strong>極限 5 連戰</strong>，壓軸 Boss 變更為：<br>
-            <span class="highlight">★ 超惡魔獸 Diablomon (HP 94 / AP 14) ★</span>
+        <h2>👑 通關後隱藏要素 (Post-game)</h2>
+        <div class="box">
+            <h3 style="margin-top: 0; color: var(--gold-accent);">終極Boss：白虎獸 Baihumon (Life 15 | Attack 5)</h3>
+            <p><strong>出現條件 (How to trigger):</strong></p>
+            <ol>
+                <li><strong>總步數 (Total Steps)</strong>：&gt;= 120,000 步</li>
+                <li><strong>擊敗青龍獸兩次</strong> (Defeated Qinglongmon twice)</li>
+                <li><strong>已取得所有夥伴</strong> (Got all partners)</li>
+                <li><strong>持有 8 種數碼裝甲</strong> (Have 8 DigiEggs on hand)</li>
+            </ol>
+            <p><strong>解鎖隱藏要素獎勵 (Rewards for the Hidden Level):</strong></p>
+            <ul>
+                <li><span class="highlight">首次對戰</span>：解鎖究極體並於戰鬥中強制進化 (Unlock Mega and force evolution during the 1st battle)。</li>
+                <li><span class="highlight">成功擊敗後</span>：解鎖並獲得<strong>「奇蹟」數碼裝甲</strong> (Unlock and get DigiEgg "Miracle" after defeat him)。</li>
+            </ul>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- 頁尾 -->
     <div class="footer">
-        <p>© 2026 被選中嘅大細路 DigiKidult. All Rights Reserved.</p>
-        <p>本攻略資料由 DigiKidult 實機測試整合，轉載請註明出處。</p>
+        <p>© DigiKidult 被選中嘅大細路 | 美版 D-3 021 全攻略</p>
+        <p>All data strictly sourced from DigiKidult US D-3 ver 1 database.</p>
     </div>
 </div>
 
