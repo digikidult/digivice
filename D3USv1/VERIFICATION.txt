@@ -1,0 +1,1 @@
+Version 1.2: Verified six complete evolution lines against visible partner columns, 18 progression arrows, DP labels, route search and stage highlighting without removing intermediate forms. Local file references and JavaScript syntax checks passed. Browser visual verification remains unavailable.

@@ -1,9 +1,9 @@
 {
-  "release": "1.1.0",
-  "date": "2026-10-26",
+  "release": "1.2.0",
+  "date": "2026-10-27",
   "files": {
     ".nojekyll": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
-    "app.js": "39b6f6cbf27cfe1bda21afe6cc54bab045ed9a0b06e3779ca55e24383bc093b8",
+    "app.js": "b0072a38b59387f6afdb3243202f7b060ce19a9a7cfa210416b447d9d10603d2",
     "assets/image1.png": "f5dc0976d140e2088e6155ea79be1a832faea3de059bec281ae636b91044f0ec",
     "assets/image10.png": "3d917cadaa11e9b6a997b6dd18e171a910f156706378e2e785bd9fdc7817224f",
     "assets/image103.png": "271058ad685f075f39877b8f29888ca104c8d6d7ee35037c07b91db2373968e4",
@@ -56,11 +56,11 @@
     "assets/image90.png": "a8ecf961cda75d72c997e644b688b9ea8c294072e4be2d6a70fecbec625f6471",
     "assets/image97.png": "5b1fb659dd0b511d94940c820a22353ac92aff9a512c49d41f33e58437b4b77d",
     "assets/image98.png": "d2502288c15f4a0ad6589abe3ad8d864df1ec7bd390c3ca62de185cc391a0a02",
-    "index.html": "5431af5847d719a291a97f018f72cae1116e2134f89ddfa1bec7dac4482fbdf1",
-    "interface.js": "5d7a35728c2ccc4db65213f1931d871ea31669ab387a25ccd4d34796bcb39429",
-    "README.md": "18e59d766a68bcc6afcabe7b6b8f6d3496cd625ef29664bf3cac5f81c8ad8aa8",
+    "index.html": "9f04a478e244dc3b6cb2a1412bac638253508846fe8d85f2b070d8fbc3145897",
+    "interface.js": "451b58ed1c9203b26eb882bd6aaa51b929a85ec600023b1e0493595e0e9d090d",
+    "README.md": "e0cd5a456f461fdca58bf916ab78ed4a232b4451cc8adffd48b1bf33f91bdd2e",
     "source-data.json": "cf60f64f8e97894e268947480f9cd386223f51651cc75daf6d48c354ca712322",
-    "styles.css": "562ecc97df9581605c9126c3fd6bd1528cb10cfee8421b9424aa508b25465f21",
-    "VERIFICATION.txt": "093d044bd097fe31f31acb76d6104519d8e5b41735f44b16e6fb7eb1831e19e9"
+    "styles.css": "65190b0ff8e48d5902abc723cceacb556065870a4d12d4da7273abff19dc3a8c",
+    "VERIFICATION.txt": "c8956c3dcec8c335bfaaf9648f4954d7c18092edecfeca62810be9f4723a0c2b"
   }
 }
